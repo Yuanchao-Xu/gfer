@@ -1,0 +1,20 @@
+{
+    "collab_server" : "",
+    "contents" : "#' Get proxy pool from free proxy provider\n#'\n# @param x A number.\n# @param y A number.\n#' @return The sum of \\code{x} and \\code{y}.\n#' @importFrom rvest html_table %>%\n#' @importFrom xml2 read_html\n\n\ngetProxy <- function() {\n  # get free proxy from http://www.free-proxy-list.net/\n  url <- 'http://www.free-proxy-list.net/'   #xpath = //*[@id=\"proxylisttable\"]\n  # url <- 'http://www.kuaidaili.com/proxylist/3/'\n  table <- url %>%\n    read_html() %>%\n    #    html_nodes(xpath = '//*[@id=\"index_free_list\"]/table/tbody') %>%\n    html_table()\n\n  return(table[[1]])\n}\n",
+    "created" : 1481134587319.000,
+    "dirty" : false,
+    "encoding" : "UTF-8",
+    "folds" : "",
+    "hash" : "2632894335",
+    "id" : "C2CA6363",
+    "lastKnownWriteTime" : 1481135397,
+    "last_content_update" : 1481135397271,
+    "path" : "~/GitHub/gfer/R/getProxy.R",
+    "project_path" : "R/getProxy.R",
+    "properties" : {
+    },
+    "relative_order" : 2,
+    "source_on_save" : false,
+    "source_window" : "",
+    "type" : "r_source"
+}

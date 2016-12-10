@@ -1,0 +1,21 @@
+{
+    "collab_server" : "",
+    "contents" : "# get CSR rating\n#' get CSR rating from a website\n#' @param startPage on Which page you want to start, default is 1\n#' @param endPage On which page you want to stop scrapping\n#' @return A table of CSR ratings collected from your input page\n#' @importFrom V8 v8\n#' @importFrom httr content\n#' @importFrom stringi stri_replace_last_fixed\n#' @importFrom jsonlite fromJSON\n# @examples\n# add(1, 1)\n# add(10, 1)\n\ndoCSRCorp <- function(startPage, endPage) {\n  page <- startPage\n  engine <- v8()\n\n\n  repeat {\n    res <- GET(url, query = list(date = date,\n                                 count = 20,\n                                 pname = 20,\n                                 titType = 'null',\n                                 page = page), use_proxy(proxy[1, 1], proxy[1, 2]), timeout(15))\n\n    resC <- content(res) %>%\n      stri_replace_first_fixed(\"hxbase_json1(\", \"var dat=\") %>%\n      stri_replace_last_fixed(\")\", \"\") %>%\n      engine$eval()\n\n\n    resC <- engine$get('dat')$list\n\n    if (page == 1) {\n      totalList <- resC\n    } else {\n      # bind the new list to the total list\n      totalList <- rbind(totalList, resC)\n    }\n\n    page <- page + 1\n\n    if (page > endPage) break\n\n  }\n\n  return(totalList)\n}\n",
+    "created" : 1481259597387.000,
+    "dirty" : false,
+    "encoding" : "UTF-8",
+    "folds" : "",
+    "hash" : "581589490",
+    "id" : "73D736C6",
+    "lastKnownWriteTime" : 1481302790,
+    "last_content_update" : 1481302790826,
+    "path" : "~/GitHub/gfer/R/getCSRRating.R",
+    "project_path" : "R/getCSRRating.R",
+    "properties" : {
+        "tempName" : "Untitled1"
+    },
+    "relative_order" : 5,
+    "source_on_save" : false,
+    "source_window" : "",
+    "type" : "r_source"
+}

@@ -4,9 +4,11 @@
 \alias{getWaterQ_MEP_all_unit}
 \title{get PPP list from a single page}
 \usage{
-getWaterQ_MEP_all_unit(year, week, station1, station2, proxy = NULL)
+getWaterQ_MEP_all_unit(url, year, week, station1, station2, proxy = NULL)
 }
 \arguments{
+\item{url}{the url of CSR Rating, usually the default website}
+
 \item{year}{In which year you would like to scrape}
 
 \item{week}{In which week you would like to scrape}

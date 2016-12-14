@@ -4,14 +4,12 @@
 \alias{getPPPList}
 \title{get PPP list from an official website}
 \usage{
-getPPPList(url, endPage, startPage = 1)
+getPPPList(startPage = 1, endPage)
 }
 \arguments{
-\item{url}{A url, usually it's the offical ppp website of Ministry of Finance of China}
+\item{startPage}{on Which page you want to start, default is 1}
 
 \item{endPage}{On which page you want to stop scrapping}
-
-\item{startPage}{on Which page you want to start, default is 1}
 }
 \value{
 A table of PPP projects collected from your input page

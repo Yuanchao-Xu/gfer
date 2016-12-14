@@ -1,7 +1,10 @@
+
+
 # Get water quality data
 
 
 #' get PPP list from a single page
+#' @param url the url of CSR Rating, usually the default website
 #'
 #' @param year In which year you would like to scrape
 #' @param week In which week you would like to scrape
@@ -16,7 +19,7 @@
 # @examples
 # add(1, 1)
 # add(10, 1)
-getWaterQ_MEP_all_unit <- function(year, week, station1, station2, proxy = NULL) {
+getWaterQ_MEP_all_unit <- function(url, year, week, station1, station2, proxy = NULL) {
   res <- GET(url,
              query = list(year = year,
                           wissue = week), use_proxy(proxy[1, 1], proxy[1, 2]))
@@ -65,7 +68,7 @@ getWaterQ_MEP_all <- function(year, week, station1, station2){
 
     table <- tryCatch({
 
-      getWaterQ_MEP_all_unit(year = year, week = page, station1 = station1,
+      getWaterQ_MEP_all_unit(url, year = year, week = page, station1 = station1,
                              station2 = station2, proxy = proxyPool[proxyIndex, ])
     },error = function(cond) {
       message(paste('\n', Sys.time(), " Proxy doestn't work or ...\n"))
@@ -73,7 +76,7 @@ getWaterQ_MEP_all <- function(year, week, station1, station2){
       return(1)
     })
 
-    if (length(table) == 1 & table == 1) {
+    if (length(table) == 1) {
       times <- 0
       proxyIndex <- proxyIndex + 1
 

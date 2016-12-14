@@ -2,18 +2,22 @@
 #' get CSR rating from a website
 #' @param startPage on Which page you want to start, default is 1
 #' @param endPage On which page you want to stop scrapping
+#' @param date represents the date is until which date, usually it's the last day of a year
+#' e.g., "2015-12-31" for the date of year 2015, "2014-12-31" for the date of year 2014
+#' @param proxy the proxy, default is NULL
 #' @return A table of CSR ratings collected from your input page
 #' @importFrom V8 v8
-#' @importFrom httr content
-#' @importFrom stringi stri_replace_last_fixed
+#' @importFrom httr content use_proxy
+#' @importFrom stringi stri_replace_last_fixed stri_replace_first_fixed
 #' @importFrom jsonlite fromJSON
 # @examples
 # add(1, 1)
 # add(10, 1)
 
-doCSRCorp <- function(startPage, endPage) {
+getCSRRating <- function(startPage, endPage, date = '2015-12-31', proxy = NULL) {
   page <- startPage
   engine <- v8()
+  url <- 'http://stockdata.stock.hexun.com/zrbg/data/zrbList.aspx?'
 
 
   repeat {

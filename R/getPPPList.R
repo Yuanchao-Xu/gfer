@@ -38,7 +38,6 @@ getPPPList_unit <- function(url, page, proxy = NULL){
 
 #' get PPP list from an official website
 #'
-#' @param url A url, usually it's the offical ppp website of Ministry of Finance of China
 #' @param endPage On which page you want to stop scrapping
 #' @param startPage on Which page you want to start, default is 1
 #' @return A table of PPP projects collected from your input page
@@ -46,11 +45,12 @@ getPPPList_unit <- function(url, page, proxy = NULL){
 # add(1, 1)
 # add(10, 1)
 
-getPPPList <- function(url, endPage, startPage = 1) {
+getPPPList <- function(startPage = 1, endPage) {
   # get proxy from special website, and every time scrapes, it will have 300 proxies, so
   # the limit of the random number is 300. Need to check this every some time
   page <- startPage # set up initial value
   times <- 0
+  url <- 'http://www.cpppc.org:8082/efmisweb/ppp/projectLivrary/getPPPList.do?tokenid=null'
 
   # first generate proxy for scapring
   proxyPool <- getProxy()[,1:2]
@@ -60,6 +60,10 @@ getPPPList <- function(url, endPage, startPage = 1) {
 
   # Since for this case we got 301 proxies, so map the proxy table
   proxyIndex <- 1 #proxyIndex starts from1
+  message('There might by error messages when you choose to use proxy, just ignore them.
+          When it stayed for a long time, just click "stop", to start another round')
+
+
 
   repeat {
 

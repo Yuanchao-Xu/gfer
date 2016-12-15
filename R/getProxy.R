@@ -1,7 +1,6 @@
 #' Get proxy pool from free proxy provider
-#'
-# @param x A number.
-# @param y A number.
+#' @details
+#' Extract proxies from http://www.free-proxy-list.net/, in case of the risk of being blocked by the scrapped website
 #' @return The sum of \code{x} and \code{y}.
 #' @importFrom rvest html_table %>%
 #' @importFrom xml2 read_html

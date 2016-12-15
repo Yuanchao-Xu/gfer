@@ -8,6 +8,7 @@
 #' @return A table of PPP projects collected from your input page
 #' @importFrom httr POST use_proxy timeout content
 #' @importFrom jsonlite fromJSON
+#' @export
 # @examples
 # add(1, 1)
 # add(10, 1)
@@ -40,7 +41,10 @@ getPPPList_unit <- function(url, page, proxy = NULL){
 #'
 #' @param endPage On which page you want to stop scrapping
 #' @param startPage on Which page you want to start, default is 1
+#' @details
+#' Get PPP list from the Ministry of Finance of China (http://www.cpppc.org:8082/efmisweb/ppp/projectLivrary/toPPPMap.do), to view the listed projects in the PPP library.
 #' @return A table of PPP projects collected from your input page
+#' @export
 # @examples
 # add(1, 1)
 # add(10, 1)

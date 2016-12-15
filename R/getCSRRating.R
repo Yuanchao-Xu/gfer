@@ -5,14 +5,14 @@
 #' @param date represents the date is until which date, usually it's the last day of a year
 #' e.g., "2015-12-31" for the date of year 2015, "2014-12-31" for the date of year 2014
 #' @param proxy the proxy, default is NULL
+#' @details
+#' Get CSR ratings of different companies from http://stockdata.stock.hexun.com/zrbg/
 #' @return A table of CSR ratings collected from your input page
 #' @importFrom V8 v8
 #' @importFrom httr content use_proxy
 #' @importFrom stringi stri_replace_last_fixed stri_replace_first_fixed
 #' @importFrom jsonlite fromJSON
-# @examples
-# add(1, 1)
-# add(10, 1)
+#' @export
 
 getCSRRating <- function(startPage, endPage, date = '2015-12-31', proxy = NULL) {
   page <- startPage

@@ -9,7 +9,7 @@ Description: Focuses on data collecting and analyzing in green finance and envir
   official website, water related projects identification and environmental data visualization.
 Encoding: UTF-8
 License: GPL-2
-LazyData: true
+LazyData: LazyData: true
 Imports:
     rvest,
     xml2,
@@ -18,7 +18,9 @@ Imports:
     stringi,
     V8
 RoxygenNote: 5.0.1
-LazyData: true
 URL: http://yuanchao-xu.github.io/hyfo/
 BugReports: https://github.com/Yuanchao-Xu/hyfo/issues
 Repository: CRAN
+Suggests: knitr,
+    rmarkdown
+VignetteBuilder: knitr

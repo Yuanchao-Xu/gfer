@@ -49,7 +49,8 @@ getWaterQ_MEP_all_unit <- function(url, year, week, station1, station2, proxy = 
 #' @param station2 the end station index on the page
 #' @details
 #' Get monitoring data of different stations from Minitsry of Environmental Protection of China. Using this function
-#' you will get data of all the stations.
+#' you will get data of all the stations. Since the number of stations vary with time, using this function, you have
+#' to make sure that within the period you are scrapping, the number of stations keep consistant.
 #' @export
 
 getWaterQ_MEP_all <- function(year, week, station1, station2){

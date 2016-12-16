@@ -22,4 +22,7 @@ A table of CSR ratings collected from your input page
 \description{
 get CSR rating from a website
 }
+\details{
+Get CSR ratings of different companies from http://stockdata.stock.hexun.com/zrbg/
+}
 

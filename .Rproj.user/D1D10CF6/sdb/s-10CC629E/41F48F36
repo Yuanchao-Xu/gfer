@@ -1,0 +1,20 @@
+{
+    "collab_server" : "",
+    "contents" : "# Sample .travis.yml for R projects\n\nlanguage: r\nwarnings_are_errors: true\nsudo: required\ndist: precise\ngroup: edge\nenv:\n  global:\n    - NOT_CRAN = true\nbefore_install: \n  echo \"options(repos = c(CRAN='http://cran.rstudio.com'))\" > ~/.Rprofile\n#  - sudo apt-get autoclean\n#  - sudo aptitude install libgdal-dev\napt_packages:\n  - libnetcdf-dev\n  - udunits-bin\n  - libudunits2-dev\n  - netcdf-bin\n#  - libproj-dev\n#  - libcurl4-gnutls-dev\n#  - libdap-dev\n#  - libgdal-dev\n#  - libgdal1h\n#  - libhdf5-7=1.8.11-3ubuntu1~precise1~ppa1\n#  - libhdf5-dev\n#  - libhdf5-serial-dev\n#  - libgdal-dev\n#  - libgdal1-dev\nr_binary_packages:\n  - rgdal",
+    "created" : 1481908574748.000,
+    "dirty" : false,
+    "encoding" : "UTF-8",
+    "folds" : "",
+    "hash" : "825321126",
+    "id" : "41F48F36",
+    "lastKnownWriteTime" : 1481815993,
+    "last_content_update" : 1481815993,
+    "path" : "~/GitHub/hyfo/.travis.yml",
+    "project_path" : null,
+    "properties" : {
+    },
+    "relative_order" : 10,
+    "source_on_save" : false,
+    "source_window" : "",
+    "type" : "yaml"
+}

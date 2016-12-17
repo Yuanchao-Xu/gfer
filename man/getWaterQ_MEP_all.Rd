@@ -23,4 +23,12 @@ Get monitoring data of different stations from Minitsry of Environmental Protect
 you will get data of all the stations. Since the number of stations vary with time, using this function, you have
 to make sure that within the period you are scrapping, the number of stations keep consistant.
 }
+\examples{
+
+\dontrun{
+# get data from station1 to station5 of the 3rd week of 2016
+getWaterQ_MEP_all(2016, 3, 1, 5)
+}
+
+}
 

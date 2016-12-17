@@ -25,4 +25,10 @@ get CSR rating from a website
 \details{
 Get CSR ratings of different companies from http://stockdata.stock.hexun.com/zrbg/
 }
+\examples{
+\dontrun{
+# get first two pages of CSR ratings in 2015
+getCSRRating(1,2)
+}
+}
 

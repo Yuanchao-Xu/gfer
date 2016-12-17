@@ -12,7 +12,14 @@
 #' @importFrom httr content use_proxy
 #' @importFrom stringi stri_replace_last_fixed stri_replace_first_fixed
 #' @importFrom jsonlite fromJSON
+#' @examples
+#' \dontrun{
+#' # get first two pages of CSR ratings in 2015
+#' getCSRRating(1,2)
+#' }
 #' @export
+
+
 
 getCSRRating <- function(startPage, endPage, date = '2015-12-31', proxy = NULL) {
   page <- startPage

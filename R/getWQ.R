@@ -52,6 +52,13 @@ getWaterQ_MEP_all_unit <- function(url, year, week, station1, station2, proxy = 
 #' you will get data of all the stations. Since the number of stations vary with time, using this function, you have
 #' to make sure that within the period you are scrapping, the number of stations keep consistant.
 #' @export
+#' @examples
+#'
+#' \dontrun{
+#' # get data from station1 to station5 of the 3rd week of 2016
+#' getWaterQ_MEP_all(2016, 3, 1, 5)
+#' }
+#'
 
 getWaterQ_MEP_all <- function(year, week, station1, station2){
   message('Since the number of monitoring stations changes with time, so make sure in your

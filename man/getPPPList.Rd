@@ -20,4 +20,10 @@ get PPP list from an official website
 \details{
 Get PPP list from the Ministry of Finance of China (http://www.cpppc.org:8082/efmisweb/ppp/projectLivrary/toPPPMap.do), to view the listed projects in the PPP library.
 }
+\examples{
+\dontrun{
+#scrape the first two pages
+getPPPList(1,2)
+}
+}
 

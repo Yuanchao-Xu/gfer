@@ -44,10 +44,15 @@ getPPPList_unit <- function(url, page, proxy = NULL){
 #' @details
 #' Get PPP list from the Ministry of Finance of China (http://www.cpppc.org:8082/efmisweb/ppp/projectLivrary/toPPPMap.do), to view the listed projects in the PPP library.
 #' @return A table of PPP projects collected from your input page
+#' @examples
+#' \dontrun{
+#' #scrape the first two pages
+#' getPPPList(1,2)
+#' }
 #' @export
-# @examples
-# add(1, 1)
-# add(10, 1)
+
+
+
 
 getPPPList <- function(startPage = 1, endPage) {
   # get proxy from special website, and every time scrapes, it will have 300 proxies, so

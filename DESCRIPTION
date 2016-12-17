@@ -1,7 +1,7 @@
 Package: gfer
 Type: Package
 Title: Green Finance and Environmental Risk
-Version: 0.1.0
+Version: 0.1.1
 Date: 2016-12-17
 Authors@R: person("Yuanchao", "Xu", email = "xuyuanchao37@gmail.com",
                   role = c("aut", "cre"))
@@ -19,6 +19,6 @@ Imports:
     stringi,
     V8
 RoxygenNote: 5.0.1
-URL: http://yuanchao-xu.github.io/hyfo/
-BugReports: https://github.com/Yuanchao-Xu/hyfo/issues
+URL: http://yuanchao-xu.github.io/gfer/
+BugReports: https://github.com/Yuanchao-Xu/gfer/issues
 Repository: CRAN

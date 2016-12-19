@@ -7,7 +7,8 @@ Authors@R: person("Yuanchao", "Xu", email = "xuyuanchao37@gmail.com",
                   role = c("aut", "cre"))
 Description: Focuses on data collecting and analyzing in green finance and environmental 
   risk research and analysis. Main function includes environmental data collecting from 
-  official website, water related projects identification and environmental data visualization.
+  official websites like MEP (Ministry of Environmental Protection of China, <http://www.mep.gov.cn>), water 
+  related projects identification and environmental data visualization.
 Encoding: UTF-8
 License: GPL-2
 LazyData: LazyData: true

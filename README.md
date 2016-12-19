@@ -1,4 +1,4 @@
-# hyfo
+# gfer
 [![Travis-CI Build Status](https://travis-ci.org/Yuanchao-Xu/gfer.svg?branch=master)](https://travis-ci.org/Yuanchao-Xu/gfer)
 [![CRAN_Status_Badge](http://www.r-pkg.org/badges/version/gfer)](http://cran.r-project.org/package=gfer)
 
@@ -25,9 +25,10 @@ gfer is an R package, designed for green finance and environmental risk research
   official websites like MEP (Ministry of Environmental Protection of China, <http://www.mep.gov.cn>), water 
   related projects identification and environmental data visualization.
 
-**If you feel hyfo is of a little help, please cite it as following:**
+**If you feel gfer is of a little help, please cite it as following:**
 
-Xu, Yuanchao(2015). hyfo: Hydrology and Climate Forecasting R Package for Data Analysis and Visualization. Retrieved from http://yuanchao-xu.github.io/hyfo/
+Yuanchao Xu (2016). gfer: Green Finance and Environmental Risk. R package version 0.1.3.
+  https://CRAN.R-project.org/package=gfer
 
 
 

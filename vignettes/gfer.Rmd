@@ -1,0 +1,26 @@
+---
+title: '[gfer Easy Start](http://yuanchao-xu.github.io/gfer/)'
+author: '[Yuanchao Xu](https://dk.linkedin.com/in/xuyuanchao37)'
+date: '`r Sys.Date()`'
+output:
+  html_document:
+    toc: yes
+  pdf_document:
+    toc: yes
+    toc_depth: 3
+vignette: |
+  %\VignetteIndexEntry{gfer easy start} 
+  %\VignetteEngine{knitr::rmarkdown} 
+  %\VignetteEncoding{UTF-8}
+---
+
+# Introduction
+
+**Official Website is [http://yuanchao-xu.github.io/gfer](http://yuanchao-xu.github.io/gfer), where manuals and more details can be found.**
+
+gfer is an R package, designed for green finance and environmental risk research. Focuses on data collecting and analyzing in green finance and environmental risk research and analysis. Main function includes environmental data collecting from official websites like MEP (Ministry of Environmental Protection of China, http://www.mep.gov.cn), water related projects identification and environmental data visualization.
+
+**If you feel gfer is of a little help, please cite it as following:**
+
+Yuanchao Xu (2016). gfer: Green Finance and Environmental Risk. R package version 0.1.3.
+  https://CRAN.R-project.org/package=gfer

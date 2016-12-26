@@ -23,3 +23,6 @@ RoxygenNote: 5.0.1
 URL: http://yuanchao-xu.github.io/gfer/
 BugReports: https://github.com/Yuanchao-Xu/gfer/issues
 Repository: CRAN
+Suggests: knitr,
+    rmarkdown
+VignetteBuilder: knitr

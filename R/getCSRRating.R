@@ -6,7 +6,7 @@
 #' e.g., "2015-12-31" for the date of year 2015, "2014-12-31" for the date of year 2014
 #' @param proxy the proxy, default is NULL
 #' @details
-#' Get CSR ratings of different companies from http://stockdata.stock.hexun.com/zrbg/
+#' Get CSR ratings and reports of different companies from http://stockdata.stock.hexun.com/zrbg/
 #' @return A table of CSR ratings collected from your input page
 #' @importFrom V8 v8
 #' @importFrom httr content use_proxy
@@ -15,7 +15,7 @@
 #' @examples
 #' \dontrun{
 #' # get first two pages of CSR ratings in 2015
-#' getCSRRating(1,2)
+#' getCSRRating(1,3)
 #' }
 #' @export
 

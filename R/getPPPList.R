@@ -42,12 +42,12 @@ getPPPList_unit <- function(url, page, proxy = NULL){
 #' @param endPage On which page you want to stop scrapping
 #' @param startPage on Which page you want to start, default is 1
 #' @details
-#' Get PPP list from the Ministry of Finance of China (http://www.cpppc.org:8082/efmisweb/ppp/projectLivrary/toPPPMap.do), to view the listed projects in the PPP library.
+#' Get PPP list from the Ministry of Finance of China (http://www.cpppc.org:8082/efmisweb/ppp/projectLibrary/toPPPList.do?projName=), to view the listed projects in the PPP library.
 #' @return A table of PPP projects collected from your input page
 #' @examples
 #' \dontrun{
 #' #scrape the first two pages
-#' getPPPList(1,2)
+#' getPPPList(1,3)
 #' }
 #' @export
 

@@ -9,7 +9,7 @@ getWaterQ_MEP_all(year, week, station1, station2)
 \arguments{
 \item{year}{In which year you would like to scrape}
 
-\item{week}{In which week you would like to scrape}
+\item{week}{In which week you would like to scrape, can be an array, like 3:5}
 
 \item{station1}{the start station index on the page}
 
@@ -19,15 +19,15 @@ getWaterQ_MEP_all(year, week, station1, station2)
 get PPP list from a single page
 }
 \details{
-Get monitoring data of different stations from Minitsry of Environmental Protection of China. Using this function
+Get monitoring data of different stations from Minitsry of Environmental Protection of China (http://datacenter.mep.gov.cn/report/getCountGraph.do?type=runQianWater). Using this function
 you will get data of all the stations. Since the number of stations vary with time, using this function, you have
 to make sure that within the period you are scrapping, the number of stations keep consistant.
 }
 \examples{
 
 \dontrun{
-# get data from station1 to station5 of the 3rd week of 2016
-getWaterQ_MEP_all(2016, 3, 1, 5)
+# get data from 1st station to 5th station of the 3rd week of 2016
+getWaterQ_MEP_all(2016, 3:5, 1, 5)
 }
 
 }

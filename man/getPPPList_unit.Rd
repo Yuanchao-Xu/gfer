@@ -4,11 +4,9 @@
 \alias{getPPPList_unit}
 \title{get PPP list from a single page}
 \usage{
-getPPPList_unit(url, page, proxy = NULL)
+getPPPList_unit(page, proxy = NULL)
 }
 \arguments{
-\item{url}{A url, usually it's the offical ppp website of Ministry of Finance of China}
-
 \item{page}{The page number}
 
 \item{proxy}{if you wnat to use a proxy to avoid blocking, you can input a proxy, otherwise leave

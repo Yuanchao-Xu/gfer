@@ -4,12 +4,14 @@
 \alias{getPPPList}
 \title{get PPP list from an official website}
 \usage{
-getPPPList(startPage = 1, endPage)
+getPPPList(startPage = 1, endPage, proxy = TRUE)
 }
 \arguments{
 \item{startPage}{on Which page you want to start, default is 1}
 
 \item{endPage}{On which page you want to stop scrapping}
+
+\item{proxy}{whether proxy will be used}
 }
 \value{
 A table of PPP projects collected from your input page
@@ -18,12 +20,12 @@ A table of PPP projects collected from your input page
 get PPP list from an official website
 }
 \details{
-Get PPP list from the Ministry of Finance of China (http://www.cpppc.org:8082/efmisweb/ppp/projectLivrary/toPPPMap.do), to view the listed projects in the PPP library.
+Get PPP list from the Ministry of Finance of China (http://www.cpppc.org:8082/efmisweb/ppp/projectLibrary/toPPPList.do?projName=), to view the listed projects in the PPP library.
 }
 \examples{
 \dontrun{
 #scrape the first two pages
-getPPPList(1,2)
+getPPPList(1,3)
 }
 }
 

@@ -1,7 +1,6 @@
 
 #' get PPP list from a single page
 #'
-#' @param url A url, usually it's the offical ppp website of Ministry of Finance of China
 #' @param page The page number
 #' @param proxy if you wnat to use a proxy to avoid blocking, you can input a proxy, otherwise leave
 #' it blank.
@@ -14,8 +13,9 @@
 # add(10, 1)
 
 
-getPPPList_unit <- function(url, page, proxy = NULL){
+getPPPList_unit <- function(page, proxy = NULL){
 
+  url <- "http://www.cpppc.org:8082/efmisweb/ppp/projectLivrary/getPPPList.do?tokenid=null"
   res <- POST(url,
               encode="form",
               body=list(queryPage=page,
@@ -41,6 +41,7 @@ getPPPList_unit <- function(url, page, proxy = NULL){
 #'
 #' @param endPage On which page you want to stop scrapping
 #' @param startPage on Which page you want to start, default is 1
+#' @param proxy whether proxy will be used
 #' @details
 #' Get PPP list from the Ministry of Finance of China (http://www.cpppc.org:8082/efmisweb/ppp/projectLibrary/toPPPList.do?projName=), to view the listed projects in the PPP library.
 #' @return A table of PPP projects collected from your input page
@@ -54,15 +55,21 @@ getPPPList_unit <- function(url, page, proxy = NULL){
 
 
 
-getPPPList <- function(startPage = 1, endPage) {
+getPPPList <- function(startPage = 1, endPage, proxy = TRUE) {
   # get proxy from special website, and every time scrapes, it will have 300 proxies, so
   # the limit of the random number is 300. Need to check this every some time
   page <- startPage # set up initial value
   times <- 0
-  url <- 'http://www.cpppc.org:8082/efmisweb/ppp/projectLivrary/getPPPList.do?tokenid=null'
 
   # first generate proxy for scapring
-  proxyPool <- getProxy()[,1:2]
+  if (proxy == TRUE) {
+    proxyPool <- getProxy()[,1:2]
+  } else if (proxy == FALSE) {
+    proxyPool <- NULL
+  } else {
+    message("Wrong input, it's TRUE or FALSE")
+  }
+
   startTime <- Sys.time() # Get the start time, if it exceeds 1 hour, load proxy again.
 
 
@@ -78,7 +85,7 @@ getPPPList <- function(startPage = 1, endPage) {
 
     PPPList <- tryCatch({
 
-      getPPPList_unit(url = url, page, proxy = proxyPool[proxyIndex,])
+      getPPPList_unit(page, proxy = proxyPool[proxyIndex,])
 
     },error = function(cond) {
       message(paste('\n', Sys.time(), " Proxy doestn't work or ...\n"))
@@ -91,7 +98,15 @@ getPPPList <- function(startPage = 1, endPage) {
 
     if (proxyIndex == 301) {
       message('\nrefreshe proxy pool...')
-      proxyPool <- getProxy()[,1:2]
+
+      if (proxy == TRUE) {
+        proxyPool <- getProxy()[,1:2]
+      } else if (proxy == FALSE) {
+        proxyPool <- NULL
+      } else {
+        message("Wrong input, it's TRUE or FALSE")
+      }
+
       proxyIndex <- 1
     }
     } else {
@@ -120,7 +135,13 @@ getPPPList <- function(startPage = 1, endPage) {
     endTime <- Sys.time()
     if (is.integer((endTime - startTime)/5400)) {
       message("\nRefresh proxy pool...")
-      proxyPool <- getProxy()[,1:2]
+      if (proxy == TRUE) {
+        proxyPool <- getProxy()[,1:2]
+      } else if (proxy == FALSE) {
+        proxyPool <- NULL
+      } else {
+        message("Wrong input, it's TRUE or FALSE")
+      }
     }
   }
 

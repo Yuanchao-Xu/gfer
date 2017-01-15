@@ -1,0 +1,139 @@
+"0","a <- getPPPList(1,3) #get the ppp projects from the 1st page to the 3rd page
+"
+"2","Failed with error:  "
+"2","‘there is no package called ‘XML’’"
+"2","
+"
+"2","Failed with error:  "
+"2","‘there is no package called ‘XML’’"
+"2","
+"
+"2","There might by error messages when you choose to use proxy, just ignore them.
+          When it stayed for a long time, just click ""stop"", to start another round
+"
+"2","
+ 2016-12-28 00:09:02  Proxy doestn't work or ...
+
+"
+"2","lexical error: invalid char in json text.
+                                       <!DOCTYPE html PUBLIC ""-//W3C//
+                     (right here) ------^
+"
+"2","
+ 2016-12-28 00:09:05  Proxy doestn't work or ...
+
+"
+"2","Server returned nothing (no headers, no data)"
+"2","
+ 2016-12-28 00:09:08  Proxy doestn't work or ...
+
+"
+"2","parse error: premature EOF
+                                       
+                     (right here) ------^
+"
+"2","
+ 2016-12-28 00:09:10  Proxy doestn't work or ...
+
+"
+"2","parse error: premature EOF
+                                       
+                     (right here) ------^
+"
+"2","
+ 2016-12-28 00:09:10  Proxy doestn't work or ...
+
+"
+"2","Server returned nothing (no headers, no data)"
+"2","
+ 2016-12-28 00:09:14  Proxy doestn't work or ...
+
+"
+"2","parse error: premature EOF
+                                       
+                     (right here) ------^
+"
+"2","
+ 2016-12-28 00:09:18  Proxy doestn't work or ...
+
+"
+"2","Server returned nothing (no headers, no data)"
+"2","
+ 2016-12-28 00:09:18  Proxy doestn't work or ...
+
+"
+"2","Server returned nothing (no headers, no data)"
+"2","
+ 2016-12-28 00:09:19  Proxy doestn't work or ...
+
+"
+"2","lexical error: invalid char in json text.
+                                       Backend not available
+                     (right here) ------^
+"
+"2","
+ 2016-12-28 00:09:19  Proxy doestn't work or ...
+
+"
+"2","Server returned nothing (no headers, no data)"
+"2","
+ 2016-12-28 00:09:19  Proxy doestn't work or ...
+
+"
+"2","Server returned nothing (no headers, no data)"
+"2","
+ 2016-12-28 00:09:20  Proxy doestn't work or ...
+
+"
+"2","lexical error: invalid char in json text.
+                                       <!DOCTYPE HTML PUBLIC ""-//W3C//
+                     (right here) ------^
+"
+"2","
+ 2016-12-28 00:09:20  Proxy doestn't work or ...
+
+"
+"2","lexical error: invalid char in json text.
+                                       Backend not available
+                     (right here) ------^
+"
+"2","
+ 2016-12-28 00:09:24  Proxy doestn't work or ...
+
+"
+"2","parse error: premature EOF
+                                       
+                     (right here) ------^
+"
+"2","
+ 2016-12-28 00:09:26  Proxy doestn't work or ...
+
+"
+"2","Server returned nothing (no headers, no data)"
+"2","
+ 2016-12-28 00:09:26  Proxy doestn't work or ...
+
+"
+"2","Server returned nothing (no headers, no data)"
+"2","
+ 2016-12-28 00:09:27  Proxy doestn't work or ...
+
+"
+"2","Server returned nothing (no headers, no data)"
+"2","
+ 2016-12-28 00:09:27  Proxy doestn't work or ...
+
+"
+"2","Server returned nothing (no headers, no data)"
+"2","
+ 2016-12-28 00:09:28  Proxy doestn't work or ...
+
+"
+"2","Server returned nothing (no headers, no data)"
+"2","
+ 2016-12-28 00:09:28  Proxy doestn't work or ...
+
+"
+"2","Server returned nothing (no headers, no data)"
+"2","
+"

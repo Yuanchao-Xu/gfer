@@ -4,7 +4,6 @@
 
 
 #' get PPP list from a single page
-#' @param url the url of CSR Rating, usually the default website
 #'
 #' @param year In which year you would like to scrape
 #' @param week In which week you would like to scrape
@@ -20,7 +19,8 @@
 # @examples
 # add(1, 1)
 # add(10, 1)
-getWaterQ_MEP_all_unit <- function(url, year, week, station1, station2, proxy = NULL) {
+getWaterQ_MEP_all_unit <- function(year, week, station1, station2, proxy = NULL) {
+  url <- 'http://datacenter.mep.gov.cn/report/water/water.jsp?year=2016&wissue=45&x=29&y=6'
   res <- GET(url,
              query = list(year = year,
                           wissue = week), use_proxy(proxy[1, 1], proxy[1, 2]))
@@ -44,7 +44,7 @@ getWaterQ_MEP_all_unit <- function(url, year, week, station1, station2, proxy = 
 #' get PPP list from a single page
 #'
 #' @param year In which year you would like to scrape
-#' @param week In which week you would like to scrape
+#' @param week In which week you would like to scrape, can be an array, like 3:5
 #' @param station1 the start station index on the page
 #' @param station2 the end station index on the page
 #' @details
@@ -56,7 +56,8 @@ getWaterQ_MEP_all_unit <- function(url, year, week, station1, station2, proxy = 
 #'
 #' \dontrun{
 #' # get data from 1st station to 5th station of the 3rd week of 2016
-#' getWaterQ_MEP_all(2016, 3, 1, 5)
+#'
+#'
 #' }
 #'
 
@@ -64,7 +65,6 @@ getWaterQ_MEP_all <- function(year, week, station1, station2){
   message('Since the number of monitoring stations changes with time, so make sure in your
           scraping period, the number of monitoring stations is consistent.')
 
-  url <- 'http://datacenter.mep.gov.cn/report/water/water.jsp?year=2016&wissue=45&x=29&y=6'
   if (length(year) != 1) message('Caution!!! the result can be wrong if you input more than 1 year, since the number
                                  of stations change with time.')
   times <- 0
@@ -81,7 +81,7 @@ getWaterQ_MEP_all <- function(year, week, station1, station2){
 
     table <- tryCatch({
 
-      getWaterQ_MEP_all_unit(url, year = year, week = page, station1 = station1,
+      getWaterQ_MEP_all_unit(year = year, week = page, station1 = station1,
                              station2 = station2, proxy = proxyPool[proxyIndex, ])
     },error = function(cond) {
       message(paste('\n', Sys.time(), " Proxy doestn't work or ...\n"))

@@ -15,7 +15,7 @@
 
 getPPPList_unit <- function(page, proxy = NULL){
 
-  url <- "http://www.cpppc.org:8082/efmisweb/ppp/projectLivrary/getPPPList.do?tokenid=null"
+  url <- "http://www.cpppc.org:8082/efmisweb/ppp/projectLibrary/getPPPList.do?tokenid=null"
   res <- POST(url,
               encode="form",
               body=list(queryPage=page,

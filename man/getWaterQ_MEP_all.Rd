@@ -4,7 +4,7 @@
 \alias{getWaterQ_MEP_all}
 \title{get PPP list from a single page}
 \usage{
-getWaterQ_MEP_all(year, week, station1, station2)
+getWaterQ_MEP_all(year, week, station1, station2, proxy = FALSE)
 }
 \arguments{
 \item{year}{In which year you would like to scrape}
@@ -14,6 +14,8 @@ getWaterQ_MEP_all(year, week, station1, station2)
 \item{station1}{the start station index on the page}
 
 \item{station2}{the end station index on the page}
+
+\item{proxy}{Whether to use proxy, default is FALSE}
 }
 \description{
 get PPP list from a single page
@@ -27,7 +29,8 @@ to make sure that within the period you are scrapping, the number of stations ke
 
 \dontrun{
 # get data from 1st station to 5th station of the 3rd week of 2016
-getWaterQ_MEP_all(2016, 3:5, 1, 5)
+a <- getWaterQ_MEP_all(2016, 3, 1, 5)
+
 }
 
 }

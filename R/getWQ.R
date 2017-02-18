@@ -20,7 +20,8 @@
 # add(1, 1)
 # add(10, 1)
 getWaterQ_MEP_all_unit <- function(year, week, station1, station2, proxy = NULL) {
-  url <- 'http://datacenter.mep.gov.cn/report/water/water.jsp?year=2016&wissue=45&x=29&y=6'
+  #url <- 'http://datacenter.mep.gov.cn/report/water/water.jsp?year=2016&wissue=45&x=29&y=6'
+  url <- 'http://datacenter.mep.gov.cn/report/getCountGraph.do?type=runQianWater'
   res <- GET(url,
              query = list(year = year,
                           wissue = week), use_proxy(proxy[1, 1], proxy[1, 2]))
@@ -47,6 +48,7 @@ getWaterQ_MEP_all_unit <- function(year, week, station1, station2, proxy = NULL)
 #' @param week In which week you would like to scrape, can be an array, like 3:5
 #' @param station1 the start station index on the page
 #' @param station2 the end station index on the page
+#' @param proxy Whether to use proxy, default is FALSE
 #' @details
 #' Get monitoring data of different stations from Minitsry of Environmental Protection of China (http://datacenter.mep.gov.cn/report/getCountGraph.do?type=runQianWater). Using this function
 #' you will get data of all the stations. Since the number of stations vary with time, using this function, you have
@@ -56,12 +58,12 @@ getWaterQ_MEP_all_unit <- function(year, week, station1, station2, proxy = NULL)
 #'
 #' \dontrun{
 #' # get data from 1st station to 5th station of the 3rd week of 2016
-#'
+#' a <- getWaterQ_MEP_all(2016, 3, 1, 5)
 #'
 #' }
 #'
 
-getWaterQ_MEP_all <- function(year, week, station1, station2){
+getWaterQ_MEP_all <- function(year, week, station1, station2, proxy = FALSE){
   message('Since the number of monitoring stations changes with time, so make sure in your
           scraping period, the number of monitoring stations is consistent.')
 
@@ -74,7 +76,13 @@ getWaterQ_MEP_all <- function(year, week, station1, station2){
 
   # deal with proxy
   proxyIndex <- 1
-  proxyPool <- getProxy()[,1:2]
+  if (proxy == TRUE) {
+    proxyPool <- getProxy()[,1:2]
+  } else if (proxy == FALSE) {
+    proxyPool <- NULL
+  } else {
+    message("Wrong input, it's TRUE or FALSE")
+  }
   page <- min(week)
 
   repeat {

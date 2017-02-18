@@ -41,7 +41,7 @@ getPPPList_unit <- function(page, proxy = NULL){
 #'
 #' @param endPage On which page you want to stop scrapping
 #' @param startPage on Which page you want to start, default is 1
-#' @param proxy whether proxy will be used
+#' @param proxy whether proxy will be used，de fault is FALSE
 #' @details
 #' Get PPP list from the Ministry of Finance of China (http://www.cpppc.org:8082/efmisweb/ppp/projectLibrary/toPPPList.do?projName=), to view the listed projects in the PPP library.
 #' @return A table of PPP projects collected from your input page
@@ -55,7 +55,7 @@ getPPPList_unit <- function(page, proxy = NULL){
 
 
 
-getPPPList <- function(startPage = 1, endPage, proxy = TRUE) {
+getPPPList <- function(startPage = 1, endPage, proxy = FALSE) {
   # get proxy from special website, and every time scrapes, it will have 300 proxies, so
   # the limit of the random number is 300. Need to check this every some time
   page <- startPage # set up initial value
@@ -64,6 +64,8 @@ getPPPList <- function(startPage = 1, endPage, proxy = TRUE) {
   # first generate proxy for scapring
   if (proxy == TRUE) {
     proxyPool <- getProxy()[,1:2]
+    message('There might by error messages when you choose to use proxy, just ignore them.
+          When it stayed for a long time, just click "stop", to start another round')
   } else if (proxy == FALSE) {
     proxyPool <- NULL
   } else {
@@ -76,8 +78,7 @@ getPPPList <- function(startPage = 1, endPage, proxy = TRUE) {
 
   # Since for this case we got 301 proxies, so map the proxy table
   proxyIndex <- 1 #proxyIndex starts from1
-  message('There might by error messages when you choose to use proxy, just ignore them.
-          When it stayed for a long time, just click "stop", to start another round')
+
 
 
 
@@ -93,22 +94,24 @@ getPPPList <- function(startPage = 1, endPage, proxy = TRUE) {
       return(1)
     })
 
-    if (length(PPPList) == 1 | PPPList == 1) {      times <- 0
-    proxyIndex <- proxyIndex + 1# if proxy does't work or 30 pages are scraped, change proxy
+    if (length(PPPList) == 1) {
+      times <- 0
+      proxyIndex <- proxyIndex + 1# if proxy does't work or 30 pages are scraped, change proxy
 
-    if (proxyIndex == 301) {
-      message('\nrefreshe proxy pool...')
+      if (proxyIndex == 301) {
+        message('\nrefreshe proxy pool...')
 
-      if (proxy == TRUE) {
-        proxyPool <- getProxy()[,1:2]
-      } else if (proxy == FALSE) {
-        proxyPool <- NULL
-      } else {
-        message("Wrong input, it's TRUE or FALSE")
+        if (proxy == TRUE) {
+          proxyPool <- getProxy()[,1:2]
+        } else if (proxy == FALSE) {
+          proxyPool <- NULL
+        } else {
+          message("Wrong input, it's TRUE or FALSE")
+        }
+
+        proxyIndex <- 1
       }
 
-      proxyIndex <- 1
-    }
     } else {
 
 

@@ -4,14 +4,14 @@
 \alias{getPPPList}
 \title{get PPP list from an official website}
 \usage{
-getPPPList(startPage = 1, endPage, proxy = TRUE)
+getPPPList(startPage = 1, endPage, proxy = FALSE)
 }
 \arguments{
 \item{startPage}{on Which page you want to start, default is 1}
 
 \item{endPage}{On which page you want to stop scrapping}
 
-\item{proxy}{whether proxy will be used}
+\item{proxy}{whether proxy will be used，de fault is FALSE}
 }
 \value{
 A table of PPP projects collected from your input page

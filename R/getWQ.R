@@ -54,6 +54,7 @@ getWaterQ_MEP_all_unit <- function(year, week, station1, station2, proxy = NULL)
 #' you will get data of all the stations. Since the number of stations vary with time, using this function, you have
 #' to make sure that within the period you are scrapping, the number of stations keep consistant.
 #' @export
+#' @importFrom data.table rbindlist
 #' @examples
 #'
 #' \dontrun{
@@ -113,7 +114,7 @@ getWaterQ_MEP_all <- function(year, week, station1, station2, proxy = FALSE){
         totalTable <- table
       } else {
         # bind the new list to the total list
-        totalTable <- rbind(totalTable, table)
+        totalTable <- rbindlist(totalTable, table)
       }
 
       times <- times + 1

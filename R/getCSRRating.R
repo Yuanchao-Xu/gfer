@@ -50,6 +50,7 @@ getCSRRating_unit <- function(page, date, proxy = NULL) {
 #' @importFrom httr content use_proxy
 #' @importFrom stringi stri_replace_last_fixed stri_replace_first_fixed
 #' @importFrom jsonlite fromJSON
+#' @importFrom data.table rbindlist
 #' @examples
 #' \dontrun{
 #' # get first two pages of CSR ratings in 2015
@@ -112,7 +113,7 @@ getCSRRating <- function(startPage, endPage, year = 2015, proxy = FALSE) {
         totalList <- unitList
       } else {
         # bind the new list to the total list
-        totalList <- rbind(totalList, unitList)
+        totalList <- rbindlist(totalList, unitList)
       }
 
       times <- times + 1

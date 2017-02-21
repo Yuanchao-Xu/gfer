@@ -45,6 +45,8 @@ getPPPList_unit <- function(page, proxy = NULL){
 #' @details
 #' Get PPP list from the Ministry of Finance of China (http://www.cpppc.org:8082/efmisweb/ppp/projectLibrary/toPPPList.do?projName=), to view the listed projects in the PPP library.
 #' @return A table of PPP projects collected from your input page
+#' @importFrom data.table rbindlist
+#'
 #' @examples
 #' \dontrun{
 #' #scrape the first two pages
@@ -119,7 +121,7 @@ getPPPList <- function(startPage = 1, endPage, proxy = FALSE) {
         totalPPPList <- PPPList
       } else {
         # bind the new list to the total list
-        totalPPPList <- rbind(totalPPPList, PPPList)
+        totalPPPList <- rbindlist(totalPPPList, PPPList)
       }
 
       times <- times + 1

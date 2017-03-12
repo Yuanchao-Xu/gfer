@@ -63,14 +63,34 @@ getIndex <-function(tickers) {
 
   data <- getIndexConstnt(indexPool)
 
-  indexTable <- data.table(tickers)
+  #indexTable <- data.table(tickers)
 
-  emptyCols <- data.frame(matrix(0, nrow = nrow(tickers), ncol =nrow(indexPool)))
+  #emptyCols <- data.frame(matrix(0, nrow = nrow(tickers), ncol =nrow(indexPool)))
 
-  indexTable[, c(as.character(indexPool$index)) := emptyCols]
+  #indexTable[, c(as.character(indexPool$index)) := emptyCols]
+  if (!(is.data.frame(tickers)|is.numeric(tickers)|is.character(tickers))) warning('Your input better be a data.frame...')
+  n <- 1
+  for (i in tickers[[1]]) {
 
-  for (i in tickers) {
+    ####################### assign to indexArray
+    indexArray <- rep(0, (length(indexPool$index) + 1))
+    names(indexArray) <-  c('ticker', as.character(indexPool$index))
 
+    with(data, {
+      subData <- data[ticker == i]
+    })
+
+    indexArray[as.character(subData$index)] <- 1
+    indexArray[1] <- i
+    #######################
+    if (n == 1) {
+      res <- indexArray
+    } else {
+      # since indexArray is not a dataframe, use rbind instead of rbindlist
+      res <- rbind(res, indexArray, row.names = FALSE)
+    }
+    n <- n + 1
   }
 
+  return(res)
 }

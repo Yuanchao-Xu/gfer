@@ -25,8 +25,8 @@ getTickers_unit <- function(corpName) {
     # then comes the security name, so set 3, safer
     secNameSplit <- unlist(strsplit(b$announcements[[3]]$secName, split = ','))
 
-    # if contains 债, probably a bond
-    index <- which(grepl("[[:digit:]]|债", secNameSplit) == FALSE)
+    # if contains “\u503a”, probably a bond
+    index <- which(grepl("[[:digit:]]|\u503a", secNameSplit) == FALSE)
     # check if only one index is back
     if (length(index) != 1) warnings(paste(corpName, 'has more than two tickers, please double check.'))
     secName <- secNameSplit[index]
@@ -53,17 +53,12 @@ getTickers_unit <- function(corpName) {
 #'
 #' It can also be a way to test if a company is listed
 #'
-#' @param names Full name of a company
+#' @param corpNames Full name of a company， should be full name
 #' @return A data table with companies stock name and stock ticker
 #' @importFrom data.table rbindlist
 #'
 #'
-#' @examples
-#' \dontrun{
-#' # get data from 1st station to 5th station of the 3rd week of 2016
-#' getTickers('华能国际电力股份有限公司')
 #'
-#' }
 #'
 #' @export
 
@@ -71,7 +66,7 @@ getTickers_unit <- function(corpName) {
 
 getTickers <- function(corpNames) {
   # here must be a column of company names
-  if (nrow(corpNames) == 1) {
+  if (is.null(nrow(corpNames))) {
     res <- getTickers_unit(corpNames)
   } else if (nrow(corpNames) > 1) {
     # since listed companies are limited, no need to use data.table

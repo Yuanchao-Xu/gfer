@@ -8,12 +8,12 @@
     "hash" : "3809134587",
     "id" : "F3530072",
     "lastKnownWriteTime" : 1489073595,
-    "last_content_update" : 1489073595230,
+    "last_content_update" : 0,
     "path" : "C:/Users/user/Google Drive/CWR/R/scraping.R",
     "project_path" : null,
     "properties" : {
     },
-    "relative_order" : 8,
+    "relative_order" : 0,
     "source_on_save" : false,
     "source_window" : "",
     "type" : "r_source"

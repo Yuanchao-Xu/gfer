@@ -1,6 +1,7 @@
 #' get a company's market cap, data comes from NetEase
 #'
 #' @param indexPool a pool of different index, special format for gfer
+#' @importFrom data.table rbindlist
 #' @return A data table with companies total capitalization and market capitalization
 #'
 #'
@@ -35,10 +36,13 @@ getIndexConstnt <- function(indexPool) {
 
 #' get a company's market cap, data comes from NetEase
 #'
-#' @param ticker ticker/sympol of a company
+#' @param tickers ticker/sympol of a company
+#' @importFrom data.table data.table :=
 #' @return A data table with companies and which index they are included
 #' @examples
+#' \dontrun{
 #' getIndex(600601)
+#' }
 #'
 #'
 

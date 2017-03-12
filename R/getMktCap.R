@@ -5,7 +5,7 @@
 #' @param date1 starting date, in the following format "20160101", means Jan 1st of 2016
 #' @param date2 ending date, in the following format "20160101", if you only want one day's data, just set starting date and ending date the same day
 #' @return A data table with companies total capitalization and market capitalization
-
+#' @importFrom utils read.csv
 
 getMktCap_unit <- function(ticker, date1, date2) {
 
@@ -31,11 +31,11 @@ getMktCap_unit <- function(ticker, date1, date2) {
 
 #' get a company's market cap, data comes from NetEase
 #'
-#' @param ticker ticker/sympol of a company
+#' @param tickers ticker/sympol of a company
 #' @param date1 starting date, in the following format "20160101", means Jan 1st of 2016
 #' @param date2 ending date, in the following format "20160101", if you only want one day's data, just set starting date and ending date the same day
 #' @return A data table with companies total capitalization and market capitalization
-#' @examples
+#' @example
 #' getMktCap(600601, '20160101', '20160102')
 #'
 #'

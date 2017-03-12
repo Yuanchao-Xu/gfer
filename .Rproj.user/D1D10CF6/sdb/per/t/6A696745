@@ -1,14 +1,14 @@
 {
     "collab_server" : "",
     "contents" : "getExchange_unit <- function(stockName) {\n  engine <- v8()\n  url1 <- 'http://so.hexun.com/ajax.do?key='\n  url2 <- '&type=all?math=0.6109926008061326'\n  url <- paste(url1, stockName, url2, sep = '')\n\n  #  a <- content(GET(url))\n\n  res <- content(GET(url), as = 'text') %>%\n    stri_replace_first_fixed(\"hxSuggest_JsonData=\", \"\\\"list\\\":\")\n\n  res1 <- paste('{', res, '}', sep = '')\n\n  resC <- fromJSON(res1)\n\n\n}\n",
-    "created" : 1489074893966.000,
+    "created" : 1489248033634.000,
     "dirty" : false,
     "encoding" : "UTF-8",
     "folds" : "",
     "hash" : "599793895",
-    "id" : "27BB6579",
+    "id" : "6A696745",
     "lastKnownWriteTime" : 1489076710,
-    "last_content_update" : 1489076710990,
+    "last_content_update" : 1489076710,
     "path" : "~/GitHub/gfer/R/getExchange.R",
     "project_path" : "R/getExchange.R",
     "properties" : {

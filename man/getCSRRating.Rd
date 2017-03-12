@@ -30,4 +30,3 @@ Get CSR ratings and reports of different companies from http://stockdata.stock.h
 getCSRRating(1,3)
 }
 }
-

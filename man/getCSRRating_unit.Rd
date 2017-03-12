@@ -23,4 +23,3 @@ get CSR rating from a website for a unit page
 \details{
 Get CSR ratings and reports of different companies from http://stockdata.stock.hexun.com/zrbg/
 }
-

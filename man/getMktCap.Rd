@@ -19,3 +19,10 @@ A data table with companies total capitalization and market capitalization
 \description{
 get a company's market cap, data comes from NetEase
 }
+\examples{
+\dontrun{
+getMktCap(600601, '20160101', '20160102')
+}
+
+
+}

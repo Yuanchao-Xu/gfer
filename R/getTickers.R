@@ -52,6 +52,8 @@ getTickers_unit <- function(corpName) {
 #' get ticker by input a company's full name or a list of companies' full name
 #'
 #' It can also be a way to test if a company is listed
+#' NOTE: If a company is listed in multiple exchange, then it needs double check,
+#' the programe only chooses ticker from random exchange
 #'
 #' @param corpNames Full name of a company， should be full name
 #' @return A data table with companies stock name and stock ticker

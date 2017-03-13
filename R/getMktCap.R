@@ -35,8 +35,10 @@ getMktCap_unit <- function(ticker, date1, date2) {
 #' @param date1 starting date, in the following format "20160101", means Jan 1st of 2016
 #' @param date2 ending date, in the following format "20160101", if you only want one day's data, just set starting date and ending date the same day
 #' @return A data table with companies total capitalization and market capitalization
-#' @example
+#' @examples
+#' \dontrun{
 #' getMktCap(600601, '20160101', '20160102')
+#' }
 #'
 #'
 getMktCap <- function(tickers, date1, date2) {

@@ -14,4 +14,6 @@ A data table with companies stock name and stock ticker
 }
 \description{
 It can also be a way to test if a company is listed
+NOTE: If a company is listed in multiple exchange, then it needs double check,
+the programe only chooses ticker from random exchange
 }

@@ -4,10 +4,10 @@
 \alias{getIndex}
 \title{get a company's market cap, data comes from NetEase}
 \usage{
-getIndex(tickers)
+getIndex(tickers, indexData)
 }
 \arguments{
-\item{tickers}{ticker/sympol of a company}
+\item{tickers}{ticker/sympol of a company, MUST BE A CHARACTER, e.g., input "006600" instead of 006600}
 }
 \value{
 A data table with companies and which index they are included

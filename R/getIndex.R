@@ -36,7 +36,7 @@ getIndexConstnt <- function(indexPool) {
 
 #' get a company's market cap, data comes from NetEase
 #'
-#' @param tickers ticker/sympol of a company
+#' @param tickers ticker/sympol of a company, MUST BE A CHARACTER, e.g., input "006600" instead of 006600
 #' @importFrom data.table data.table :=
 #' @return A data table with companies and which index they are included
 #' @examples
@@ -47,8 +47,37 @@ getIndexConstnt <- function(indexPool) {
 #'
 
 
-getIndex <-function(tickers) {
+getIndex <-function(tickers, indexData) {
 
+  if (!(is.data.frame(tickers)|is.numeric(tickers)|is.character(tickers))) warning('Your input better be a data.frame...')
+  n <- 1
+  for (i in tickers[[1]]) {
+
+    ####################### assign to indexArray
+    indexArray <- rep(0, (length(unique(indexData$index)) + 1))
+    names(indexArray) <-  c('ticker', as.character(unique(indexData$index)))
+
+    subData <- with(indexData, {
+      indexData[ticker == i]
+    })
+
+    indexArray[as.character(subData$index)] <- 1
+    indexArray[1] <- i
+    #######################
+    if (n == 1) {
+      res <- indexArray
+    } else {
+      # since indexArray is not a dataframe, use rbind instead of rbindlist
+      res <- rbind(res, indexArray)
+    }
+    message(n)
+    n <- n + 1
+  }
+  rownames(res) <- NULL
+  return(res)
+}
+
+getIndexData <- function(){
   #creat an index pool
   indexPool <- data.frame(index = c('CSI_100', 'SSE_50', 'CSI_300', 'SSE_Central_SOEs_50',
                                     'HSI', 'HSCEI'),
@@ -61,36 +90,6 @@ getIndex <-function(tickers) {
                           )
   )
 
-  data <- getIndexConstnt(indexPool)
-
-  #indexTable <- data.table(tickers)
-
-  #emptyCols <- data.frame(matrix(0, nrow = nrow(tickers), ncol =nrow(indexPool)))
-
-  #indexTable[, c(as.character(indexPool$index)) := emptyCols]
-  if (!(is.data.frame(tickers)|is.numeric(tickers)|is.character(tickers))) warning('Your input better be a data.frame...')
-  n <- 1
-  for (i in tickers[[1]]) {
-
-    ####################### assign to indexArray
-    indexArray <- rep(0, (length(indexPool$index) + 1))
-    names(indexArray) <-  c('ticker', as.character(indexPool$index))
-
-    with(data, {
-      subData <- data[ticker == i]
-    })
-
-    indexArray[as.character(subData$index)] <- 1
-    indexArray[1] <- i
-    #######################
-    if (n == 1) {
-      res <- indexArray
-    } else {
-      # since indexArray is not a dataframe, use rbind instead of rbindlist
-      res <- rbind(res, indexArray, row.names = FALSE)
-    }
-    n <- n + 1
-  }
-
-  return(res)
+  indexData <- getIndexConstnt(indexPool)
+  return(indexData)
 }

@@ -1,0 +1,20 @@
+{
+    "collab_server" : "",
+    "contents" : "\n#' get ticker by input a company's full name\n#'\n#' It can also be a way to test if a company is listed\n#'\n#' @param corpName Full name of a company\n#' @return A data table with companies stock name and stock ticker\n#' @importFrom httr GET content\n\n\n\ngetTickers_unit <- function(corpName) {\n  url <- paste('http://www.cninfo.com.cn/cninfo-new/fulltextSearch/full?searchkey=', corpName, '&sdate=&edate=&isfulltext=false&sortName=nothing&sortType=desc&pageNum=1', sep = '')\n  a <- GET(url)\n  b <- content(a)\n\n  # check if something get back from the server\n  # and also has to check if there are at least 3 results, cus later on, it\n  # will pick up the 3rd result\n  if (length(b$announcements) == 0 | length(b$announcements) < 3) {\n    warnings (paste(corpName, 'could be a wrong name, recheck please'))\n    res <- data.frame(secName = 'wrong_name',secCode = 'wrong_name', doubleCheck = corpName)\n  } else {\n    # list number can be 1-10, but usually the 1st will be the full name,\n    # then comes the security name, so set 3, safer\n    secNameSplit <- unlist(strsplit(b$announcements[[3]]$secName, split = ','))\n\n    # if contains “\\u503a”, probably a bond\n    index <- which(grepl(\"[[:digit:]]|\\u503a\", secNameSplit) == FALSE)\n    # check if only one index is back\n    if (length(index) != 1) warnings(paste(corpName, 'has more than two tickers, please double check.'))\n    secName <- secNameSplit[index]\n\n    secCode <- unlist(strsplit(b$announcements[[3]]$secCode, split = ','))[index]\n    doubleCheck <- b$announcements[[3]]$announcementTitle\n\n    if (length(index) == 0) {\n      warnings(paste(corpName, 'has no information in www.cninfo.com'))\n      res <- data.frame(secName = 'no_info',secCode = 'no_info', doubleCheck = corpName)\n    } else {\n      if (nchar(secName) != 4) warnings(paste(corpName, 'could be a wrong security name and wrong security ticker.'))\n      res <- data.frame(secName, secCode, doubleCheck)\n    }\n  }\n\n  return(res)\n}\n\n\n\n\n#' get ticker by input a company's full name or a list of companies' full name\n#'\n#' It can also be a way to test if a company is listed\n#' NOTE: If a company is listed in multiple exchange, then it needs double check,\n#' the programe only chooses ticker from random exchange\n#'\n#' @param corpNames Full name of a company， should be full name\n#' @return A data table with companies stock name and stock ticker\n#' @importFrom data.table rbindlist\n#'\n#'\n#'\n#'\n#' @export\n\n\n\ngetTickers <- function(corpNames) {\n  # here must be a column of company names\n  if (is.null(nrow(corpNames))) {\n    res <- getTickers_unit(corpNames)\n  } else if (nrow(corpNames) > 1) {\n    # since listed companies are limited, no need to use data.table\n\n    for (i in 1:nrow(corpNames)) {\n      res1 <- getTickers_unit(corpNames[i,])\n      if (i == 1) {\n        res <- res1\n      } else {\n        res <- rbindlist(list(res, res1))\n      }\n      message(i)\n    }\n  } else {\n    break(\"Please input full name(s) of a company or a column of companies, must be a column, not a row\")\n  }\n\n  return(res)\n\n}\n",
+    "created" : 1489389360625.000,
+    "dirty" : false,
+    "encoding" : "UTF-8",
+    "folds" : "",
+    "hash" : "1084375080",
+    "id" : "DCAC1A01",
+    "lastKnownWriteTime" : 1489394847,
+    "last_content_update" : 1489394847229,
+    "path" : "~/GitHub/gfer/R/getTickers.R",
+    "project_path" : "R/getTickers.R",
+    "properties" : {
+    },
+    "relative_order" : 3,
+    "source_on_save" : false,
+    "source_window" : "",
+    "type" : "r_source"
+}

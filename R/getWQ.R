@@ -15,6 +15,8 @@
 #' @importFrom httr GET timeout content
 #' @importFrom rvest html_table %>%
 #' @importFrom xml2 read_html
+#' @references
+#' http://datacenter.mep.gov.cn/report/getCountGraph.do?type=runQianWater
 #' @export
 # @examples
 # add(1, 1)
@@ -53,6 +55,8 @@ getWaterQ_MEP_all_unit <- function(year, week, station1, station2, proxy = NULL)
 #' Get monitoring data of different stations from Minitsry of Environmental Protection of China (http://datacenter.mep.gov.cn/report/getCountGraph.do?type=runQianWater). Using this function
 #' you will get data of all the stations. Since the number of stations vary with time, using this function, you have
 #' to make sure that within the period you are scrapping, the number of stations keep consistant.
+#' @references
+#' http://datacenter.mep.gov.cn/report/getCountGraph.do?type=runQianWater
 #' @export
 #' @importFrom data.table rbindlist
 #' @examples

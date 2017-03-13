@@ -15,3 +15,6 @@ A data table with companies stock name and stock ticker
 \description{
 It can also be a way to test if a company is listed
 }
+\details{
+Data comes from www.cninfo.com.cn/
+}

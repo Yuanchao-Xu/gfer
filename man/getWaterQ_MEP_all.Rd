@@ -34,3 +34,6 @@ a <- getWaterQ_MEP_all(2016, 3, 1, 5)
 }
 
 }
+\references{
+http://datacenter.mep.gov.cn/report/getCountGraph.do?type=runQianWater
+}

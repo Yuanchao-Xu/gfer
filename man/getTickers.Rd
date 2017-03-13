@@ -7,7 +7,7 @@
 getTickers(corpNames)
 }
 \arguments{
-\item{corpNames}{Full name of a company， should be full name}
+\item{corpNames}{Full name of a company, should be full name}
 }
 \value{
 A data table with companies stock name and stock ticker
@@ -16,4 +16,10 @@ A data table with companies stock name and stock ticker
 It can also be a way to test if a company is listed
 NOTE: If a company is listed in multiple exchange, then it needs double check,
 the programe only chooses ticker from random exchange
+}
+\details{
+Data comes from www.cninfo.com.cn/
+}
+\references{
+www.cninfo.com.cn
 }

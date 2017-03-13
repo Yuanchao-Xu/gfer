@@ -37,7 +37,13 @@ getIndexConstnt <- function(indexPool) {
 #' get a company's market cap, data comes from NetEase
 #'
 #' @param tickers ticker/sympol of a company, MUST BE A CHARACTER, e.g., input "006600" instead of 006600
+#' @param indexData the index information, before running getIndex, indexData needs to be loaded using \code{\link{getIndexData}}
+#' @details Data comes from www.finance.sina.com.cn and www.etnet.com.hk
 #' @importFrom data.table data.table :=
+#' @references
+#' www.finance.sina.com.cn
+#' www.etnet.com.hk
+#'
 #' @return A data table with companies and which index they are included
 #' @examples
 #' \dontrun{
@@ -77,6 +83,12 @@ getIndex <-function(tickers, indexData) {
   return(res)
 }
 
+
+
+#' get index information
+#' Currently include CSI 100, SSE 50, CSI 300, SSE Central SOEs 50, HSI, HSCEI
+#'
+#' @return a data table containing index information
 getIndexData <- function(){
   #creat an index pool
   indexPool <- data.frame(index = c('CSI_100', 'SSE_50', 'CSI_300', 'SSE_Central_SOEs_50',

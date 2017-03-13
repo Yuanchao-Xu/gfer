@@ -1,0 +1,21 @@
+{
+    "collab_server" : "",
+    "contents" : "#' get a company's market cap, data comes from NetEase\n#'\n#' @param indexPool a pool of different index, special format for gfer\n#' @importFrom data.table rbindlist\n#' @return A data table with companies total capitalization and market capitalization\n#'\n#'\n\ngetIndexConstnt <- function(indexPool) {\n  for (i in 1:nrow(indexPool)) {\n    url <- as.character(indexPool[i, 2])\n    # index information comes from 2 different source by now, so it needs to\n    # detect wether it's from sina or etnet\n    if (grepl('sina.com', url)) {\n      listNum <- 4\n    } else if (grepl('etnet.com', url)){\n      listNum <- 1\n    } else break ('Wrong url in indexPool')\n\n    data <- html_table(read_html(url), fill = TRUE)[[listNum]][, 1:2]\n    data <- data[2:nrow(data), ]\n    data[,3] <- rep(indexPool[i,1], nrow(data))\n    colnames(data) <- c('ticker', 'name', 'index')\n    rownames(data) <- NULL\n\n    if (i == 1) {\n      tData <- data\n    } else {\n      tData <- rbindlist(list(tData, data))\n    }\n  }\n\n  return(tData)\n}\n\n\n#' get a company's market cap, data comes from NetEase\n#'\n#' @param tickers ticker/sympol of a company, MUST BE A CHARACTER, e.g., input \"006600\" instead of 006600\n#' @param indexData the index information, before running getIndex, indexData needs to be loaded using \\code{\\link{getIndexData}}\n#' @details Data comes from www.finance.sina.com.cn and www.etnet.com.hk\n#' @importFrom data.table data.table :=\n#' @references\n#' www.finance.sina.com.cn\n#' www.etnet.com.hk\n#'\n#' @return A data table with companies and which index they are included\n#' @examples\n#' \\dontrun{\n#' getIndex(600601)\n#' }\n#'\n#'\n\n\ngetIndex <-function(tickers, indexData) {\n\n  if (!(is.data.frame(tickers)|is.numeric(tickers)|is.character(tickers))) warning('Your input better be a data.frame...')\n  n <- 1\n  for (i in tickers[[1]]) {\n\n    ####################### assign to indexArray\n    indexArray <- rep(0, (length(unique(indexData$index)) + 1))\n    names(indexArray) <-  c('ticker', as.character(unique(indexData$index)))\n\n    subData <- with(indexData, {\n      indexData[ticker == i]\n    })\n\n    indexArray[as.character(subData$index)] <- 1\n    indexArray[1] <- i\n    #######################\n    if (n == 1) {\n      res <- indexArray\n    } else {\n      # since indexArray is not a dataframe, use rbind instead of rbindlist\n      res <- rbind(res, indexArray)\n    }\n    message(n)\n    n <- n + 1\n  }\n  rownames(res) <- NULL\n  return(res)\n}\n\n\n\n#' get index information\n#' Currently include CSI 100, SSE 50, CSI 300, SSE Central SOEs 50, HSI, HSCEI\n#'\n#' @return a data table containing index information\ngetIndexData <- function(){\n  #creat an index pool\n  indexPool <- data.frame(index = c('CSI_100', 'SSE_50', 'CSI_300', 'SSE_Central_SOEs_50',\n                                    'HSI', 'HSCEI'),\n                          url = c('http://vip.stock.finance.sina.com.cn/corp/go.php/vII_NewestComponent/indexid/000903.phtml',\n                                  'http://vip.stock.finance.sina.com.cn/corp/go.php/vII_NewestComponent/indexid/000016.phtml',\n                                  'http://vip.stock.finance.sina.com.cn/corp/go.php/vII_NewestComponent/indexid/000300.phtml',\n                                  'http://vip.stock.finance.sina.com.cn/corp/go.php/vII_NewestComponent/indexid/000042.phtml',\n                                  'https://www.etnet.com.hk/www/tc/stocks/indexes_detail.php?subtype=HSI',\n                                  'https://www.etnet.com.hk/www/tc/stocks/indexes_detail.php?subtype=CEI'\n                          )\n  )\n\n  indexData <- getIndexConstnt(indexPool)\n  return(indexData)\n}\n",
+    "created" : 1489422162412.000,
+    "dirty" : false,
+    "encoding" : "UTF-8",
+    "folds" : "",
+    "hash" : "1563760213",
+    "id" : "B67A4AC7",
+    "lastKnownWriteTime" : 1489422424,
+    "last_content_update" : 1489422424788,
+    "path" : "~/GitHub/gfer/R/getIndex.R",
+    "project_path" : "R/getIndex.R",
+    "properties" : {
+        "tempName" : "Untitled1"
+    },
+    "relative_order" : 7,
+    "source_on_save" : false,
+    "source_window" : "",
+    "type" : "r_source"
+}

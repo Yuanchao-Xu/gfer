@@ -1,13 +1,17 @@
 
-#' get a company's market cap, data comes from NetEase
+#' get a company's historical market cap, data comes from NetEase
 #'
 #' @param ticker ticker/sympol of a company
 #' @param date1 starting date, in the following format "20160101", means Jan 1st of 2016
 #' @param date2 ending date, in the following format "20160101", if you only want one day's data, just set starting date and ending date the same day
+#' @details
+#' Data comes from www.money.163.com
+#' @references
+#' www.money.163.com
 #' @return A data table with companies total capitalization and market capitalization
 #' @importFrom utils read.csv
 
-getMktCap_unit <- function(ticker, date1, date2) {
+getHisMktCap_unit <- function(ticker, date1, date2) {
 
 
   url1 <- 'http://quotes.money.163.com/service/chddata.html?'
@@ -29,22 +33,26 @@ getMktCap_unit <- function(ticker, date1, date2) {
 
 
 
-#' get a company's market cap, data comes from NetEase
+#' get a company's historical market cap, data comes from NetEase
 #'
 #' @param tickers ticker/sympol of a company
 #' @param date1 starting date, in the following format "20160101", means Jan 1st of 2016
 #' @param date2 ending date, in the following format "20160101", if you only want one day's data, just set starting date and ending date the same day
+#' @details
+#' Data comes from www.money.163.com
+#' @references
+#' www.money.163.com
 #' @return A data table with companies total capitalization and market capitalization
 #' @examples
 #' \dontrun{
-#' getMktCap(600601, '20160101', '20160102')
+#' getHisMktCap(600601, '20160101', '20160102')
 #' }
 #'
 #'
-getMktCap <- function(tickers, date1, date2) {
+getHisMktCap <- function(tickers, date1, date2) {
   tickers <- tickers[[1]]
   if (length(tickers) == 1) {
-    res <- getMktCap_unit(tickers, date1, date2)
+    res <- getHisMktCap_unit(tickers, date1, date2)
   } else if (length(tickers) > 1) {
 
     # if the result comes from getTickers, it's factor, need to be converted
@@ -54,7 +62,7 @@ getMktCap <- function(tickers, date1, date2) {
     #
 
     for (i in 1:length(tickers)) {
-      res1 <- getMktCap_unit(tickers[i], date1, date2)
+      res1 <- getHisMktCap_unit(tickers[i], date1, date2)
       if (i == 1) {
         res <- res1
       } else {

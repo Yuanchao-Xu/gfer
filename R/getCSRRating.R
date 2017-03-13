@@ -12,6 +12,8 @@
 #' @importFrom httr content use_proxy
 #' @importFrom stringi stri_replace_last_fixed stri_replace_first_fixed
 #' @importFrom jsonlite fromJSON
+#' @references
+#' www.hexun.com
 #' @export
 getCSRRating_unit <- function(page, date, proxy = NULL) {
   engine <- v8()
@@ -51,6 +53,8 @@ getCSRRating_unit <- function(page, date, proxy = NULL) {
 #' @importFrom stringi stri_replace_last_fixed stri_replace_first_fixed
 #' @importFrom jsonlite fromJSON
 #' @importFrom data.table rbindlist
+#' @references
+#' www.hexun.com
 #' @examples
 #' \dontrun{
 #' # get first two pages of CSR ratings in 2015

@@ -8,6 +8,8 @@ getIndex(tickers, indexData)
 }
 \arguments{
 \item{tickers}{ticker/sympol of a company, MUST BE A CHARACTER, e.g., input "006600" instead of 006600}
+
+\item{indexData}{the index information, before running getIndex, indexData needs to be loaded using \code{\link{getIndexData}}}
 }
 \value{
 A data table with companies and which index they are included
@@ -15,10 +17,17 @@ A data table with companies and which index they are included
 \description{
 get a company's market cap, data comes from NetEase
 }
+\details{
+Data comes from www.finance.sina.com.cn and www.etnet.com.hk
+}
 \examples{
 \dontrun{
 getIndex(600601)
 }
 
 
+}
+\references{
+www.finance.sina.com.cn
+www.etnet.com.hk
 }

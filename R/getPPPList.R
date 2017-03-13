@@ -52,6 +52,8 @@ getPPPList_unit <- function(page, proxy = NULL){
 #' #scrape the first two pages
 #' getPPPList(1,3)
 #' }
+#' @references
+#' www.cpppc.org
 #' @export
 
 

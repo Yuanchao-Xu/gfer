@@ -4,6 +4,8 @@
 #' It can also be a way to test if a company is listed
 #'
 #' @param corpName Full name of a company
+#' @details
+#' Data comes from www.cninfo.com.cn/
 #' @return A data table with companies stock name and stock ticker
 #' @importFrom httr GET content
 
@@ -25,7 +27,7 @@ getTickers_unit <- function(corpName) {
     # then comes the security name, so set 3, safer
     secNameSplit <- unlist(strsplit(b$announcements[[3]]$secName, split = ','))
 
-    # if contains “\u503a”, probably a bond
+    # if contains '\u503a', probably a bond
     index <- which(grepl("[[:digit:]]|\u503a", secNameSplit) == FALSE)
     # check if only one index is back
     if (length(index) != 1) warnings(paste(corpName, 'has more than two tickers, please double check.'))
@@ -55,7 +57,11 @@ getTickers_unit <- function(corpName) {
 #' NOTE: If a company is listed in multiple exchange, then it needs double check,
 #' the programe only chooses ticker from random exchange
 #'
-#' @param corpNames Full name of a company， should be full name
+#' @param corpNames Full name of a company, should be full name
+#' @details
+#' Data comes from www.cninfo.com.cn/
+#' @references
+#' www.cninfo.com.cn
 #' @return A data table with companies stock name and stock ticker
 #' @importFrom data.table rbindlist
 #'

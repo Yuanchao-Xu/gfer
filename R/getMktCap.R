@@ -39,13 +39,14 @@ getHisMktCap_unit <- function(ticker, date1, date2) {
 #' @param date1 starting date, in the following format "20160101", means Jan 1st of 2016
 #' @param date2 ending date, in the following format "20160101", if you only want one day's data, just set starting date and ending date the same day
 #' @details
+#' The input date interval should have at least one work day
 #' Data comes from www.money.163.com
 #' @references
 #' www.money.163.com
 #' @return A data table with companies total capitalization and market capitalization
 #' @examples
 #' \dontrun{
-#' getHisMktCap(600601, '20160101', '20160102')
+#' getHisMktCap(601857, '20161202', '20161203')
 #' }
 #'
 #'

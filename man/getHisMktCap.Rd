@@ -20,11 +20,12 @@ A data table with companies total capitalization and market capitalization
 get a company's historical market cap, data comes from NetEase
 }
 \details{
+The input date interval should have at least one work day
 Data comes from www.money.163.com
 }
 \examples{
 \dontrun{
-getHisMktCap(600601, '20160101', '20160102')
+getHisMktCap(601857, '20161202', '20161203')
 }
 
 

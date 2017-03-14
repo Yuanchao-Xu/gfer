@@ -24,8 +24,6 @@ Data comes from www.finance.sina.com.cn and www.etnet.com.hk
 \dontrun{
 getIndex(600601)
 }
-
-
 }
 \references{
 www.finance.sina.com.cn

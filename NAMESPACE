@@ -2,6 +2,9 @@
 
 export(getCSRRating)
 export(getCSRRating_unit)
+export(getHisMktCap)
+export(getIndex)
+export(getIndexData)
 export(getPPPList)
 export(getPPPList_unit)
 export(getTickers)

@@ -17,7 +17,7 @@ getHisMktCap_unit <- function(ticker, date1, date2) {
   url1 <- 'http://quotes.money.163.com/service/chddata.html?'
 
   # Cuz in Neteast, if ticker starts with 0, it will add a 1, or it will add a 0
-  if (substr(ticker) == 0) {
+  if (substr(ticker, 1, 1) == 0) {
     url2 <- paste('code=', '1', ticker[[1]], sep = '')
   } else {
     url2 <- paste('code=', '0', ticker[[1]], sep = '')

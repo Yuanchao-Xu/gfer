@@ -43,6 +43,7 @@ getHisMktCap_unit <- function(ticker, date1, date2) {
 #' Data comes from www.money.163.com
 #' @references
 #' www.money.163.com
+#' @export
 #' @return A data table with companies total capitalization and market capitalization
 #' @examples
 #' \dontrun{

@@ -49,7 +49,7 @@ getIndexConstnt <- function(indexPool) {
 #' \dontrun{
 #' getIndex(600601)
 #' }
-#'
+#' @export
 #'
 
 
@@ -87,7 +87,7 @@ getIndex <-function(tickers, indexData) {
 
 #' get index information
 #' Currently include CSI 100, SSE 50, CSI 300, SSE Central SOEs 50, HSI, HSCEI
-#'
+#' @export
 #' @return a data table containing index information
 getIndexData <- function(){
   #creat an index pool

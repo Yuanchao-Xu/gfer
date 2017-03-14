@@ -7,7 +7,9 @@
 getIndex(tickers, indexData)
 }
 \arguments{
-\item{tickers}{ticker/sympol of a company, MUST BE A CHARACTER, e.g., input "006600" instead of 006600}
+\item{tickers}{ticker/sympol of a company, MUST BE A CHARACTER, e.g., input "006600" instead of 006600
+The tickers have to be FULL AND EXACT, e.g., for Shanghai exchange and Shenzhen exchange, the input must have 6 digits, and for HK exchange, it must
+have 5 digits. the '0' in the beginning cannot be left out.}
 
 \item{indexData}{the index information, before running getIndex, indexData needs to be loaded using \code{\link{getIndexData}}}
 }

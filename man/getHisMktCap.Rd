@@ -7,7 +7,7 @@
 getHisMktCap(tickers, date1, date2)
 }
 \arguments{
-\item{tickers}{ticker/sympol of a company}
+\item{tickers}{ticker/sympol of a company, TICKERS MUST BE CHARACTERs, '006027' INSTEAD OF '6027'}
 
 \item{date1}{starting date, in the following format "20160101", means Jan 1st of 2016}
 

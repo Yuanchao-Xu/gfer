@@ -37,6 +37,8 @@ getIndexConstnt <- function(indexPool) {
 #' get a company's market cap, data comes from NetEase
 #'
 #' @param tickers ticker/sympol of a company, MUST BE A CHARACTER, e.g., input "006600" instead of 006600
+#' The tickers have to be FULL AND EXACT, e.g., for Shanghai exchange and Shenzhen exchange, the input must have 6 digits, and for HK exchange, it must
+#' have 5 digits. the '0' in the beginning cannot be left out.
 #' @param indexData the index information, before running getIndex, indexData needs to be loaded using \code{\link{getIndexData}}
 #' @details Data comes from www.finance.sina.com.cn and www.etnet.com.hk
 #' @importFrom data.table data.table :=
@@ -55,7 +57,12 @@ getIndexConstnt <- function(indexPool) {
 
 getIndex <-function(tickers, indexData) {
 
-  if (!(is.data.frame(tickers)|is.numeric(tickers)|is.character(tickers))) warning('Your input better be a data.frame...')
+  if (!(is.data.frame(tickers)|is.numeric(tickers)|is.character(tickers))) {
+    warning('Your input better be a data.frame...')
+  }
+
+
+
   n <- 1
   for (i in tickers[[1]]) {
 

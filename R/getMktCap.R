@@ -1,7 +1,7 @@
 
 #' get a company's historical market cap, data comes from NetEase
 #'
-#' @param ticker ticker/sympol of a company
+#' @param ticker ticker/sympol of a company, MUST BE A CHARACTER, '006027' INSTEAD OF '6027'
 #' @param date1 starting date, in the following format "20160101", means Jan 1st of 2016
 #' @param date2 ending date, in the following format "20160101", if you only want one day's data, just set starting date and ending date the same day
 #' @details
@@ -15,7 +15,15 @@ getHisMktCap_unit <- function(ticker, date1, date2) {
 
 
   url1 <- 'http://quotes.money.163.com/service/chddata.html?'
-  url2 <- paste('code=', '0', ticker[[1]], sep = '')
+
+  # Cuz in Neteast, if ticker starts with 0, it will add a 1, or it will add a 0
+  if (substr(ticker) == 0) {
+    url2 <- paste('code=', '1', ticker[[1]], sep = '')
+  } else {
+    url2 <- paste('code=', '0', ticker[[1]], sep = '')
+  }
+
+
   url3 <- paste('&start=', date1, '&end=', date2, sep = '')
   url4 <- '&fields=TCAP;MCAP'
 
@@ -35,7 +43,7 @@ getHisMktCap_unit <- function(ticker, date1, date2) {
 
 #' get a company's historical market cap, data comes from NetEase
 #'
-#' @param tickers ticker/sympol of a company
+#' @param tickers ticker/sympol of a company, TICKERS MUST BE CHARACTERs, '006027' INSTEAD OF '6027'
 #' @param date1 starting date, in the following format "20160101", means Jan 1st of 2016
 #' @param date2 ending date, in the following format "20160101", if you only want one day's data, just set starting date and ending date the same day
 #' @details

@@ -1,0 +1,20 @@
+{
+    "collab_server" : "",
+    "contents" : "getExchange <- function(tickers) {\n\n  # this is the way to get data from hexun\n\n  # url1 <- 'http://so.hexun.com/ajax.do?key='\n  # url2 <- '&type=all?math=0.6109926008061326'\n  # url <- paste(url1, stockName, url2, sep = '')\n  #\n  # #  a <- content(GET(url))\n  #\n  # res <- content(GET(url), as = 'text') %>%\n  #   stri_replace_first_fixed(\"hxSuggest_JsonData=\", \"\\\"list\\\":\")\n  #\n  # res1 <- paste('{', res, '}', sep = '')\n  #\n  # resC <- fromJSON(res1)\n\n\n  # using sina finance is easier\n\n  url1 <- 'http://suggest3.sinajs.cn/suggest/type=&key='\n  url2 <- '&name=suggestdata_1489564633542'\n\n\n  for (i in tickers) {\n    url <- paste(url1, i, url2, sep = '')\n    a <- GET(url)\n    b <- content(a, as = 'text')\n\n  }\n\n\n\n}\n\n\nurl <- 'http://suggest3.sinajs.cn/suggest/type=&key=00001&name=suggestdata_1489564633542'\na <- GET(url)\ncontent(a, as='text')\n",
+    "created" : 1489564370836.000,
+    "dirty" : false,
+    "encoding" : "UTF-8",
+    "folds" : "",
+    "hash" : "350128759",
+    "id" : "426CF83B",
+    "lastKnownWriteTime" : 1489567652,
+    "last_content_update" : 1489567652285,
+    "path" : "~/GitHub/gfer/R/getExchange.R",
+    "project_path" : "R/getExchange.R",
+    "properties" : {
+    },
+    "relative_order" : 6,
+    "source_on_save" : false,
+    "source_window" : "",
+    "type" : "r_source"
+}

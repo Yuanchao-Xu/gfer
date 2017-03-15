@@ -29,22 +29,25 @@ getTickers_unit <- function(corpName) {
 
     # if contains '\u503a', probably a bond
     index <- which(grepl("[[:digit:]]|\u503a", secNameSplit) == FALSE)
-    # check if only one index is back
-    if (length(index) != 1) warnings(paste(corpName, 'has more than two tickers, please double check.'))
-    secName <- secNameSplit[index]
-
-    secCode <- unlist(strsplit(b$announcements[[3]]$secCode, split = ','))[index]
-
-    # through code to filter bonds
-    if (substr(secCode, 1, 2) == '12') warning(paste(corpName, 'could be a bond, double check'))
-    doubleCheck <- b$announcements[[3]]$announcementTitle
 
 
     if (length(index) == 0) {
-      warnings(paste(corpName, 'has no information in www.cninfo.com'))
+      warning(paste(corpName, 'has no information in www.cninfo.com'))
       res <- data.frame(secName = 'no_info',secCode = 'no_info', doubleCheck = corpName)
     } else {
-      if (nchar(secName) != 4) warnings(paste(corpName, 'could be a wrong security name and wrong security ticker.'))
+      # check if only one index is back
+      if (length(index) != 1) warning(paste(corpName, 'has more than two tickers, please double check.'))
+
+
+      secName <- secNameSplit[index]
+
+      secCode <- unlist(strsplit(b$announcements[[3]]$secCode, split = ','))[index]
+
+      # through code to filter bonds
+      if (substr(secCode, 1, 2) == '12') warning(paste(corpName, 'could be a bond, double check'))
+      doubleCheck <- b$announcements[[3]]$announcementTitle
+
+      if (nchar(secName) != 4) warning(paste(corpName, 'could be a wrong security name and wrong security ticker.'))
       res <- data.frame(secName, secCode, doubleCheck)
     }
   }

@@ -19,10 +19,15 @@ getTickers_unit <- function(corpName) {
   # check if something get back from the server
   # and also has to check if there are at least 3 results, cus later on, it
   # will pick up the 3rd result
-  if (length(b$announcements) == 0 | length(b$announcements) < 3 | is.null(b$announcements[[3]]$secName)) {
+  if (length(b$announcements) == 0 | length(b$announcements) < 3) {
+
+    warning (paste(corpName, 'could be a wrong name, recheck please'))
+    res <- data.frame(secName = 'wrong_name',secCode = 'wrong_name', doubleCheck = corpName)
+  } else if (is.null(b$announcements[[3]]$secName)) {
     warning (paste(corpName, 'could be a wrong name, recheck please'))
     res <- data.frame(secName = 'wrong_name',secCode = 'wrong_name', doubleCheck = corpName)
   } else {
+
     # list number can be 1-10, but usually the 1st will be the full name,
     # then comes the security name, so set 3, safer
     secNameSplit <- unlist(strsplit(b$announcements[[3]]$secName, split = ','))
@@ -47,7 +52,6 @@ getTickers_unit <- function(corpName) {
       if (substr(secCode, 1, 2) == '12') warning(paste(corpName, 'could be a bond, double check'))
       doubleCheck <- b$announcements[[3]]$announcementTitle
 
-      if (nchar(secName) != 4) warning(paste(corpName, 'could be a wrong security name and wrong security ticker.'))
       res <- data.frame(secName, secCode, doubleCheck)
     }
   }

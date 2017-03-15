@@ -19,7 +19,7 @@ getTickers_unit <- function(corpName) {
   # check if something get back from the server
   # and also has to check if there are at least 3 results, cus later on, it
   # will pick up the 3rd result
-  if (length(b$announcements) == 0 | length(b$announcements) < 3) {
+  if (length(b$announcements) == 0 | length(b$announcements) < 3 | is.null(b$announcements[[3]]$secName)) {
     warning (paste(corpName, 'could be a wrong name, recheck please'))
     res <- data.frame(secName = 'wrong_name',secCode = 'wrong_name', doubleCheck = corpName)
   } else {

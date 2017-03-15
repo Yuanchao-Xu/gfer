@@ -34,6 +34,3 @@ getExchange <- function(tickers) {
 }
 
 
-url <- 'http://suggest3.sinajs.cn/suggest/type=&key=00001&name=suggestdata_1489564633542'
-a <- GET(url)
-content(a, as='text')

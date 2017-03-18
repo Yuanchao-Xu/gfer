@@ -41,7 +41,7 @@ getPPPList_unit <- function(page, proxy = NULL){
 #'
 #' @param endPage On which page you want to stop scrapping
 #' @param startPage on Which page you want to start, default is 1
-#' @param proxy whether proxy will be used，de fault is FALSE
+#' @param proxy whether proxy will be used, default is FALSE
 #' @details
 #' Get PPP list from the Ministry of Finance of China (http://www.cpppc.org:8082/efmisweb/ppp/projectLibrary/toPPPList.do?projName=), to view the listed projects in the PPP library.
 #' @return A table of PPP projects collected from your input page

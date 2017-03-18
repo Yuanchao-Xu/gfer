@@ -11,7 +11,7 @@ getPPPList(startPage = 1, endPage, proxy = FALSE)
 
 \item{endPage}{On which page you want to stop scrapping}
 
-\item{proxy}{whether proxy will be used，de fault is FALSE}
+\item{proxy}{whether proxy will be used, default is FALSE}
 }
 \value{
 A table of PPP projects collected from your input page

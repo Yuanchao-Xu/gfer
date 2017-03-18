@@ -2,6 +2,7 @@
 
 export(getCSRRating)
 export(getCSRRating_unit)
+export(getExchange)
 export(getHisMktCap)
 export(getIndex)
 export(getIndexData)

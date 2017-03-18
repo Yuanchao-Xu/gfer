@@ -1,6 +1,6 @@
 # gfer
 [![Travis-CI Build Status](https://travis-ci.org/Yuanchao-Xu/gfer.svg?branch=master)](https://travis-ci.org/Yuanchao-Xu/gfer)
-[![CRAN_Status_Badge](http://www.r-pkg.org/badges/version/gfer)](http://cran.r-project.org/package=gfer)
+[![CRAN_Status_Badge](http://www.r-pkg.org/badges/version/gfer)](https://cran.r-project.org/package=gfer)
 
 ## Installation
 
@@ -27,7 +27,7 @@ gfer is an R package, designed for green finance and environmental risk research
 
 **If you feel gfer is of a little help, please cite it as following:**
 
-Yuanchao Xu (2016). gfer: Green Finance and Environmental Risk. R package version 0.1.3.
+Yuanchao Xu (2017). gfer: Green Finance and Environmental Risk. R package version 0.1.6.
   https://CRAN.R-project.org/package=gfer
 
 

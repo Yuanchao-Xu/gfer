@@ -1,14 +1,14 @@
 {
     "collab_server" : "",
-    "contents" : "---\ntitle: '[gfer Easy Start](http://yuanchao-xu.github.io/gfer/)'\nauthor: '[Yuanchao Xu](https://www.linkedin.com/in/xuyuanchao37)'\ndate: '`r Sys.Date()`'\noutput:\n  html_document:\n    toc: yes\n  pdf_document:\n    toc: yes\n    toc_depth: 3\nvignette: |\n  %\\VignetteIndexEntry{gfer easy start} \n  %\\VignetteEngine{knitr::rmarkdown} \n  %\\VignetteEncoding{UTF-8}\n---\n\n# Introduction\n\n**Official Website is [http://yuanchao-xu.github.io/gfer](http://yuanchao-xu.github.io/gfer), where manuals and more details can be found.**\n\ngfer is an R package, designed for green finance and environmental risk research. Focuses on data collecting and analyzing in green finance and environmental risk research and analysis. Main function includes environmental data collecting from official websites like MEP (Ministry of Environmental Protection of China, http://www.mep.gov.cn), water related projects identification and environmental data visualization.\n\n**If you feel gfer is of a little help, please cite it as following:**\n\nYuanchao Xu (2017). gfer: Green Finance and Environmental Risk. R package version 0.1.6.\n  https://CRAN.R-project.org/package=gfer\n",
+    "contents" : "---\ntitle: '[gfer Easy Start](http://yuanchao-xu.github.io/gfer/)'\nauthor: '[Yuanchao Xu](https://www.linkedin.com/in/xuyuanchao37)'\ndate: '`r Sys.Date()`'\noutput:\n  pdf_document:\n    toc: yes\n    toc_depth: 3\n  html_document:\n    toc: yes\nvignette: |\n  %\\VignetteIndexEntry{gfer easy start} \n  %\\VignetteEngine{knitr::rmarkdown} \n  %\\VignetteEncoding{UTF-8}\n---\n\n# Introduction\n\n**Official Website is [http://yuanchao-xu.github.io/gfer](http://yuanchao-xu.github.io/gfer), where manuals and more details can be found.**\n\ngfer is an R package, designed for green finance and environmental risk research. Focuses on data collecting and analyzing in green finance and environmental risk research and analysis. Main function includes environmental data collecting from official websites like MEP (Ministry of Environmental Protection of China, http://www.mep.gov.cn), water related projects identification and environmental data visualization.\n\n**If you feel gfer is of a little help, please cite it as following:**\n\nYuanchao Xu (2017). gfer: Green Finance and Environmental Risk. R package version 0.1.6.\n  https://CRAN.R-project.org/package=gfer\n",
     "created" : 1489861821589.000,
     "dirty" : false,
     "encoding" : "UTF-8",
     "folds" : "",
-    "hash" : "1943253344",
+    "hash" : "1092542174",
     "id" : "9D9DA2FE",
-    "lastKnownWriteTime" : 1489940278,
-    "last_content_update" : 1489940278234,
+    "lastKnownWriteTime" : 1490019953,
+    "last_content_update" : 1490019954014,
     "path" : "~/GitHub/gfer/vignettes/gfer.Rmd",
     "project_path" : "vignettes/gfer.Rmd",
     "properties" : {

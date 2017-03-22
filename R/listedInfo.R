@@ -8,6 +8,7 @@
 #'
 #'
 #' @importFrom data.table data.table
+#' @export
 #' @references
 #' http://info.cmbchina.com/Stock/Single/
 
@@ -33,7 +34,7 @@ is.listed <- function(corpList, stockData) {
 #' This will only get stock information in Shanghai Exchange and Shenzhen Exchange
 #' Including stocker ticker, stock name and company full name. Data comes from China Merchants Bank
 #'
-
+#' @export
 #' @importFrom httr GET
 
 #' @references

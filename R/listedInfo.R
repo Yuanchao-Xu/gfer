@@ -3,8 +3,8 @@
 #' Check if a company is listed in Chinese stock market
 #'
 #'
-#' @param corpList company list you want to check if listed
-#' @param stockData Result from \code{\link{getStockList}}
+#' @param corpList company list you want to check if listed, should be a dataframe
+#' @param stockList Result from \code{\link{getStockList}}
 #'
 #'
 #' @importFrom data.table data.table
@@ -12,11 +12,10 @@
 #' @references
 #' http://info.cmbchina.com/Stock/Single/
 
-is.listed <- function(corpList, stockData) {
-  stockData <- getStockList()
+is.listed <- function(corpList, stockList) {
 
-  res <- lapply(corpList, function(x) {
-    a <- with(stockData, {stockData[fullName == x]})
+  res <- lapply(corpList[[1]], function(x) {
+    a <- with(stockList, {stockList[FullName == x]})
     if (nrow(a) == 0) {
       a <- data.table(Ticker = 'noinfo', StockName = 'noinfo', Fullname = 'noinfo', Abbreviation = 'noinfo',
                       Exchange = 'noinfo')
@@ -27,6 +26,8 @@ is.listed <- function(corpList, stockData) {
   })
 
   resC <- rbindlist(res)
+  # attach corpList to compare and double check
+  resC$input <- corpList
   return(resC)
 }
 

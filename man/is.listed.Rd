@@ -4,12 +4,12 @@
 \alias{is.listed}
 \title{Check if a company is listed in Chinese stock market}
 \usage{
-is.listed(corpList, stockData)
+is.listed(corpList, stockList)
 }
 \arguments{
 \item{corpList}{company list you want to check if listed}
 
-\item{stockData}{Result from \code{\link{getStockList}}}
+\item{stockList}{Result from \code{\link{getStockList}}}
 }
 \description{
 Check if a company is listed in Chinese stock market

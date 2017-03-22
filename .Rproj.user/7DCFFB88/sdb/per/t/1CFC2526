@@ -1,14 +1,14 @@
 {
     "collab_server" : "",
-    "contents" : "Package: gfer\nType: Package\nTitle: Green Finance and Environmental Risk\nVersion: 0.1.6\nDate: 2017-3-12\nAuthors@R: person(\"Yuanchao\", \"Xu\", email = \"xuyuanchao37@gmail.com\",\n                  role = c(\"aut\", \"cre\"))\nDescription: Focuses on data collecting and analyzing in green finance and environmental \n  risk research and analysis. Main function includes environmental data collecting from \n  official websites like MEP (Ministry of Environmental Protection of China, <http://www.mep.gov.cn>), water \n  related projects identification and environmental data visualization.\nEncoding: UTF-8\nLicense: GPL-2\nLazyData: LazyData: true\nImports:\n    rvest,\n    xml2,\n    jsonlite,\n    httr,\n    stringi,\n    V8,\n    data.table\nRoxygenNote: 6.0.1\nURL: http://yuanchao-xu.github.io/gfer/\nBugReports: https://github.com/Yuanchao-Xu/gfer/issues\nRepository: CRAN\nSuggests: knitr,\n    rmarkdown\nVignetteBuilder: knitr\n",
+    "contents" : "Package: gfer\nType: Package\nTitle: Green Finance and Environmental Risk\nVersion: 0.1.6\nDate: 2017-3-12\nAuthors@R: person(\"Yuanchao\", \"Xu\", email = \"xuyuanchao37@gmail.com\",\n                  role = c(\"aut\", \"cre\"))\nDescription: Focuses on data collecting and analyzing in green finance and environmental \n  risk research and analysis. Main function includes environmental data collecting from \n  official websites like MEP (Ministry of Environmental Protection of China, <http://www.mep.gov.cn>), water \n  related projects identification and environmental data visualization.\nEncoding: UTF-8\nLicense: GPL-2\nLazyData: LazyData: true\nImports:\n    rvest,\n    xml2,\n    jsonlite,\n    httr,\n    stringi,\n    V8,\n    data.table\nRoxygenNote: 6.0.1\nURL: https://yuanchao-xu.github.io/gfer/\nBugReports: https://github.com/Yuanchao-Xu/gfer/issues\nRepository: CRAN\nSuggests: knitr,\n    rmarkdown\nVignetteBuilder: knitr\n",
     "created" : 1482138940281.000,
     "dirty" : false,
     "encoding" : "UTF-8",
     "folds" : "",
-    "hash" : "1069376347",
+    "hash" : "4281248566",
     "id" : "1CFC2526",
-    "lastKnownWriteTime" : 1489400434,
-    "last_content_update" : 1489400434406,
+    "lastKnownWriteTime" : 1490148869,
+    "last_content_update" : 1490148869,
     "path" : "~/GitHub/gfer/DESCRIPTION",
     "project_path" : "DESCRIPTION",
     "properties" : {

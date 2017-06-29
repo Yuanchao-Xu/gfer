@@ -7,7 +7,7 @@
 is.listed(corpList, stockList)
 }
 \arguments{
-\item{corpList}{company list you want to check if listed}
+\item{corpList}{company list you want to check if listed, should be a dataframe}
 
 \item{stockList}{Result from \code{\link{getStockList}}}
 }

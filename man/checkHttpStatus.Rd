@@ -15,3 +15,7 @@ return nothing , but if it finds some error , it stop the script
 \description{
 private function for check the http status
 }
+\references{
+Xuehui YANG (2016). rstatscn: R Interface for China National Data. R
+package version 1.1.1. https://CRAN.R-project.org/package=rstatscn
+}

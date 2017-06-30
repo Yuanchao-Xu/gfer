@@ -22,3 +22,7 @@ statscnDbs(). In the returned data frame, the column 'isParent' shows if each su
  statscnQueryZb()
  statscnQueryZb('A01',dbcode="hgnd")
 }
+\references{
+Xuehui YANG (2016). rstatscn: R Interface for China National Data. R
+package version 1.1.1. https://CRAN.R-project.org/package=rstatscn
+}

@@ -20,3 +20,7 @@ the available regions in the specified db, it is used for query the province, ci
  statscnRegions('csnd')
  statscnRegions('gjnd')
 }
+\references{
+Xuehui YANG (2016). rstatscn: R Interface for China National Data. R
+package version 1.1.1. https://CRAN.R-project.org/package=rstatscn
+}

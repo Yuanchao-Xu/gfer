@@ -20,3 +20,7 @@ This function can not be used alone , statscnQueryData() has to be called before
 df=statscnQueryData('A0201',dbcode='hgnd')
 df2=statscnQueryLastN(20)
 }
+\references{
+Xuehui YANG (2016). rstatscn: R Interface for China National Data. R
+package version 1.1.1. https://CRAN.R-project.org/package=rstatscn
+}

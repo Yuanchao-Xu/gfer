@@ -20,3 +20,7 @@ return the queyr string for the http request
 \description{
 private function for constructing the query parameter for dfwds
 }
+\references{
+Xuehui YANG (2016). rstatscn: R Interface for China National Data. R
+package version 1.1.1. https://CRAN.R-project.org/package=rstatscn
+}

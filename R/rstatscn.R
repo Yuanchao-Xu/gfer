@@ -26,6 +26,9 @@ milSec <- function()
 #' the available dbs in the national db
 #' @return a data frame with 2 columns , one is the dbcode, another is the db description
 #' @export
+#' @references
+#' Xuehui YANG (2016). rstatscn: R Interface for China National Data. R
+#' package version 1.1.1. https://CRAN.R-project.org/package=rstatscn
 #' @examples
 #'  statscnDbs()
 statscnDbs <- function()
@@ -46,6 +49,9 @@ statscnDbs <- function()
 #'    zb:   the valudecode can be gotten by statscnQueryZb() function
 #'    sj:   the valudecode can be "2014" for nd db,  "2014C" for jd db.
 #'    reg:  the valudecode is the region code fetched by statscnRegions(dbcode) function
+#' @references
+#' Xuehui YANG (2016). rstatscn: R Interface for China National Data. R
+#' package version 1.1.1. https://CRAN.R-project.org/package=rstatscn
 #' @return return the queyr string for the http request
 genDfwds <- function(wdcode,valuecode)
 {
@@ -59,6 +65,9 @@ genDfwds <- function(wdcode,valuecode)
 #'
 #' @param ret the response obj returned by httr package
 #' @importFrom httr http_status
+#' @references
+#' Xuehui YANG (2016). rstatscn: R Interface for China National Data. R
+#' package version 1.1.1. https://CRAN.R-project.org/package=rstatscn
 #' @return return nothing , but if it finds some error , it stop the script
 checkHttpStatus <- function(ret)
 {
@@ -71,6 +80,9 @@ checkHttpStatus <- function(ret)
 #' @param rawObj the fromJSON output
 #' @param rowcode rowcode in the data frame
 #' @param colcode colcode in the data frame
+#' @references
+#' Xuehui YANG (2016). rstatscn: R Interface for China National Data. R
+#' package version 1.1.1. https://CRAN.R-project.org/package=rstatscn
 #' @return the contructed data frame
 dataJson2df <- function(rawObj,rowcode,colcode)
 {
@@ -137,6 +149,9 @@ dataJson2df <- function(rawObj,rowcode,colcode)
 #' @importFrom httr POST
 #' @importFrom jsonlite fromJSON
 #' @export
+#' @references
+#' Xuehui YANG (2016). rstatscn: R Interface for China National Data. R
+#' package version 1.1.1. https://CRAN.R-project.org/package=rstatscn
 #' @examples
 #'  statscnQueryZb()
 #'  statscnQueryZb('A01',dbcode="hgnd")
@@ -156,6 +171,9 @@ statscnQueryZb<-function(zbid = "zb",dbcode = "hgnd")
 #' @return the data frame with all the available region codes and names in the db
 #' @importFrom jsonlite fromJSON
 #' @export
+#' @references
+#' Xuehui YANG (2016). rstatscn: R Interface for China National Data. R
+#' package version 1.1.1. https://CRAN.R-project.org/package=rstatscn
 #' @examples
 #'  statscnRegions('fsnd')
 #'  statscnRegions('csnd')
@@ -196,6 +214,9 @@ statscnRegions<-function(dbcode='fsnd')
 #' @importFrom httr GET
 #' @importFrom jsonlite fromJSON
 #' @return the data frame you are quering
+#' @references
+#' Xuehui YANG (2016). rstatscn: R Interface for China National Data. R
+#' package version 1.1.1. https://CRAN.R-project.org/package=rstatscn
 #' @export
 #' @examples
 #' df <- statscnQueryData('A0201', dbcode = 'hgnd')
@@ -226,6 +247,9 @@ statscnQueryData <- function(zb = "A0201", dbcode = "hgnd", rowcode = 'zb', colc
 #' @return the last n rows data in the latest query
 #' @importFrom httr GET
 #' @importFrom jsonlite fromJSON
+#' @references
+#' Xuehui YANG (2016). rstatscn: R Interface for China National Data. R
+#' package version 1.1.1. https://CRAN.R-project.org/package=rstatscn
 #' @export
 #' @examples
 #' df=statscnQueryData('A0201',dbcode='hgnd')
@@ -260,6 +284,9 @@ statscnQueryLastN<-function(n)
 #' @param p , how to set the rowname prefix.
 #'     it is 'nrow' by default , and it is the only supported value currently
 #'     to unset the row name prefix, call this function with p=NULL
+#' @references
+#' Xuehui YANG (2016). rstatscn: R Interface for China National Data. R
+#' package version 1.1.1. https://CRAN.R-project.org/package=rstatscn
 #' @return no return
 #' @export
 statscnRowNamePrefix <- function(p = "nrow")

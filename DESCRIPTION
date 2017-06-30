@@ -1,13 +1,13 @@
 Package: gfer
 Type: Package
 Title: Green Finance and Environmental Risk
-Version: 0.1.6
-Date: 2017-3-12
+Version: 0.1.7
+Date: 2017-6-30
 Authors@R: person("Yuanchao", "Xu", email = "xuyuanchao37@gmail.com",
                   role = c("aut", "cre"))
 Description: Focuses on data collecting and analyzing in green finance and environmental 
   risk research and analysis. Main function includes environmental data collecting from 
-  official websites like MEP (Ministry of Environmental Protection of China, <http://www.mep.gov.cn>), water 
+  official websites such as MEP (Ministry of Environmental Protection of China, <http://www.mep.gov.cn>), water 
   related projects identification and environmental data visualization.
 Encoding: UTF-8
 License: GPL-2

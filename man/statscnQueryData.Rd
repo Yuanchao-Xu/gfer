@@ -33,3 +33,7 @@ df <- statscnQueryData('A0201', dbcode = 'hgnd')
 df <- statscnQueryData('A0201',dbcode = 'fsnd', rowcode = 'zb', colcode = 'sj',
                     moreWd = list(name = 'reg', value = '110000'))
 }
+\references{
+Xuehui YANG (2016). rstatscn: R Interface for China National Data. R
+package version 1.1.1. https://CRAN.R-project.org/package=rstatscn
+}

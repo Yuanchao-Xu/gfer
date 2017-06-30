@@ -23,3 +23,7 @@ in case you encounter the following error:
   duplicate 'row.names' are not allowed
 you need to call this function
 }
+\references{
+Xuehui YANG (2016). rstatscn: R Interface for China National Data. R
+package version 1.1.1. https://CRAN.R-project.org/package=rstatscn
+}

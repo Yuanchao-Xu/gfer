@@ -15,3 +15,7 @@ the available dbs in the national db
 \examples{
  statscnDbs()
 }
+\references{
+Xuehui YANG (2016). rstatscn: R Interface for China National Data. R
+package version 1.1.1. https://CRAN.R-project.org/package=rstatscn
+}

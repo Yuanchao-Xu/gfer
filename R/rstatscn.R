@@ -4,7 +4,11 @@
 
 statscnbase <- 'http://data.stats.gov.cn/english/easyquery.htm'
 rstatscnEnv <- new.env()
-assign('prefix',NULL, envir=rstatscnEnv)
+# prefix also can be NULL, if it is a Chinese version.
+# change it to nrow mainly because in English version there could be duplicated row names
+#
+assign('prefix', 'nrow', envir=rstatscnEnv)
+
 
 #' private function for sec
 #'
@@ -116,7 +120,7 @@ dataJson2df <- function(rawObj,rowcode,colcode)
   dfdata <- ret[[2]][[1]]
   for (k in seq(1,nrow(dfdata))) {
     wddf <- dfdata[k,"wds"][[1]]
-    myret[wddf[rowWdIdx,'valuecode'],wddf[colWdIdx,'valuecode']] = dfdata[k,'data'][1,'data']
+    myret[wddf[rowWdIdx,'valuecode'],wddf[colWdIdx,'valuecode']] <- dfdata[k,'data'][1,'data']
   }
   rownames(myret) <- rowNames
   colnames(myret) <- colNames
@@ -194,9 +198,9 @@ statscnRegions<-function(dbcode='fsnd')
 #' @return the data frame you are quering
 #' @export
 #' @examples
-#' df=statscnQueryData('A0201',dbcode='hgnd')
-#' df=statscnQueryData('A0201',dbcode='fsnd',rowcode='zb',colcode='sj',
-#'                     moreWd=list(name='reg',value='110000'))
+#' df <- statscnQueryData('A0201', dbcode = 'hgnd')
+#' df <- statscnQueryData('A0201',dbcode = 'fsnd', rowcode = 'zb', colcode = 'sj',
+#'                     moreWd = list(name = 'reg', value = '110000'))
 statscnQueryData <- function(zb = "A0201", dbcode = "hgnd", rowcode = 'zb', colcode = 'sj', moreWd = list(name = NA, value = NA))
 {
   curQuery <- list(
@@ -265,3 +269,4 @@ statscnRowNamePrefix <- function(p = "nrow")
   }
   assign('prefix', p, envir = rstatscnEnv)
 }
+

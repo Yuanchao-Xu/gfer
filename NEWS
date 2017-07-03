@@ -2,6 +2,14 @@ gfer 0.1.6
 ==========
 Date: 2017-3-12
 
+- add interface to national statistics, based on rstatscn. Because rstatscn doesn't have a EN version, so cannot be called directly, included in gfer
+
+
+
+gfer 0.1.6
+==========
+Date: 2017-3-12
+
 - add getTickers, getMktCap, getIndex and getExchange to deal with stock information including market capitalization, listed location and index they belong to
 - add reference and source
 

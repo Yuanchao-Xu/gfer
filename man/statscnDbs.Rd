@@ -13,7 +13,10 @@ a data frame with 2 columns , one is the dbcode, another is the db description
 the available dbs in the national db
 }
 \examples{
+ \dontrun{
  statscnDbs()
+ }
+
 }
 \references{
 Xuehui YANG (2016). rstatscn: R Interface for China National Data. R

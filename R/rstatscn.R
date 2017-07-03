@@ -30,7 +30,10 @@ milSec <- function()
 #' Xuehui YANG (2016). rstatscn: R Interface for China National Data. R
 #' package version 1.1.1. https://CRAN.R-project.org/package=rstatscn
 #' @examples
+#'  \dontrun{
 #'  statscnDbs()
+#'  }
+#'
 statscnDbs <- function()
 {
   dbs <- c("hgnd","hgjd","hgyd","fsnd","fsjd","fsyd","csnd","csyd","gjnd","gjyd","gjydsdj")
@@ -153,8 +156,12 @@ dataJson2df <- function(rawObj,rowcode,colcode)
 #' Xuehui YANG (2016). rstatscn: R Interface for China National Data. R
 #' package version 1.1.1. https://CRAN.R-project.org/package=rstatscn
 #' @examples
-#'  statscnQueryZb()
-#'  statscnQueryZb('A01',dbcode="hgnd")
+#' \dontrun{
+#' statscnQueryZb()
+#' statscnQueryZb('A01',dbcode="hgnd")
+#' }
+#'
+#'
 statscnQueryZb<-function(zbid = "zb",dbcode = "hgnd")
 {
   curQuery <- list(id = zbid, dbcode = dbcode, wdcode = "zb", m = "getTree")
@@ -175,9 +182,14 @@ statscnQueryZb<-function(zbid = "zb",dbcode = "hgnd")
 #' Xuehui YANG (2016). rstatscn: R Interface for China National Data. R
 #' package version 1.1.1. https://CRAN.R-project.org/package=rstatscn
 #' @examples
-#'  statscnRegions('fsnd')
-#'  statscnRegions('csnd')
-#'  statscnRegions('gjnd')
+#' \dontrun{
+#' statscnRegions('fsnd')
+#' statscnRegions('csnd')
+#' statscnRegions('gjnd')
+#' }
+#'
+#'
+#'
 statscnRegions<-function(dbcode='fsnd')
 {
   curQuery<-list(
@@ -219,9 +231,14 @@ statscnRegions<-function(dbcode='fsnd')
 #' package version 1.1.1. https://CRAN.R-project.org/package=rstatscn
 #' @export
 #' @examples
+#'
+#' \dontrun{
 #' df <- statscnQueryData('A0201', dbcode = 'hgnd')
 #' df <- statscnQueryData('A0201',dbcode = 'fsnd', rowcode = 'zb', colcode = 'sj',
 #'                     moreWd = list(name = 'reg', value = '110000'))
+#' }
+#'
+#'
 statscnQueryData <- function(zb = "A0201", dbcode = "hgnd", rowcode = 'zb', colcode = 'sj', moreWd = list(name = NA, value = NA))
 {
   curQuery <- list(
@@ -252,8 +269,12 @@ statscnQueryData <- function(zb = "A0201", dbcode = "hgnd", rowcode = 'zb', colc
 #' package version 1.1.1. https://CRAN.R-project.org/package=rstatscn
 #' @export
 #' @examples
+#' \dontrun{
 #' df=statscnQueryData('A0201',dbcode='hgnd')
 #' df2=statscnQueryLastN(20)
+#' }
+#'
+#'
 statscnQueryLastN<-function(n)
 {
   wdcode <- "sj"

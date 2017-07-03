@@ -17,8 +17,12 @@ fetch the lastN data for the latest query, only affect the number of rows in the
 This function can not be used alone , statscnQueryData() has to be called before this function
 }
 \examples{
+\dontrun{
 df=statscnQueryData('A0201',dbcode='hgnd')
 df2=statscnQueryLastN(20)
+}
+
+
 }
 \references{
 Xuehui YANG (2016). rstatscn: R Interface for China National Data. R

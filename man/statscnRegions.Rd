@@ -16,9 +16,14 @@ the data frame with all the available region codes and names in the db
 the available regions in the specified db, it is used for query the province, city and country code generally
 }
 \examples{
- statscnRegions('fsnd')
- statscnRegions('csnd')
- statscnRegions('gjnd')
+\dontrun{
+statscnRegions('fsnd')
+statscnRegions('csnd')
+statscnRegions('gjnd')
+}
+
+
+
 }
 \references{
 Xuehui YANG (2016). rstatscn: R Interface for China National Data. R

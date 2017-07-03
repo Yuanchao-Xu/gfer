@@ -1,6 +1,6 @@
-gfer 0.1.6
+gfer 0.1.7
 ==========
-Date: 2017-3-12
+Date: 2017-7-2
 
 - add interface to national statistics, based on rstatscn. Because rstatscn doesn't have a EN version, so cannot be called directly, included in gfer
 

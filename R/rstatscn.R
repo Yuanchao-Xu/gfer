@@ -297,3 +297,5 @@ statscnRowNamePrefix <- function(p = "nrow")
   assign('prefix', p, envir = rstatscnEnv)
 }
 
+
+

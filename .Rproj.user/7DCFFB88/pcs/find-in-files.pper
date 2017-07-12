@@ -1,10 +1,10 @@
 {
     "dialog-state" : {
-        "caseSensitive" : false,
+        "caseSensitive" : true,
         "filePatterns" : [
         ],
-        "path" : "~/GitHub/hyfo",
-        "query" : "mapply",
+        "path" : "~/GitHub/gfer",
+        "query" : "getTicker",
         "regex" : false
     }
 }

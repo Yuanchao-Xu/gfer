@@ -7,10 +7,7 @@
 #' @return A table of PPP projects collected from your input page
 #' @importFrom httr POST use_proxy timeout content
 #' @importFrom jsonlite fromJSON
-#' @export
-# @examples
-# add(1, 1)
-# add(10, 1)
+
 
 
 getPPPList_unit <- function(page, proxy = NULL){
@@ -121,9 +118,10 @@ getPPPList <- function(startPage = 1, endPage, proxy = FALSE) {
 
       if (times == 0) {
         totalPPPList <- PPPList
+
       } else {
         # bind the new list to the total list
-        totalPPPList <- rbindlist(totalPPPList, PPPList)
+        totalPPPList <- rbindlist(list(totalPPPList, PPPList))
       }
 
       times <- times + 1

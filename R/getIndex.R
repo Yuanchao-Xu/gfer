@@ -49,7 +49,8 @@ getIndexConstnt <- function(indexPool) {
 #' @return A data table with companies and which index they are included
 #' @examples
 #' \dontrun{
-#' getIndex(600601)
+#' indexData <- getIndexData()
+#' getIndex(600601, indexData)
 #' }
 #' @export
 #'

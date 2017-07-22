@@ -320,3 +320,37 @@ statscnRowNamePrefix <- function(p = "nrow")
 
 
 
+
+#' getGDP_CWR
+#'
+#' getGDP for CWR use
+#'
+#'
+#' @param start starting year of data wanted
+#' @param end end year of data wanted, make sure your input end year exists in the NBS website
+#' @param indicator of which data is fetched, indicator includes 'GDP', 'water resources', 'water use' and 'wastewater', etc.
+#' @importFrom data.table rbindlist
+#' @references
+#' Xuehui YANG (2016). rstatscn: R Interface for China National Data. R
+#' package version 1.1.1. https://CRAN.R-project.org/package=rstatscn
+#' @return no return
+#' @export
+
+getBasicData_CWR <- function(indicator, start, end) {
+  index <- switch(indicator,
+                  'GDP' = 'A0201',
+                  'water resources' = 'A0C03',
+                  'water use' = 'A0C04',
+                  'wastewater' = 'A0C05')
+  GDP <- lapply(start:end, function(x) {
+    a <- statscnQueryData(index, dbcode='fsnd', rowcode='reg', colcode='zb', moreWd=list((name='sj'), value=x))
+    a$Year <- x
+    return(a)
+  })
+
+  GDP_total <- rbindlist(GDP)
+  return(GDP_total)
+}
+
+
+

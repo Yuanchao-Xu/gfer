@@ -24,7 +24,8 @@ Data comes from www.finance.sina.com.cn and www.etnet.com.hk
 }
 \examples{
 \dontrun{
-getIndex(600601)
+indexData <- getIndexData()
+getIndex(600601, indexData)
 }
 }
 \references{

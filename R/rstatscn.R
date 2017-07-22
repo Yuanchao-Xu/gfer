@@ -345,6 +345,7 @@ getBasicData_CWR <- function(indicator, start, end) {
   GDP <- lapply(start:end, function(x) {
     a <- statscnQueryData(index, dbcode='fsnd', rowcode='reg', colcode='zb', moreWd=list((name='sj'), value=x))
     a$Year <- x
+    a$Province <- rownames(a)
     return(a)
   })
 

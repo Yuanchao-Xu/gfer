@@ -329,7 +329,7 @@ statscnRowNamePrefix <- function(p = "nrow")
 #' @param start starting year of data wanted
 #' @param end end year of data wanted, make sure your input end year exists in the NBS website
 #' @param indicator of which data is fetched, indicator includes 'GDP', 'water resources', 'water use' and 'wastewater', etc.
-#' @importFrom data.table rbindlist
+#' @importFrom data.table rbindlist setcolorder
 #' @references
 #' Xuehui YANG (2016). rstatscn: R Interface for China National Data. R
 #' package version 1.1.1. https://CRAN.R-project.org/package=rstatscn
@@ -350,6 +350,11 @@ getBasicData_CWR <- function(indicator, start, end) {
   })
 
   GDP_total <- rbindlist(GDP)
+
+  # re-order columns
+  n1 <- ncol(GDP_total)
+  newOrder <- c(n1, n1-1, 1:(n1-2))
+  setcolorder(GDP_total, newOrder)
   return(GDP_total)
 }
 

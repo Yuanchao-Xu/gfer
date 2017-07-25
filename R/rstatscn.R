@@ -343,7 +343,7 @@ getBasicData_CWR <- function(indicator, start, end) {
                   'water use' = 'A0C04',
                   'wastewater' = 'A0C05')
   GDP <- lapply(start:end, function(x) {
-    a <- statscnQueryData(index, dbcode='fsnd', rowcode='reg', colcode='zb', moreWd=list((name='sj'), value=x))
+    a <- statscnQueryData(index, dbcode='fsnd', rowcode='reg', colcode='zb', moreWd=list(name='sj', value=x))
     a$Year <- x
     a$Province <- rownames(a)
     return(a)

@@ -4,8 +4,8 @@
 \alias{plotWaternomics}
 \title{plotWaternomics}
 \usage{
-plotWaternomics(data, title = NULL, xname = NULL, yname = NULL,
-  small = 1.5, medium = 3, large = 5, legend = TRUE, label = TRUE)
+plotWaternomics(data, title = "", xname = "", yname = "", small = 1.5,
+  medium = 3, large = 5, legend = TRUE, label = TRUE)
 }
 \arguments{
 \item{data}{a dataframe containing columns of GDP, Value-added of fisrt/second/third industry, x and y

@@ -31,7 +31,7 @@
 
 
 
-plotWaternomics <- function(data, title = NULL, xname= NULL, yname = NULL, small = 1.5, medium = 3, large = 5,
+plotWaternomics <- function(data, title = '', xname = '', yname = '', small = 1.5, medium = 3, large = 5,
                             legend = TRUE, label = TRUE) {
   # plot basic plot based on x and y
   plot.new()
@@ -41,38 +41,38 @@ plotWaternomics <- function(data, title = NULL, xname= NULL, yname = NULL, small
 
   ylim <- getLim(data$y)
 
-  with(data, {
-    plot(data$x, data$y, main = title, xlab = xname, ylab = yname,
-         xlim = xlim, ylim = ylim,
-         bty = 'n')
 
-    provinceNum <- nrow(data)
+  plot(data$x, data$y, main = title, xlab = xname, ylab = yname,
+       xlim = xlim, ylim = ylim,
+       bty = 'n')
 
-    # decide radius of the pie charts
-    r <- getRadius(data$GDP, small, medium, large)
+  provinceNum <- nrow(data)
 
-    # define CWR color
-    col <- c(rgb(107/255, 128/255, 51/255), rgb(2/255, 3/255, 3/255), rgb(13/255, 119/255, 185/255))
+  # decide radius of the pie charts
+  r <- getRadius(data$GDP, small, medium, large)
 
-
+  # define CWR color
+  col <- c(rgb(107/255, 128/255, 51/255), rgb(2/255, 3/255, 3/255), rgb(13/255, 119/255, 185/255))
 
 
-    # add pie charts
-    for (i in 1:provinceNum) {
-      if (label == TRUE) {
-        lbl <-  data$Province[i]
-      } else {
-        lbl <- ''
-      }
-      add.pie(x = data$x[i], y = data$y[i], z = c(data$First[i], data$Second[i], data$Third[i]),
-              labels = lbl, radius = r[i], col = col, border = "white")
 
+
+  # add pie charts
+  for (i in 1:provinceNum) {
+    if (label == TRUE) {
+      lbl <-  data$Province[i]
+    } else {
+      lbl <- ''
     }
-    if (legend == TRUE) {
-      legend('topright', c("Agriculture","Industry","Services"), cex = 0.8,
-             fill = col)
-    }
-  })
+    add.pie(x = data$x[i], y = data$y[i], z = c(data$First[i], data$Second[i], data$Third[i]),
+            labels = lbl, radius = r[i], col = col, border = "white")
+
+  }
+  if (legend == TRUE) {
+    legend('topright', c("Agriculture","Industry","Services"), cex = 0.8,
+           fill = col)
+  }
+
 
 
 }

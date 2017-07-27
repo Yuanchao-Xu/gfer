@@ -1,0 +1,107 @@
+
+
+#' plotWaternomics
+#'
+#' plot special waternomics chart for CWR
+#'
+#'
+#' @param data a dataframe containing columns of GDP, Value-added of fisrt/second/third industry, x and y
+#' x and y are the coordinates of the plot, and it varies depending on needs, can be per capita
+#' water use vs. per capita wastewater, etc. See example of year 2015 by \code{GDPmix}
+#'
+#' Columns should be exactly the same as GDPmix, which means, first column is province, seconnd is x,
+#' third is y, fourth is Frist, etc. Load GDPmix to have a look at the columns.
+#' @param title chart title
+#' @param xname x axis name
+#' @param yname y axis name
+#' @param small radius of small circle, default is 1.5
+#' @param medium radius of medium circle, default is 3
+#' @param large radius of large circle, default is 5
+#' @param legend whether to show legend, default is TRUE
+#' @param label whether to show label, default is TRUE
+#' @importFrom mapplots add.pie
+#' @importFrom graphics plot plot.new
+#' @importFrom grDevices rgb
+#' @export
+#' @examples
+#' \dontrun{
+#' data(GDPmix)
+#' plotwaternomics(GDPmix)
+#' }
+
+
+
+plotWaternomics <- function(data, title = NULL, xname= NULL, yname = NULL, small = 1.5, medium = 3, large = 5,
+                            legend = TRUE, label = TRUE) {
+  # plot basic plot based on x and y
+  plot.new()
+
+  # for some buffer space, extend the x and y axis, redefine them first
+  xlim <- getLim(data$x)
+
+  ylim <- getLim(data$y)
+
+  with(data, {
+    plot(data$x, data$y, main = title, xlab = xname, ylab = yname,
+         xlim = xlim, ylim = ylim,
+         bty = 'n')
+
+    provinceNum <- nrow(data)
+
+    # decide radius of the pie charts
+    r <- getRadius(data$GDP, small, medium, large)
+
+    # define CWR color
+    col <- c(rgb(107/255, 128/255, 51/255), rgb(2/255, 3/255, 3/255), rgb(13/255, 119/255, 185/255))
+
+
+
+
+    # add pie charts
+    for (i in 1:provinceNum) {
+      if (label == TRUE) {
+        lbl <-  data$Province[i]
+      } else {
+        lbl <- ''
+      }
+      add.pie(x = data$x[i], y = data$y[i], z = c(data$First[i], data$Second[i], data$Third[i]),
+              labels = lbl, radius = r[i], col = col, border = "white")
+
+    }
+    if (legend == TRUE) {
+      legend('topright', c("Agriculture","Industry","Services"), cex = 0.8,
+             fill = col)
+    }
+  })
+
+
+}
+
+getLim <- function(x) {
+  # decide axis interval
+  dig <- nchar(min(round(x)))
+
+  x1 <- round(min(x) - (max(x) - min(x))/length(x), -(dig - 1))
+  x2 <- round(max(x) + (max(x) - min(x))/length(x), -(dig - 1))
+
+  return(c(x1, x2))
+}
+
+
+
+
+
+# this is for setting plot radius
+getRadius <- function(y, small = 1.5, medium = 3, large = 5) {
+  r <- sapply(y, function(x) {
+    if (x <= 40000 & x >= 15000) {
+      x <- medium
+    } else if (x < 15000) {
+      x <- small
+    } else {
+      x <- large
+    }
+  })
+  return (r)
+}
+

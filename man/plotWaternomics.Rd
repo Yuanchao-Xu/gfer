@@ -5,7 +5,8 @@
 \title{plotWaternomics}
 \usage{
 plotWaternomics(data, title = "", xname = "", yname = "", small = 1.5,
-  medium = 3, large = 5, legend = TRUE, label = TRUE)
+  medium = 3, large = 5, legend = TRUE, label = TRUE, xmean = NULL,
+  ymean = NULL, line = TRUE)
 }
 \arguments{
 \item{data}{a dataframe containing columns of GDP, Value-added of fisrt/second/third industry, x and y
@@ -30,6 +31,12 @@ third is y, fourth is Frist, etc. Load GDPmix to have a look at the columns.}
 \item{legend}{whether to show legend, default is TRUE}
 
 \item{label}{whether to show label, default is TRUE}
+
+\item{xmean}{a line showing mean value of x}
+
+\item{ymean}{a line showing mean value of y}
+
+\item{line}{whether to show ablines, default is TRUE}
 }
 \description{
 plot special waternomics chart for CWR

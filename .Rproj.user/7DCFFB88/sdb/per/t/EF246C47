@@ -1,14 +1,14 @@
 {
     "collab_server" : "",
-    "contents" : "gfer 0.1.8\n==========\nDate: 2017-7-27\n\n- add CWR waternomics plot function\n\n\n\ngfer 0.1.7\n==========\nDate: 2017-7-2\n\n- add interface to national statistics, based on rstatscn. Because rstatscn doesn't have a EN version, so cannot be called directly, included in gfer, added getBasicData to extract NBS data\n\n\n\ngfer 0.1.6\n==========\nDate: 2017-3-12\n\n- add getTickers, getMktCap, getIndex and getExchange to deal with stock information including market capitalization, listed location and index they belong to\n- add reference and source\n\n\n\ngfer 0.1.5\n==========\nDate: 2017-2-19\n\n- add proxy option to all functions\n- apply data table\n\n\n\n\ngfer 0.1.4\n==========\nDate: 2016-12-20\n\n- add readme file, and a little change in description\n\n\n\n\ngfer 0.1.3\n==========\nDate: 2016-12-18\n\n- add NEWS, and fix minor bugs\n\n\n\n\n",
+    "contents" : "gfer 0.1.8\n==========\nDate: 2017-7-28\n\n- add CWR waternomics plot function, add treemap function\n\n\n\ngfer 0.1.7\n==========\nDate: 2017-7-2\n\n- add interface to national statistics, based on rstatscn. Because rstatscn doesn't have a EN version, so cannot be called directly, included in gfer, added getBasicData to extract NBS data\n\n\n\ngfer 0.1.6\n==========\nDate: 2017-3-12\n\n- add getTickers, getMktCap, getIndex and getExchange to deal with stock information including market capitalization, listed location and index they belong to\n- add reference and source\n\n\n\ngfer 0.1.5\n==========\nDate: 2017-2-19\n\n- add proxy option to all functions\n- apply data table\n\n\n\n\ngfer 0.1.4\n==========\nDate: 2016-12-20\n\n- add readme file, and a little change in description\n\n\n\n\ngfer 0.1.3\n==========\nDate: 2016-12-18\n\n- add NEWS, and fix minor bugs\n\n\n\n\n",
     "created" : 1489567811540.000,
     "dirty" : false,
     "encoding" : "UTF-8",
     "folds" : "",
-    "hash" : "464463685",
+    "hash" : "2628829850",
     "id" : "EF246C47",
-    "lastKnownWriteTime" : 1501152454,
-    "last_content_update" : 1501152454252,
+    "lastKnownWriteTime" : 1501236024,
+    "last_content_update" : 1501236024958,
     "path" : "~/GitHub/gfer/NEWS",
     "project_path" : "NEWS",
     "properties" : {

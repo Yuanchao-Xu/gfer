@@ -20,7 +20,9 @@ Imports:
     stringi,
     V8,
     data.table,
-    mapplots
+    mapplots,
+    plotrix,
+    treemap
 Depends: R (>= 2.10)
 RoxygenNote: 6.0.1
 URL: https://yuanchao-xu.github.io/gfer/

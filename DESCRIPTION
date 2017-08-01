@@ -1,8 +1,8 @@
 Package: gfer
 Type: Package
 Title: Green Finance and Environmental Risk
-Version: 0.1.8
-Date: 2017-7-27
+Version: 0.1.7
+Date: 2017-8-1
 Authors@R: person("Yuanchao", "Xu", email = "xuyuanchao37@gmail.com",
                   role = c("aut", "cre"))
 Description: Focuses on data collecting and analyzing in green finance and environmental 
@@ -20,9 +20,6 @@ Imports:
     stringi,
     V8,
     data.table,
-    mapplots,
-    plotrix,
-    treemap
 Depends: R (>= 2.10)
 RoxygenNote: 6.0.1
 URL: https://yuanchao-xu.github.io/gfer/

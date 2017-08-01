@@ -1,24 +1,14 @@
-# treemap
-#' treemap_CWR
+#' pivot
 #'
-#' plot treemap for GDP and water stress
+#' Transfer 2D table to readable table for tableau
+#'
 #'
 #' @param data a dataframe like \code{GDPmix}
-#' @importFrom treemap treemap
-
-treemap_CWR <- function(data) {
-
-  treemap(data,
-          index = c('Province'),
-          vSize = 'GDP',
-          vColor = 'GDP',
-          type = 'value'
-          #palette = 'Set1'
-          )
-}
+#' @param reserve choose which column to reserve
+#' @param newColName name for new column, apart from the reserved columns, all the other will be re-organised into a new column
 
 
-fortify <- function(data, reserve, newColName) {
+pivot <- function(data, reserve, newColName) {
   data1 <- data[, reserve]
   data2 <- do.call('rbind', rep(list(data1), ncol(data) - length(reserve)))
   data3 <- data[, !(colnames(data) %in% reserve)]

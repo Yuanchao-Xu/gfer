@@ -1,6 +1,13 @@
 #library(jsonlite)
 #library(httr)
 
+# the code below sources from http://www.bagualu.net/wordpress/rstatscn-the-r-interface-for-china-national-data,
+# thanks to the author Jinag Hang
+# Because the above package only provides Chinese version, so I made a small change to the statscnbase link,
+# changed it to EN version.
+# The original and modified code below are under lisence Apache License 2.0 https://www.apache.org/licenses/LICENSE-2.0
+
+
 
 statscnbase <- 'http://data.stats.gov.cn/english/easyquery.htm'
 rstatscnEnv <- new.env()

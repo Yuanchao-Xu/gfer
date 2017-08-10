@@ -1,0 +1,21 @@
+{
+    "collab_server" : "",
+    "contents" : "#' Table about GDP mix of China provinces in 2015\n#'\n#'\n#' @format A data frame with 11 rows and 7 variables:\n#' \\describe{\n#'   \\item{Province}{province}\n#'   \\item{x}{x axis for the plot, usually wastewater discharge per 10000 GDP}\n#'   \\item{y}{y axis for the plot, usually water use per 10000 GDP}\n#'   \\item{GDP}{China GDP 2015}\n#'   \\item{First}{GDP of first industry}\n#'   \\item{Second}{GDP of second industry}\n#'   \\item{Third}{GDP of third industry}\n#'   ...\n#' }\n\"GDPmix\"\n\n#' Matrix showing complicated management of China's Water Resource\n#'\n#'\n#' @format A data frame with 13 rows and 11 variables:\n#' \\describe{\n#'   ...\n#' }\n\"cm\"\n",
+    "created" : 1502336141829.000,
+    "dirty" : false,
+    "encoding" : "UTF-8",
+    "folds" : "",
+    "hash" : "726618573",
+    "id" : "FFAA4E21",
+    "lastKnownWriteTime" : 1502336194,
+    "last_content_update" : 1502336194578,
+    "path" : "~/GitHub/gfer/R/data.R",
+    "project_path" : "R/data.R",
+    "properties" : {
+        "tempName" : "Untitled1"
+    },
+    "relative_order" : 4,
+    "source_on_save" : false,
+    "source_window" : "",
+    "type" : "r_source"
+}

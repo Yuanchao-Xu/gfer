@@ -4,5 +4,6 @@ language: R
 sudo: required
 cache: packages
 apt_packages:
-  - libv8-dev
+#  - libv8-dev
+  - libudunits2-dev
 dist: precise

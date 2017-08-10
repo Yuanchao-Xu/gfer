@@ -5,7 +5,7 @@ Version: 0.1.8
 Date: 2017-8-8
 Authors@R: person("Yuanchao", "Xu", email = "xuyuanchao37@gmail.com",
                   role = c("aut", "cre"))
-Description: Focuses on data collecting and analyzing in green finance and environmental 
+Description: Focuses on data collecting, analyzing and visualization in green finance and environmental 
   risk research and analysis. Main function includes environmental data collecting from 
   official websites such as MEP (Ministry of Environmental Protection of China, <http://www.mep.gov.cn>), water 
   related projects identification and environmental data visualization.
@@ -20,6 +20,13 @@ Imports:
     stringi,
     V8,
     data.table,
+    tidyr,
+    scatterpie,
+    ggplot2,
+    ggrepel,
+    circlize,
+    googlesheets,
+    gsheet
 Depends: R (>= 2.10)
 RoxygenNote: 6.0.1
 URL: https://yuanchao-xu.github.io/gfer/

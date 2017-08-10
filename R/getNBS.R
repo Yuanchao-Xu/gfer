@@ -328,10 +328,9 @@ statscnRowNamePrefix <- function(p = "nrow")
 
 
 
-#' getGDP_CWR
+#' getNBS
 #'
-#' getGDP for CWR use
-#'
+#' get National Bureau of Statistics data
 #'
 #' @param start starting year of data wanted
 #' @param end end year of data wanted, make sure your input end year exists in the NBS website
@@ -343,7 +342,7 @@ statscnRowNamePrefix <- function(p = "nrow")
 #' @return no return
 #' @export
 
-getBasicData_CWR <- function(indicator, start, end) {
+getNBS <- function(indicator, start, end) {
   index <- switch(indicator,
                   'GDP' = 'A0201',
                   'water resources' = 'A0C03',
@@ -365,5 +364,95 @@ getBasicData_CWR <- function(indicator, start, end) {
   return(GDP_total)
 }
 
+
+#' updateNBS
+#'
+#' update/create the database in your google sheet. You have to sign in mannually for your google sheet
+#' Once finished, there will be a google sheet called NBS_data created in your google drive as database.
+#' @param start starting year of data wanted
+#' @param end end year of data wanted, make sure your input end year exists in the NBS website
+#' @import googlesheets
+#' @export
+updataNBS <- function(start, end) {
+  message('Loading from NBS')
+  GDP <- getNBS('GDP', start, end)
+  wateruse <- getNBS('water use', start, end)
+  wastewater <- getNBS('wastewater', start, end)
+
+  #check if there are existing data base in the drive
+  message('Uploading to Google Sheet. It may take minites depending data size.')
+  if (!'NBS_data' %in% gs_ls()[, 'sheet_title']) {
+    gs_new('NBS_data', ws_title = 'GDP', input = GDP, trim = TRUE, verbose = FALSE)
+
+  } else {
+    gs_ws_new(gs_title('NBS_data'), ws_title = 'GDP', input = GDP, trim = TRUE, verbose = TRUE)
+  }
+  sheet <- gs_title('NBS_data')
+
+  message('GDP upload finished.')
+  gs_ws_new(sheet, ws_title = 'Water_use', input = wateruse, trim = TRUE, verbose = TRUE)
+  message('water use upload finished.')
+  gs_ws_new(sheet, ws_title = 'Wastewater', input = wastewater, trim = TRUE, verbose = TRUE)
+  message('Wastewater upload finished.')
+  message('All finished')
+}
+
+#' getWaternomicsData
+#'
+#' Get NBS data from google sheet by shared link. Default link is provided by gfer, you can also create your
+#' own google sheet of GDP.
+#' NOTE: The 'link sharing on' of the sheet must be ticked in order to read
+#' @param start starting year of data wanted
+#' @param end end year of data wanted, make sure your input end year exists in the NBS website
+#' @importFrom gsheet gsheet2tbl
+#' @export
+
+getWaternomicsData <- function(start, end) {
+  url_GDP <- 'https://docs.google.com/spreadsheets/d/1ZGm3T4mbO-fMLtU-zYbej_Nchum8-58rSe6ulXrg3eU/edit'
+  url_wateruse <- 'https://docs.google.com/spreadsheets/d/1ZGm3T4mbO-fMLtU-zYbej_Nchum8-58rSe6ulXrg3eU/edit#gid=1298086389'
+  url_wastewater <- 'https://docs.google.com/spreadsheets/d/1ZGm3T4mbO-fMLtU-zYbej_Nchum8-58rSe6ulXrg3eU/edit#gid=1155016496'
+
+
+
+  selected <- c('Province', 'Year','Gross Regional Product', 'Value-added of the Primary Industry', 'Value-added of the Secondary Industry',
+                'Value-added of the Tertiary Industry')
+  GDP <- gsheet2tbl(url_GDP)[, selected]
+
+  selected <- c('Province', 'Year', 'Total Use of Water')
+  wateruse <- gsheet2tbl(url_wateruse)[, selected]
+
+  selected <- c('Province', 'Year', 'Total Waste Water Discharged')
+  wastewater <- gsheet2tbl(url_wastewater)[, selected]
+
+  res <- cbind(GDP[, 1:6], wateruse[, 7], wastewater[,3])
+
+  # calculate x and y coordinates
+  with(res, {
+    res[, x := res[, 8]/res[, 3]]
+    res[, y := res[, 7]/res[, 3]*10000]
+    res[, r :=res[, 3]]
+  })
+
+  colnames(res)[1] <- 'label'
+
+
+
+  # need further development
+  return(res)
+}
+
+
+
+
+
+
+
+# @param province choose one or some provinces you are interested. Be careful you
+# have to type in the right name as below, e.g., it's 'Inner Mongolia', not 'Neimenggu':
+#
+# province: 'Beijing', 'Tianjin', 'Hebei', 'Shanxi', 'Inner Mongolia', 'Liaoning',
+# 'Jilin', 'Heilongjiang', 'Shanghai', 'Jiangsu', 'Zhejiang', 'Anhui', 'Fujian', 'Jiangxi',
+# 'Shandong', 'Henan', 'Hubei', 'Hunan', 'Guangdong', 'Guangxi', 'Hainan', 'Chongqing',
+# 'Sichuan', 'Guizhou', 'Yunnan', 'Tibet', 'Shaanxi', 'Gansu', 'Qinghai', 'Ningxia', 'Xinjiang'
 
 

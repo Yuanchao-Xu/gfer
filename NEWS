@@ -2,7 +2,7 @@ gfer 0.1.8
 ==========
 Date: 2017-8-8
 
-- added getBasicData to extract NBS data
+- added getBasicData to extract NBS data, gferplot included in the package
 
 
 

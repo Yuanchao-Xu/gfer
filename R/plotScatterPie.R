@@ -29,6 +29,7 @@ getRadius <- function(y, small = 5, medium = 10, large = 15) {
 #' @importFrom graphics plot abline text
 #' @importFrom ggrepel geom_text_repel
 #' @importFrom scatterpie geom_scatterpie
+#' @export
 #' @import ggplot2
 #' @examples
 #'

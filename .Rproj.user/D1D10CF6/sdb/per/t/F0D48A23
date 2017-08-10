@@ -1,19 +1,19 @@
 {
     "collab_server" : "",
     "contents" : "shinyUI(\n  pageWithSidebar(\n\n    \n    headerPanel('Download PPP list'),\n    sidebarPanel(\n      \n      h5('Download PPP list from PPP center (www.cpppc.org)'),\n      numericInput(\"startPage\", \"Start Page:\", 1, min = 1),\n      numericInput(\"endPage\", \"End Page:\", 1, min = 1),\n      selectInput(\"proxy\", \"Whether to use proxy, usually no:\",\n                  choices = c(\"FALSE\", \"TRUE\")),\n      \n      br(),\n      h5('Dataset contains over 1000 pages, which will take about centuries to finish (even slower if using proxy). If you want to fetch the whole data, try to do it 10 by 10, or use gfer R package instead.'),\n      actionButton(\"start\", \"Start Fetching Data\"),\n      br(),\n      br(),\n      h5('Downloaded file will be in csv format, use excel or textbook to open.'),\n      downloadButton('downloadData', 'Download')\n    ),\n    \n    mainPanel(\n      verbatimTextOutput(\"default\"),\n      tableOutput('table')\n    )\n  )\n)",
-    "created" : 1502333964874.000,
+    "created" : 1502340936624.000,
     "dirty" : false,
     "encoding" : "UTF-8",
     "folds" : "",
     "hash" : "1876779219",
-    "id" : "CA816E0",
+    "id" : "F0D48A23",
     "lastKnownWriteTime" : 1495555203,
     "last_content_update" : 1495555203,
     "path" : "C:/Users/user/Google Drive/CWR/R/getPPPList/ui.R",
     "project_path" : null,
     "properties" : {
     },
-    "relative_order" : 9,
+    "relative_order" : 3,
     "source_on_save" : false,
     "source_window" : "",
     "type" : "r_source"

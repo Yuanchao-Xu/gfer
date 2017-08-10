@@ -13,7 +13,7 @@
     "project_path" : "R/getNBS.R",
     "properties" : {
     },
-    "relative_order" : 6,
+    "relative_order" : 1,
     "source_on_save" : false,
     "source_window" : "",
     "type" : "r_source"

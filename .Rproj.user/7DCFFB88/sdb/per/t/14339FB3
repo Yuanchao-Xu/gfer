@@ -1,0 +1,20 @@
+{
+    "collab_server" : "",
+    "contents" : "# R for travis: see documentation at https://docs.travis-ci.com/user/languages/r\n\nlanguage: R\nsudo: required\ncache: packages\napt_packages:\n  - libv8-dev\n  - libudunits2-dev\ndist: precise\n",
+    "created" : 1502365892783.000,
+    "dirty" : false,
+    "encoding" : "UTF-8",
+    "folds" : "",
+    "hash" : "3543896487",
+    "id" : "14339FB3",
+    "lastKnownWriteTime" : 1502365898,
+    "last_content_update" : 1502365898140,
+    "path" : "~/GitHub/gfer/.travis.yml",
+    "project_path" : ".travis.yml",
+    "properties" : {
+    },
+    "relative_order" : 10,
+    "source_on_save" : false,
+    "source_window" : "",
+    "type" : "yaml"
+}

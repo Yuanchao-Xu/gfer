@@ -373,7 +373,7 @@ getNBS <- function(indicator, start, end) {
 #' @param end end year of data wanted, make sure your input end year exists in the NBS website
 #' @import googlesheets
 #' @export
-updataNBS <- function(start, end) {
+updateNBS <- function(start, end) {
   message('Loading from NBS')
   GDP <- getNBS('GDP', start, end)
   wateruse <- getNBS('water use', start, end)

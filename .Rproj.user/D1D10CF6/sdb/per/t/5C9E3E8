@@ -1,0 +1,20 @@
+{
+    "collab_server" : "",
+    "contents" : "library(gfer)\n\n\nshinyServer(function(input, output) {\n\n  # data <- eventReactive(input$start, {\n  #   proxy <- switch(input$proxy,\n  #                   \"TRUE\" = TRUE,\n  #                   \"FALSE\" = FALSE)\n  #   getPPPList(input$startPage, input$endPage, proxy)\n  #\n  # })\n\n#\n#   output$table <- renderTable(data)\n#   output$downloadData <- downloadHandler(\n#     filename = function() { paste(input$dataset, '.csv', sep='') },\n#     content = function(file) {\n#       write.csv(datasetInput(), file)\n#     }\n#   )\n#\n  data <- eventReactive(input$start, {\n #   runif(input$startPage)\n    proxy <- switch(input$proxy,\n                    \"TRUE\" = TRUE,\n                    \"FALSE\" = FALSE)\n    getPPPList(input$startPage, input$endPage, proxy)\n  })\n\n  # output$plot <- renderPlot({\n  #   hist(data())\n  # })\n\n  output$table <- renderTable({\n    data()\n  })\n  output$downloadData <- downloadHandler(\n    filename = function() { paste(input$dataset, '.csv', sep='') },\n    content = function(file) {\n      write.csv(data(), file)\n    }\n  )\n})\n",
+    "created" : 1502332029647.000,
+    "dirty" : false,
+    "encoding" : "UTF-8",
+    "folds" : "",
+    "hash" : "482060349",
+    "id" : "5C9E3E8",
+    "lastKnownWriteTime" : 1502332174,
+    "last_content_update" : 1502332174292,
+    "path" : "C:/Users/user/Google Drive/CWR/R/Provincial_waternomics/server.R",
+    "project_path" : null,
+    "properties" : {
+    },
+    "relative_order" : 11,
+    "source_on_save" : false,
+    "source_window" : "",
+    "type" : "r_source"
+}

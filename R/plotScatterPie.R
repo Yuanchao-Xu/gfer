@@ -1,7 +1,7 @@
 
 
 # this is for setting plot radius
-getRadius <- function(y, small = 1.5, medium = 3, large = 5) {
+getRadius <- function(y, small = 5, medium = 10, large = 15) {
   r <- sapply(y, function(x) {
     if (x <= 40000 & x >= 15000) {
       x <- medium
@@ -62,8 +62,8 @@ plotScatterPie <- function(data, pieRange, pieColor = NULL, xmeanLine = TRUE, ym
   data$x1 <- data$x
   data$x <- data$x1 * ratio
 
-  i <- round(max(data$x1) - min(data$x1))/5
-  n <- ifelse((max(data$x1) - min(data$x1))/i >= 5, 6, 5)
+  i <- round((max(data$x1) - min(data$x1))/5)
+  n <- ifelse((max(data$x1) - min(data$x1))/i >= 5, (5 + ceiling((max(data$x1) - min(data$x1))/i - 5)), 5)
 
   labels <- seq(ceiling(min(data$x1)), by = i, length.out = n)
   breaks <- labels * ratio
@@ -76,7 +76,7 @@ plotScatterPie <- function(data, pieRange, pieColor = NULL, xmeanLine = TRUE, ym
 
 
     layer_pie <- geom_scatterpie(data = data, aes(x, y, r = radius),
-                                 cols = colnames(data)[pieRange], color = NA)
+                                 cols = colnames(data)[pieRange], color = 'white')
 
     if (is.null(labelLine)) labelLine <- max(data$radius)/3
 
@@ -86,7 +86,7 @@ plotScatterPie <- function(data, pieRange, pieColor = NULL, xmeanLine = TRUE, ym
     if (xmeanLine == TRUE) layer_basic <- layer_basic + geom_vline(xintercept = mean(data$x), color = 'red', size = 1.5, linetype = 2)
     if (ymeanLine == TRUE) layer_basic <- layer_basic + geom_hline(yintercept = mean(data$y), color = 'red', size = 1.5, linetype = 2)
 
-    if (!is.null(pieColor)) layer_basic <- layer_basic + scale_fill_manual(values=pieColor)
+    if (!is.null(pieColor)) layer_basic <- layer_basic + scale_fill_manual(values = pieColor)
 
     layer_plot <- layer_basic + layer_pie + layer_label  +
       coord_equal() + ggstyle() +

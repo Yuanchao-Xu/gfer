@@ -361,6 +361,12 @@ getNBS <- function(indicator, start, end) {
   n1 <- ncol(GDP_total)
   newOrder <- c(n1, n1-1, 1:(n1-2))
   setcolorder(GDP_total, newOrder)
+
+  # change province names
+
+  col <- sapply(GDP_total$Province, function(x) strsplit(x, '\\.')[[1]][2])
+  names(col) <- NULL
+  GDP_total$Province <- col
   return(GDP_total)
 }
 

@@ -388,7 +388,10 @@ updateNBS <- function(start, end) {
   #check if there are existing data base in the drive
   message('Uploading to Google Sheet. It may take minites depending on data size.')
   if (!'NBS_data' %in% gs_ls()[['sheet_title']]) {
-    gs_new('NBS_data', ws_title = 'GDP', input = GDP, trim = TRUE, verbose = FALSE)
+    gs_new('NBS_data', ws_title = 'GDP', input = GDP, trim = TRUE, verbose = TRUE)
+
+    gs_ws_new(gs_title('NBS_data'), ws_title = 'Water_use', trim = TRUE, verbose = TRUE)
+    gs_ws_new(gs_title('NBS_data'), ws_title = 'Wastewater')
 
   } else {
     gs_edit_cells(gs_title('NBS_data'), ws = 'GDP', input = GDP, trim = TRUE, verbose = TRUE)
@@ -418,9 +421,9 @@ updateNBS <- function(start, end) {
 #' @export
 
 getWaternomicsData <- function(start, end, url_GDP = NULL, url_wateruse = NULL, url_wastewater = NULL) {
-  if(is.null(url_GDP)) url_GDP <- 'https://docs.google.com/spreadsheets/d/1M7U2451Yj26ppHYfFo8UCe0AmW426GFBBX_PoEFOusg/edit#gid=0'
-  if(is.null(url_wateruse)) url_wateruse <- 'https://docs.google.com/spreadsheets/d/1M7U2451Yj26ppHYfFo8UCe0AmW426GFBBX_PoEFOusg/edit#gid=1308839245'
-  if(is.null(url_wastewater)) url_wastewater <- 'https://docs.google.com/spreadsheets/d/1M7U2451Yj26ppHYfFo8UCe0AmW426GFBBX_PoEFOusg/edit#gid=631250855'
+  if(is.null(url_GDP)) url_GDP <- 'https://docs.google.com/spreadsheets/d/1ns2eHOkkyKzV4sSa4ECohL7kxnmjRquW6xPsPz-I8ew/edit#gid=0'
+  if(is.null(url_wateruse)) url_wateruse <- 'https://docs.google.com/spreadsheets/d/1ns2eHOkkyKzV4sSa4ECohL7kxnmjRquW6xPsPz-I8ew/edit#gid=124360177'
+  if(is.null(url_wastewater)) url_wastewater <- 'https://docs.google.com/spreadsheets/d/1ns2eHOkkyKzV4sSa4ECohL7kxnmjRquW6xPsPz-I8ew/edit#gid=645349937'
   closeAllConnections()
 
 

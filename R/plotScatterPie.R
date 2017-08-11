@@ -95,6 +95,7 @@ plotScatterPie <- function(data, pieRange, pieColor = NULL, xmeanLine = TRUE, ym
 
 
     print(layer_plot)
+    return(layer_plot)
 
   })
 }

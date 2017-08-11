@@ -1,7 +1,7 @@
 
 
 # this is for setting plot radius
-getRadius <- function(y, small = 5, medium = 10, large = 15) {
+getRadius <- function(y, small = 4, medium = 8, large = 12) {
   r <- sapply(y, function(x) {
     if (x <= 40000 & x >= 15000) {
       x <- medium
@@ -26,6 +26,7 @@ getRadius <- function(y, small = 5, medium = 10, large = 15) {
 #' @param labelLine how far is label to pie chart, can be left with default value.
 #' @param xmeanLine if plot x mean line
 #' @param ymeanLine if plot y mean line
+#' @param output if you want an ggplot object as output, default is FALSE
 #' @importFrom graphics plot abline text
 #' @importFrom ggrepel geom_text_repel
 #' @importFrom scatterpie geom_scatterpie
@@ -46,7 +47,8 @@ getRadius <- function(y, small = 5, medium = 10, large = 15) {
 #'
 #'
 
-plotScatterPie <- function(data, pieRange, pieColor = NULL, xmeanLine = TRUE, ymeanLine = TRUE, labelLine = NULL) {
+plotScatterPie <- function(data, pieRange, pieColor = NULL, xmeanLine = TRUE, ymeanLine = TRUE, labelLine = NULL,
+                           output = FALSE) {
 
   ## input check
   if(is.null(pieRange)) stop("You have to assign which column to which column to be presented by pie chart.")
@@ -79,7 +81,7 @@ plotScatterPie <- function(data, pieRange, pieColor = NULL, xmeanLine = TRUE, ym
     layer_pie <- geom_scatterpie(data = data, aes(x, y, r = radius),
                                  cols = colnames(data)[pieRange], color = 'white')
 
-    if (is.null(labelLine)) labelLine <- max(data$radius)/3
+    if (is.null(labelLine)) labelLine <- max(data$radius)/3.5
 
     layer_label <- geom_text_repel(data = data, aes(x, y, label = label),
                                    point.padding = unit(labelLine, "lines"))
@@ -95,7 +97,9 @@ plotScatterPie <- function(data, pieRange, pieColor = NULL, xmeanLine = TRUE, ym
 
 
     print(layer_plot)
-    return(layer_plot)
+
+    if (output == TRUE) return(layer_plot)
+
 
   })
 }

@@ -5,7 +5,7 @@
 \title{plotScatterPie}
 \usage{
 plotScatterPie(data, pieRange, pieColor = NULL, xmeanLine = TRUE,
-  ymeanLine = TRUE, labelLine = NULL)
+  ymeanLine = TRUE, labelLine = NULL, output = FALSE)
 }
 \arguments{
 \item{data}{a dataframe with information like x, y, r, label. See examples about how to assign these columns as required.}
@@ -19,6 +19,8 @@ plotScatterPie(data, pieRange, pieColor = NULL, xmeanLine = TRUE,
 \item{ymeanLine}{if plot y mean line}
 
 \item{labelLine}{how far is label to pie chart, can be left with default value.}
+
+\item{output}{if you want an ggplot object as output, default is FALSE}
 }
 \description{
 plot scatter pie chart for multidimension analysis, such as waternomics. This plot can

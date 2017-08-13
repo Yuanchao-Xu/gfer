@@ -427,13 +427,13 @@ getWaternomicsData <- function(start, end) {
 
   selected <- c('Province', 'Year','Gross Regional Product', 'Value-added of the Primary Industry', 'Value-added of the Secondary Industry',
                 'Value-added of the Tertiary Industry')
-  GDP <- GDP[, selected]
+  GDP <- GDP[, selected, with = F]
 
   selected <- c('Province', 'Year', 'Total Use of Water')
-  wateruse <- wateruse[, selected]
+  wateruse <- wateruse[, selected, with = F]
 
   selected <- c('Province', 'Year', 'Total Waste Water Discharged')
-  wastewater <- wastewater[, selected]
+  wastewater <- wastewater[, selected, with = F]
 
   res <- cbind(GDP, wateruse[, 3], wastewater[,3])
 

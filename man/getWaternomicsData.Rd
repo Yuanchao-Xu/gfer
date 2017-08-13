@@ -4,19 +4,12 @@
 \alias{getWaternomicsData}
 \title{getWaternomicsData}
 \usage{
-getWaternomicsData(start, end, url_GDP = NULL, url_wateruse = NULL,
-  url_wastewater = NULL)
+getWaternomicsData(start, end)
 }
 \arguments{
 \item{start}{starting year of data wanted}
 
 \item{end}{end year of data wanted, make sure your input end year exists in the NBS website}
-
-\item{url_GDP}{url of GDP sheet}
-
-\item{url_wateruse}{url of Water_use sheet}
-
-\item{url_wastewater}{url of Wastewater}
 }
 \description{
 Get NBS data from google sheet by shared link. Default link is provided by gfer, you can also create your

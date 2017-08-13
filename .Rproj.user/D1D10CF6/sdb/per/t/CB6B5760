@@ -1,0 +1,20 @@
+{
+    "collab_server" : "",
+    "contents" : "## Only run examples in interactive R sessions\nif (interactive()) {\n  options(device.ask.default = FALSE)\n\n  # Define UI\n  ui <- fluidPage(\n\n    # Application title\n    titlePanel(\"Hello Shiny!\"),\n\n    sidebarLayout(\n\n      # Sidebar with a slider input\n      sidebarPanel(\n        sliderInput(\"obs\",\n                    \"Number of observations:\",\n                    min = 0,\n                    max = 1000,\n                    value = 500)\n      ),\n\n      # Show a plot of the generated distribution\n      mainPanel(\n        plotOutput(\"distPlot\")\n      )\n    )\n  )\n\n  # Server logic\n  server <- function(input, output) {\n    output$distPlot <- renderPlot({\n      hist(rnorm(input$obs))\n    })\n  }\n\n  # Complete app with UI and server components\n  shinyApp(ui, server)\n}\n",
+    "created" : 1502598467501.000,
+    "dirty" : false,
+    "encoding" : "UTF-8",
+    "folds" : "",
+    "hash" : "2707510297",
+    "id" : "CB6B5760",
+    "lastKnownWriteTime" : 1502598472,
+    "last_content_update" : 1502598472189,
+    "path" : "C:/Users/user/Google Drive/CWR/R/test.R",
+    "project_path" : null,
+    "properties" : {
+    },
+    "relative_order" : 4,
+    "source_on_save" : false,
+    "source_window" : "",
+    "type" : "r_source"
+}

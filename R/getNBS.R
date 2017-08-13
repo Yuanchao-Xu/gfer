@@ -413,29 +413,27 @@ updateNBS <- function(start, end) {
 #' NOTE: The 'link sharing on' of the sheet must be ticked in order to read
 #' @param start starting year of data wanted
 #' @param end end year of data wanted, make sure your input end year exists in the NBS website
-#' @param url_GDP url of GDP sheet
-#' @param url_wateruse url of Water_use sheet
-#' @param url_wastewater url of Wastewater
 #' @importFrom gsheet gsheet2tbl
 #' @import data.table
-#' @export
+#' @exportl
 
-getWaternomicsData <- function(start, end, url_GDP = NULL, url_wateruse = NULL, url_wastewater = NULL) {
-  if(is.null(url_GDP)) url_GDP <- 'https://docs.google.com/spreadsheets/d/1ns2eHOkkyKzV4sSa4ECohL7kxnmjRquW6xPsPz-I8ew/edit#gid=0'
-  if(is.null(url_wateruse)) url_wateruse <- 'https://docs.google.com/spreadsheets/d/1ns2eHOkkyKzV4sSa4ECohL7kxnmjRquW6xPsPz-I8ew/edit#gid=124360177'
-  if(is.null(url_wastewater)) url_wastewater <- 'https://docs.google.com/spreadsheets/d/1ns2eHOkkyKzV4sSa4ECohL7kxnmjRquW6xPsPz-I8ew/edit#gid=645349937'
+getWaternomicsData <- function(start, end) {
+  message('Loading from NBS')
+  GDP <- getNBS('GDP', start, end)
+  wateruse <- getNBS('water use', start, end)
+  wastewater <- getNBS('wastewater', start, end)
   closeAllConnections()
 
 
   selected <- c('Province', 'Year','Gross Regional Product', 'Value-added of the Primary Industry', 'Value-added of the Secondary Industry',
                 'Value-added of the Tertiary Industry')
-  GDP <- gsheet2tbl(url_GDP)[, selected]
+  GDP <- GDP[, selected]
 
   selected <- c('Province', 'Year', 'Total Use of Water')
-  wateruse <- gsheet2tbl(url_wateruse)[, selected]
+  wateruse <- wateruse[, selected]
 
   selected <- c('Province', 'Year', 'Total Waste Water Discharged')
-  wastewater <- gsheet2tbl(url_wastewater)[, selected]
+  wastewater <- wastewater[, selected]
 
   res <- cbind(GDP, wateruse[, 3], wastewater[,3])
 

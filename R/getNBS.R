@@ -415,7 +415,7 @@ updateNBS <- function(start, end) {
 #' @param end end year of data wanted, make sure your input end year exists in the NBS website
 #' @importFrom gsheet gsheet2tbl
 #' @import data.table
-#' @exportl
+#' @export
 
 getWaternomicsData <- function(start, end) {
   message('Loading from NBS')

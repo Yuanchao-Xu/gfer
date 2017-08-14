@@ -61,12 +61,16 @@ plotScatterPie <- function(data, pieRange, pieColor = NULL, xmeanLine = TRUE, ym
   xlim <- getLim(data$x)
   ylim <- getLim(data$y)
 
+  # make sure there is no zero in the denominator
+  if (xlim[2] == xlim[1]) xlim[2] <- xlim[1] + 1
+  if (ylim[2] == ylim[1]) ylim[2] <- ylim[1] + 1
+
   ratio <- (ylim[2] - ylim[1])/(xlim[2] - xlim[1])/0.75
   data$x1 <- data$x
   data$x <- data$x1 * ratio
 
   i <- round((max(data$x1) - min(data$x1))/5)
-  if (i == 0) i <- 1
+  if (i == 0) i <- 1 # make sure there is no zero in the denominator
   n <- ifelse((max(data$x1) - min(data$x1))/i >= 5, (5 + ceiling((max(data$x1) - min(data$x1))/i - 5)), 5)
 
   labels <- seq(ceiling(min(data$x1)), by = i, length.out = n)

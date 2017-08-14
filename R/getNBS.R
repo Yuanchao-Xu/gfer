@@ -429,7 +429,7 @@ getWaternomicsData <- function(start, end) {
                 'Value-added of the Tertiary Industry')
   GDP <- GDP[, selected, with = F]
 
-  selected <- c('Province', 'Year', 'Total Use of Water')
+  selected <- c('Province', 'Year', 'Total Use of Water ')
   wateruse <- wateruse[, selected, with = F]
 
   selected <- c('Province', 'Year', 'Total Waste Water Discharged')

@@ -42,7 +42,7 @@ getRadius <- function(y, small = 4, medium = 8, large = 12) {
 #' colnames(GDPmix) <- c('label', 'r', '1st', '2nd', '3rd', 'x', 'y')
 #'
 #' \dontrun{
-#' plotScatterPie(GDPmix, pieRange = 3:5, pieColor = GDPColor_CWR)
+#' plotScatterPie(GDPmix, pieRange = 4:6, pieColor = GDPColor_CWR)
 #' }
 #'
 #'
@@ -58,23 +58,29 @@ plotScatterPie <- function(data, pieRange, pieColor = NULL, xmeanLine = TRUE, ym
   # since coord_equal is set in order to make the pie chart round, and
   # most of time y axis is tens times of x axis, the plot will be weird.
   # So x and y axis must be adjusted to roughly 4:3, and add the label manually afterwards
-  xlim <- getLim(data$x)
-  ylim <- getLim(data$y)
+  adj <- getLim(data$x, data$y)
 
-  # make sure there is no zero in the denominator
-  if (xlim[2] == xlim[1]) xlim[2] <- xlim[1] + 1
-  if (ylim[2] == ylim[1]) ylim[2] <- ylim[1] + 1
+  xlim <- adj$lim[1:2]
+  ylim <- adj$lim[3:4]
 
-  ratio <- (ylim[2] - ylim[1])/(xlim[2] - xlim[1])/0.75
-  data$x1 <- data$x
-  data$x <- data$x1 * ratio
 
-  i <- round((max(data$x1) - min(data$x1))/5)
-  if (i == 0) i <- 1 # make sure there is no zero in the denominator
-  n <- ifelse((max(data$x1) - min(data$x1))/i >= 5, (5 + ceiling((max(data$x1) - min(data$x1))/i - 5)), 5)
+  if (adj$change == 'x') {
+    xlabels <- getLabels(c(min(data$x), max(data$x)), 4)
+    data$x <- data$x * ratio
+    xbreaks <- xlabels * ratio
+    ybreaks <- getLabels(c(min(data$y), max(data$y)), 3)
+    ylabels <- ybreaks
 
-  labels <- seq(ceiling(min(data$x1)), by = i, length.out = n)
-  breaks <- labels * ratio
+  } else if (adj$change == 'y') {
+    xbreaks <- getLabels(c(min(data$x), max(data$x)), 4)
+    xlabels <- xbreaks
+    ylabels <- getLabels(c(min(data$y), max(data$y)), 3)
+    data$y <- data$y * ratio
+    ybreaks <- ylabels * ratio
+
+  }
+
+
 
   with (data, {
     layer_basic <- ggplot(data, aes(x = x))
@@ -86,7 +92,7 @@ plotScatterPie <- function(data, pieRange, pieColor = NULL, xmeanLine = TRUE, ym
     layer_pie <- geom_scatterpie(data = data, aes(x, y, r = radius),
                                  cols = colnames(data)[pieRange], color = 'white')
 
-    if (is.null(labelLine)) labelLine <- max(data$radius)/3.5
+    if (is.null(labelLine)) labelLine <- max(data$radius)/3
 
     layer_label <- geom_text_repel(data = data, aes(x, y, label = label),
                                    point.padding = unit(labelLine, "lines"))
@@ -98,7 +104,8 @@ plotScatterPie <- function(data, pieRange, pieColor = NULL, xmeanLine = TRUE, ym
 
     layer_plot <- layer_basic + layer_pie + layer_label  +
       coord_equal() + ggstyle() +
-      scale_x_continuous(breaks = breaks, labels = labels)
+      scale_x_continuous(breaks = xbreaks, labels = xlabels, limits = xlim) +
+      scale_y_continuous(breaks = ybreaks, labels = ylabels)
 
 
     print(layer_plot)
@@ -132,30 +139,86 @@ plotScatterPie <- function(data, pieRange, pieColor = NULL, xmeanLine = TRUE, ym
 
 #' @import ggplot2
 ggstyle <- function() {
-  a <- theme_set(theme_bw()) +
-    theme(legend.position = 'bottom')
+  a <- theme_classic() +
+    theme(legend.position = 'bottom',
+          panel.border = element_rect(color = 'black', fill = 'transparent'))
+  # a <- theme(legend.position = 'bottom',
+  #         panel.background = element_rect(fill = 'white'),
+  #         panel.border = element_rect(colour = 'black'))
   #   theme(axis.line = element_line(size = 1, colour = "black"))
-             #panel.background = element_rect(fill = "white"),
-             #panel.grid.major = element_line(colour = "grey50"))
+  #panel.background = element_rect(fill = "white"),
+  #panel.grid.major = element_line(colour = "grey50"))
   return(a)
 }
 
-adjustxlim <- function(xlim, ylim, ratio = 0.75) {
-  length_y <- max(ylim) - min(ylim)
-  length_x <- max(xlim) - min(xlim)
-  if (length_x < length_y/ratio) xlim <- c(min(xlim), min(xlim) + length_y)
-  return(xlim)
+
+
+
+
+# this is used to get xlim and ylim of the plot, also breaks and ratios
+getLim <- function(x, y, n = 0.75, xlablen = 4) {
+  xl <- (max(x) - min(x)) * 1.1
+  yl <- (max(y) - min(y)) * 1.1
+  if (yl < n * xl) {
+    ratio <- xl * n / yl
+    change <- 'y'
+    xlim <- c(min(x) - 0.5 * xl, max(x) + 0.5 * xl)
+    ylim <- ratio * c(min(y), max(y))
+
+
+
+
+  } else if (yl >= n * xl) {
+    ratio <- yl / n / xl
+    change <- 'x'
+    d <- (xl*ratio - xl) / 2
+    xlim <- ratio * c(min(x) - 0.5 * xl , max(x) + 0.5 * xl)
+    ylim <- c(min(y) - 0.5 * yl * n, max(y) + 0.5 * n )
+
+
+  }
+
+  res <- list()
+  res$lim <- c(xlim, ylim)
+  res$ratio <- ratio
+  res$change <- change
+
+  return(res)
 }
 
-getLim <- function(x) {
-  # decide axis interval
-  dig <- nchar(min(round(x)))
 
-  x1 <- round(min(x) - (max(x) - min(x))/length(x), -(dig - 1))
-  x2 <- round(max(x) + (max(x) - min(x))/length(x), -(dig - 1))
+# setup smart round up axis labels
+roundN <- function(x) {
+  if ( x >= 1) {
+    n <- -nchar(round(x)) + 1
+  } else if (0 < x &  x < 1){
+    l <- strsplit(as.character(x), '\\.')[[1]]
+    n <- nchar(l[length(l)])
+    while (x == round(x, n)) {
+      n <- n - 1
+    }
+  }
 
-  return(c(x1, x2))
+  res <- round(x, n)
+
+  return(c(res, n))
 }
+
+getLabels <- function(lim, labeln) {
+
+  d <- roundN((max(lim) - min(lim))/labeln)
+
+  label1 <- round(min(lim), d[2])
+  if (label1 < min(lim)) label1 <- label1 + d[1]
+  # now the 1st label is fixed, trying to see if there will be enough palce for xlabel intervals, here xlabel = 4
+  labelseq <- seq(label1, by = d[1], length.out = labeln)
+  if (max(labelseq) > max(lim)) labelseq <- seq(label1, by = d[1], length.out = labeln - 1)
+
+  return(labelseq)
+
+}
+
+
 
 
 

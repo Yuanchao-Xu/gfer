@@ -8,7 +8,7 @@ plotScatterPie(data, pieRange, pieColor = NULL, xmeanLine = TRUE,
   ymeanLine = TRUE, labelLine = NULL, output = FALSE)
 }
 \arguments{
-\item{data}{a dataframe with information like x, y, r, label. See examples about how to assign these columns as required.}
+\item{data}{a dataframe with colnames x, y, r, label, these four names must be in colnames.}
 
 \item{pieRange}{define which column to which column to be presented by pie chart, see examples}
 
@@ -32,12 +32,15 @@ see examples.
 
 GDPColor_CWR <- c("#6B8033", "#020303", "#0D77B9")
 
-# Change colnames so that the function can recognize x, y, r, label
 
-colnames(GDPmix) <- c('label', 'r', '1st', '2nd', '3rd', 'x', 'y')
+data(GDPmix)
+
+# in colnames(GDPmix), there must be x, y, r, label.
+# but right now, GDPmix has x, y, r, but lacks a label column, let's assign label to province column
+colnames(GDPmix)[1] <- 'label'
 
 \dontrun{
-plotScatterPie(GDPmix, pieRange = 3:5, pieColor = GDPColor_CWR)
+plotScatterPie(GDPmix, pieRange = 4:6, pieColor = GDPColor_CWR)
 }
 
 

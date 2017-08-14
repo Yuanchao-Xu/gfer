@@ -20,7 +20,7 @@ getRadius <- function(y, small = 4, medium = 8, large = 12) {
 #' plot scatter pie chart for multidimension analysis, such as waternomics. This plot can
 #' provide information about water use/wastewater of each provinces and GDP mix of each provinces,
 #' see examples.
-#' @param data a dataframe with information like x, y, r, label. See examples about how to assign these columns as required.
+#' @param data a dataframe with colnames x, y, r, label, these four names must be in colnames.
 #' @param pieRange define which column to which column to be presented by pie chart, see examples
 #' @param pieColor color for different colors in pie chart
 #' @param labelLine how far is label to pie chart, can be left with default value.
@@ -37,9 +37,12 @@ getRadius <- function(y, small = 4, medium = 8, large = 12) {
 #'
 #' GDPColor_CWR <- c("#6B8033", "#020303", "#0D77B9")
 #'
-#' # Change colnames so that the function can recognize x, y, r, label
 #'
-#' colnames(GDPmix) <- c('label', 'r', '1st', '2nd', '3rd', 'x', 'y')
+#' data(GDPmix)
+#'
+#' # in colnames(GDPmix), there must be x, y, r, label.
+#' # but right now, GDPmix has x, y, r, but lacks a label column, let's assign label to province column
+#' colnames(GDPmix)[1] <- 'label'
 #'
 #' \dontrun{
 #' plotScatterPie(GDPmix, pieRange = 4:6, pieColor = GDPColor_CWR)
@@ -62,7 +65,7 @@ plotScatterPie <- function(data, pieRange, pieColor = NULL, xmeanLine = TRUE, ym
 
   xlim <- adj$lim[1:2]
   ylim <- adj$lim[3:4]
-
+  ratio <- adj$ratio
 
   if (adj$change == 'x') {
     xlabels <- getLabels(c(min(data$x), max(data$x)), 4)
@@ -92,7 +95,7 @@ plotScatterPie <- function(data, pieRange, pieColor = NULL, xmeanLine = TRUE, ym
     layer_pie <- geom_scatterpie(data = data, aes(x, y, r = radius),
                                  cols = colnames(data)[pieRange], color = 'white')
 
-    if (is.null(labelLine)) labelLine <- max(data$radius)/3
+    if (is.null(labelLine)) labelLine <- max(data$radius)/8
 
     layer_label <- geom_text_repel(data = data, aes(x, y, label = label),
                                    point.padding = unit(labelLine, "lines"))
@@ -105,7 +108,7 @@ plotScatterPie <- function(data, pieRange, pieColor = NULL, xmeanLine = TRUE, ym
     layer_plot <- layer_basic + layer_pie + layer_label  +
       coord_equal() + ggstyle() +
       scale_x_continuous(breaks = xbreaks, labels = xlabels, limits = xlim) +
-      scale_y_continuous(breaks = ybreaks, labels = ylabels)
+      scale_y_continuous(breaks = ybreaks, labels = ylabels, limits = ylim)
 
 
     print(layer_plot)
@@ -157,12 +160,12 @@ ggstyle <- function() {
 
 # this is used to get xlim and ylim of the plot, also breaks and ratios
 getLim <- function(x, y, n = 0.75, xlablen = 4) {
-  xl <- (max(x) - min(x)) * 1.1
-  yl <- (max(y) - min(y)) * 1.1
+  xl <- (max(x) - min(x))
+  yl <- (max(y) - min(y))
   if (yl < n * xl) {
     ratio <- xl * n / yl
     change <- 'y'
-    xlim <- c(min(x) - 0.5 * xl, max(x) + 0.5 * xl)
+    xlim <- c(min(x), max(x))
     ylim <- ratio * c(min(y), max(y))
 
 
@@ -171,12 +174,20 @@ getLim <- function(x, y, n = 0.75, xlablen = 4) {
   } else if (yl >= n * xl) {
     ratio <- yl / n / xl
     change <- 'x'
-    d <- (xl*ratio - xl) / 2
-    xlim <- ratio * c(min(x) - 0.5 * xl , max(x) + 0.5 * xl)
-    ylim <- c(min(y) - 0.5 * yl * n, max(y) + 0.5 * n )
+
+    xlim <- ratio * c(min(x), max(x))
+    ylim <- c(min(y), max(y))
 
 
   }
+
+
+  # enlarge xlim and ylim for elements not to reach the border
+  xd <- (xlim[2] - xlim[1]) * 0.2/2
+  yd <- (ylim[2] - ylim[1]) * 0.2/2
+
+  xlim <- c(xlim[1] - xd, xlim[2] + xd)
+  ylim <- c(ylim[1] - yd, ylim[2] + yd)
 
   res <- list()
   res$lim <- c(xlim, ylim)

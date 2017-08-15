@@ -95,7 +95,7 @@ plotScatterPie <- function(data, pieRange, pieColor = NULL, xmeanLine = TRUE, ym
     layer_pie <- geom_scatterpie(data = data, aes(x, y, r = radius),
                                  cols = colnames(data)[pieRange], color = 'white')
 
-    if (is.null(labelLine)) labelLine <- max(data$radius) / 16
+    if (is.null(labelLine)) labelLine <- max(data$radius) / 12
 
     layer_label <- geom_text_repel(data = data, aes(x, y, label = label),
                                    point.padding = unit(labelLine, "lines"))
@@ -208,10 +208,13 @@ roundN <- function(x) {
     n <- n + 1
   } else if (0 < x &  x < 1){
     l <- strsplit(as.character(x), '\\.')[[1]]
-    n <- nchar(l[length(l)])
-    while (x == round(x, n)) {
-      n <- n - 1
+    l1 <- strsplit(l[2], '')[[1]]
+    n <- 0
+    for (i in l1) {
+      if (i != '0') break
+      n <- n + 1
     }
+    n <- n + 2
   }
 
   res <- round(x, n)

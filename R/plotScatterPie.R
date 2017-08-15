@@ -1,7 +1,7 @@
 
 
 # this is for setting plot radius
-getRadius <- function(y, small = 4, medium = 8, large = 12) {
+getRadius <- function(y, small = 2, medium = 4, large = 6) {
   r <- sapply(y, function(x) {
     if (x <= 40000 & x >= 15000) {
       x <- medium
@@ -68,16 +68,16 @@ plotScatterPie <- function(data, pieRange, pieColor = NULL, xmeanLine = TRUE, ym
   ratio <- adj$ratio
 
   if (adj$change == 'x') {
-    xlabels <- getLabels(c(min(data$x), max(data$x)), 4)
+    xlabels <- getLabels(xlim / ratio, 5)
     data$x <- data$x * ratio
     xbreaks <- xlabels * ratio
-    ybreaks <- getLabels(c(min(data$y), max(data$y)), 3)
+    ybreaks <- getLabels(ylim, 4)
     ylabels <- ybreaks
 
   } else if (adj$change == 'y') {
-    xbreaks <- getLabels(c(min(data$x), max(data$x)), 4)
+    xbreaks <- getLabels(xlim, 5)
     xlabels <- xbreaks
-    ylabels <- getLabels(c(min(data$y), max(data$y)), 3)
+    ylabels <- getLabels(ylim / ratio, 4)
     data$y <- data$y * ratio
     ybreaks <- ylabels * ratio
 
@@ -89,13 +89,13 @@ plotScatterPie <- function(data, pieRange, pieColor = NULL, xmeanLine = TRUE, ym
     layer_basic <- ggplot(data, aes(x = x))
  #     geom_point(data = data, aes(x, y))
 
-    data$radius <- getRadius(data$r)
+    data$radius <- getRadius(data$r) * (ylim[2] - ylim[1]) / 50
 
 
     layer_pie <- geom_scatterpie(data = data, aes(x, y, r = radius),
                                  cols = colnames(data)[pieRange], color = 'white')
 
-    if (is.null(labelLine)) labelLine <- max(data$radius)/8
+    if (is.null(labelLine)) labelLine <- max(data$radius) / 16
 
     layer_label <- geom_text_repel(data = data, aes(x, y, label = label),
                                    point.padding = unit(labelLine, "lines"))
@@ -159,7 +159,7 @@ ggstyle <- function() {
 
 
 # this is used to get xlim and ylim of the plot, also breaks and ratios
-getLim <- function(x, y, n = 0.75, xlablen = 4) {
+getLim <- function(x, y, n = 0.75, xlablen = 5) {
   xl <- (max(x) - min(x))
   yl <- (max(y) - min(y))
   if (yl < n * xl) {
@@ -183,8 +183,8 @@ getLim <- function(x, y, n = 0.75, xlablen = 4) {
 
 
   # enlarge xlim and ylim for elements not to reach the border
-  xd <- (xlim[2] - xlim[1]) * 0.2/2
-  yd <- (ylim[2] - ylim[1]) * 0.2/2
+  xd <- (xlim[2] - xlim[1]) * 0.4/2
+  yd <- (ylim[2] - ylim[1]) * 0.4/2
 
   xlim <- c(xlim[1] - xd, xlim[2] + xd)
   ylim <- c(ylim[1] - yd, ylim[2] + yd)
@@ -202,6 +202,10 @@ getLim <- function(x, y, n = 0.75, xlablen = 4) {
 roundN <- function(x) {
   if ( x >= 1) {
     n <- -nchar(round(x)) + 1
+    while (round(x) == round(x, n)) {
+      n <- n - 1
+    }
+    n <- n + 1
   } else if (0 < x &  x < 1){
     l <- strsplit(as.character(x), '\\.')[[1]]
     n <- nchar(l[length(l)])

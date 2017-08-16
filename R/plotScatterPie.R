@@ -94,9 +94,9 @@ plotScatterPie <- function(data, pieRange, pieColor = NULL, xmeanLine = TRUE, ym
     if (label_on == FALSE) {
       layer_label <- NULL
     } else {
-      labelLine <- max(data$radius) / 25
+      #labelLine <- max(data$radius) / 25
       layer_label <- geom_label_repel(data = data, aes(x, y, label = label),
-                                   point.padding = unit(labelLine, "lines"))
+                                   point.padding = unit(1, "lines"))
     }
 
     #layer_legend <- geom_scatterpie_legend(data$radius, x= 0, y=0)

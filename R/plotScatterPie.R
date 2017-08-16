@@ -23,7 +23,7 @@ getRadius <- function(y, small = 2, medium = 4, large = 6) {
 #' @param data a dataframe with colnames x, y, r, label, these four names must be in colnames.
 #' @param pieRange define which column to which column to be presented by pie chart, see examples
 #' @param pieColor color for different colors in pie chart
-#' @param labelLine how far is label to pie chart, can be left with default value.
+#' @param label_on Whether to show label
 #' @param xmeanLine if plot x mean line
 #' @param ymeanLine if plot y mean line
 #' @param output if you want an ggplot object as output, default is FALSE
@@ -50,7 +50,7 @@ getRadius <- function(y, small = 2, medium = 4, large = 6) {
 #'
 #'
 
-plotScatterPie <- function(data, pieRange, pieColor = NULL, xmeanLine = TRUE, ymeanLine = TRUE, labelLine = NULL,
+plotScatterPie <- function(data, pieRange, pieColor = NULL, xmeanLine = TRUE, ymeanLine = TRUE, label_on = TRUE,
                            output = FALSE) {
 
   ## input check
@@ -83,22 +83,22 @@ plotScatterPie <- function(data, pieRange, pieColor = NULL, xmeanLine = TRUE, ym
 
   }
 
-
+  data$radius <- getRadius(data$r) * (ylim[2] - ylim[1]) / 50
 
   with (data, {
     layer_basic <- ggplot(data, aes(x = x))
- #     geom_point(data = data, aes(x, y))
-
-    data$radius <- getRadius(data$r) * (ylim[2] - ylim[1]) / 50
-
 
     layer_pie <- geom_scatterpie(data = data, aes(x, y, r = radius),
                                  cols = colnames(data)[pieRange], color = 'white')
 
-    if (is.null(labelLine)) labelLine <- max(data$radius) / 12
-
-    layer_label <- geom_text_repel(data = data, aes(x, y, label = label),
+    if (label_on == FALSE) {
+      layer_label <- NULL
+    } else {
+      labelLine <- max(data$radius) / 25
+      layer_label <- geom_label_repel(data = data, aes(x, y, label = label),
                                    point.padding = unit(labelLine, "lines"))
+    }
+
     #layer_legend <- geom_scatterpie_legend(data$radius, x= 0, y=0)
     if (xmeanLine == TRUE) layer_basic <- layer_basic + geom_vline(xintercept = mean(data$x), color = 'red', size = 1.5, linetype = 2)
     if (ymeanLine == TRUE) layer_basic <- layer_basic + geom_hline(yintercept = mean(data$y), color = 'red', size = 1.5, linetype = 2)
@@ -200,13 +200,15 @@ getLim <- function(x, y, n = 0.75, xlablen = 5) {
 
 # setup smart round up axis labels
 roundN <- function(x) {
-  if ( x >= 1) {
-    n <- -nchar(round(x)) + 1
-    while (round(x) == round(x, n)) {
-      n <- n - 1
-    }
-    n <- n + 1
-  } else if (0 < x &  x < 1){
+  if ( x >= 5) {
+    # n <- -nchar(round(x)) + 1
+    # while (round(x) == round(x, n)) {
+    #   n <- n - 1
+    # }
+    # n <- n + 1
+    n <- 5
+
+  } else if (0 < x &  x < 5){
     l <- strsplit(as.character(x), '\\.')[[1]]
     l1 <- strsplit(l[2], '')[[1]]
     n <- 0
@@ -214,10 +216,10 @@ roundN <- function(x) {
       if (i != '0') break
       n <- n + 1
     }
-    n <- n + 2
+    n <- 5 * 10^(n-1)
   }
 
-  res <- round(x, n)
+  res <- round(x / n) * n
 
   return(c(res, n))
 }
@@ -226,7 +228,8 @@ getLabels <- function(lim, labeln) {
 
   d <- roundN((max(lim) - min(lim))/labeln)
 
-  label1 <- round(min(lim), d[2])
+  label1 <- round(min(lim) / d[2]) * d[2]
+
   if (label1 < min(lim)) label1 <- label1 + d[1]
   # now the 1st label is fixed, trying to see if there will be enough palce for xlabel intervals, here xlabel = 4
   labelseq <- seq(label1, by = d[1], length.out = labeln)

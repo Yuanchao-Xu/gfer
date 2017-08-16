@@ -5,7 +5,7 @@
 \title{plotScatterPie}
 \usage{
 plotScatterPie(data, pieRange, pieColor = NULL, xmeanLine = TRUE,
-  ymeanLine = TRUE, labelLine = NULL, output = FALSE)
+  ymeanLine = TRUE, label_on = TRUE, output = FALSE)
 }
 \arguments{
 \item{data}{a dataframe with colnames x, y, r, label, these four names must be in colnames.}
@@ -18,7 +18,7 @@ plotScatterPie(data, pieRange, pieColor = NULL, xmeanLine = TRUE,
 
 \item{ymeanLine}{if plot y mean line}
 
-\item{labelLine}{how far is label to pie chart, can be left with default value.}
+\item{label_on}{Whether to show label}
 
 \item{output}{if you want an ggplot object as output, default is FALSE}
 }

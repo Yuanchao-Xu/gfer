@@ -28,7 +28,7 @@ getRadius <- function(y, small = 2, medium = 4, large = 6) {
 #' @param ymeanLine if plot y mean line
 #' @param output if you want an ggplot object as output, default is FALSE
 #' @importFrom graphics plot abline text
-#' @importFrom ggrepel geom_text_repel
+#' @importFrom ggrepel geom_label_repel
 #' @importFrom scatterpie geom_scatterpie
 #' @export
 #' @import ggplot2

@@ -1,16 +1,10 @@
 
 
 # this is for setting plot radius
-getRadius <- function(y, small = 2, medium = 4, large = 6) {
-  r <- sapply(y, function(x) {
-    if (x <= 40000 & x >= 15000) {
-      x <- medium
-    } else if (x < 15000) {
-      x <- small
-    } else {
-      x <- large
-    }
-  })
+getRadius <- function(x, rmin = 1, rmax = 6) {
+  ratio <- (rmax - rmin) / (max(x) - min(x))
+
+  r <- (x - min(x)) * ratio + rmin
   return (r)
 }
 
@@ -49,13 +43,14 @@ getRadius <- function(y, small = 2, medium = 4, large = 6) {
 #' }
 #'
 #'
+#'
 
 plotScatterPie <- function(data, pieRange, pieColor = NULL, xmeanLine = TRUE, ymeanLine = TRUE, label_on = TRUE,
                            output = FALSE) {
 
   ## input check
   if(is.null(pieRange)) stop("You have to assign which column to which column to be presented by pie chart.")
-  if(length(pieRange)!=length(pieColor)) stop("Length of pieRange and pieColor should be the same.")
+  if(!is.null(pieColor) & length(pieRange)!=length(pieColor)) stop("Length of pieRange and pieColor should be the same.")
 
   # adjustment of x and y
   # since coord_equal is set in order to make the pie chart round, and
@@ -100,8 +95,8 @@ plotScatterPie <- function(data, pieRange, pieColor = NULL, xmeanLine = TRUE, ym
     }
 
     #layer_legend <- geom_scatterpie_legend(data$radius, x= 0, y=0)
-    if (xmeanLine == TRUE) layer_basic <- layer_basic + geom_vline(xintercept = mean(data$x), color = 'red', size = 1.5, linetype = 2)
-    if (ymeanLine == TRUE) layer_basic <- layer_basic + geom_hline(yintercept = mean(data$y), color = 'red', size = 1.5, linetype = 2)
+    if (xmeanLine == TRUE) layer_basic <- layer_basic + geom_vline(xintercept = mean(data$x), color = 'red', size = 1, linetype = 2)
+    if (ymeanLine == TRUE) layer_basic <- layer_basic + geom_hline(yintercept = mean(data$y), color = 'red', size = 1, linetype = 2)
 
     if (!is.null(pieColor)) layer_basic <- layer_basic + scale_fill_manual(values = pieColor)
 
@@ -142,9 +137,10 @@ plotScatterPie <- function(data, pieRange, pieColor = NULL, xmeanLine = TRUE, ym
 
 #' @import ggplot2
 ggstyle <- function() {
-  a <- theme_classic() +
+  a <- theme_light() +
     theme(legend.position = 'bottom',
-          panel.border = element_rect(color = 'black', fill = 'transparent'))
+          panel.grid.minor = element_blank())
+#          panel.border = element_rect(color = 'grey', fill = 'transparent'))
   # a <- theme(legend.position = 'bottom',
   #         panel.background = element_rect(fill = 'white'),
   #         panel.border = element_rect(colour = 'black'))
@@ -230,8 +226,9 @@ getLabels <- function(lim, labeln) {
 
   label1 <- round(min(lim) / d[2]) * d[2]
 
-  if (label1 < min(lim)) label1 <- label1 + d[1]
+#  if (label1 < min(lim)) label1 <- label1 + d[1]
   # now the 1st label is fixed, trying to see if there will be enough palce for xlabel intervals, here xlabel = 4
+  labeln <- round((max(lim) - label1) / d[1]) + 1 # reajust label numbers
   labelseq <- seq(label1, by = d[1], length.out = labeln)
   if (max(labelseq) > max(lim)) labelseq <- seq(label1, by = d[1], length.out = labeln - 1)
 

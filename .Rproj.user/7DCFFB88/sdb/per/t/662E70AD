@@ -1,14 +1,14 @@
 {
     "collab_server" : "",
-    "contents" : "Package: gfer\nType: Package\nTitle: Green Finance and Environmental Risk\nVersion: 0.1.8\nDate: 2017-8-8\nAuthors@R: person(\"Yuanchao\", \"Xu\", email = \"xuyuanchao37@gmail.com\",\n                  role = c(\"aut\", \"cre\"))\nDescription: Focuses on data collecting, analyzing and visualization in green finance and environmental \n  risk research and analysis. Main function includes environmental data collecting from \n  official websites such as MEP (Ministry of Environmental Protection of China, <http://www.mep.gov.cn>), water \n  related projects identification and environmental data visualization.\nEncoding: UTF-8\nLicense: GPL-2\nLazyData: true\nImports:\n    rvest,\n    xml2,\n    jsonlite,\n    httr,\n    stringi,\n    V8,\n    data.table,\n    tidyr,\n    scatterpie,\n    ggplot2,\n    ggrepel,\n    circlize,\n    googlesheets,\n    gsheet\nDepends: R (>= 2.10)\nRoxygenNote: 6.0.1\nURL: https://yuanchao-xu.github.io/gfer/\nBugReports: https://github.com/Yuanchao-Xu/gfer/issues\nRepository: CRAN\nSuggests: knitr,\n    rmarkdown\nVignetteBuilder: knitr\n",
+    "contents" : "Package: gfer\nType: Package\nTitle: Green Finance and Environmental Risk\nVersion: 0.1.8\nDate: 2017-8-16\nAuthors@R: person(\"Yuanchao\", \"Xu\", email = \"xuyuanchao37@gmail.com\",\n                  role = c(\"aut\", \"cre\"))\nDescription: Focuses on data collecting, analyzing and visualization in green finance and environmental \n  risk research and analysis. Main function includes environmental data collecting from \n  official websites such as MEP (Ministry of Environmental Protection of China, <http://www.mep.gov.cn>), water \n  related projects identification and environmental data visualization.\nEncoding: UTF-8\nLicense: GPL-2\nLazyData: true\nImports:\n    rvest,\n    xml2,\n    jsonlite,\n    httr,\n    stringi,\n    V8,\n    data.table,\n    tidyr,\n    scatterpie,\n    ggplot2,\n    ggrepel,\n    circlize,\n    googlesheets,\n    gsheet\nDepends: R (>= 2.10)\nRoxygenNote: 6.0.1\nURL: https://yuanchao-xu.github.io/gfer/\nBugReports: https://github.com/Yuanchao-Xu/gfer/issues\nRepository: CRAN\nSuggests: knitr,\n    rmarkdown\nVignetteBuilder: knitr\n",
     "created" : 1502335990984.000,
     "dirty" : false,
     "encoding" : "UTF-8",
     "folds" : "",
-    "hash" : "1658251066",
+    "hash" : "1156482636",
     "id" : "662E70AD",
-    "lastKnownWriteTime" : 1502363132,
-    "last_content_update" : 1502363132925,
+    "lastKnownWriteTime" : 1502873331,
+    "last_content_update" : 1502873331797,
     "path" : "~/GitHub/gfer/DESCRIPTION",
     "project_path" : "DESCRIPTION",
     "properties" : {

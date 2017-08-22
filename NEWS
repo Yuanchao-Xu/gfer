@@ -1,8 +1,9 @@
 gfer 0.1.8
 ==========
-Date: 2017-8-8
+Date: 2017-8-16
 
 - added getBasicData to extract NBS data, gferplot included in the package
+- works with the shiny app waternomics plot, adding circilized plot and scatter plot of waternomics
 
 
 

@@ -1,8 +1,8 @@
 Package: gfer
 Type: Package
 Title: Green Finance and Environmental Risk
-Version: 0.1.8
-Date: 2017-8-16
+Version: 0.1.9
+Date: 2017-10-31
 Authors@R: person("Yuanchao", "Xu", email = "xuyuanchao37@gmail.com",
                   role = c("aut", "cre"))
 Description: Focuses on data collecting, analyzing and visualization in green finance and environmental 

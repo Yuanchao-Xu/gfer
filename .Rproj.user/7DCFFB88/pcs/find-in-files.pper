@@ -4,7 +4,7 @@
         "filePatterns" : [
         ],
         "path" : "~/GitHub/gfer",
-        "query" : "getTicker",
+        "query" : "read_html",
         "regex" : false
     }
 }

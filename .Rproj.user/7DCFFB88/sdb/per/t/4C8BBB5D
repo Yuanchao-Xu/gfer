@@ -1,14 +1,14 @@
 {
     "collab_server" : "",
-    "contents" : "gfer 0.1.8\n==========\nDate: 2017-8-16\n\n- added getBasicData to extract NBS data, gferplot included in the package\n- works with the shiny app waternomics plot, adding circilized plot and scatter plot of waternomics\n\n\n\ngfer 0.1.7\n==========\nDate: 2017-7-2\n\n- add interface to national statistics, based on rstatscn. Because rstatscn doesn't have a EN version, so cannot be called directly, included in gfer, added getBasicData to extract NBS data\n\n\n\ngfer 0.1.6\n==========\nDate: 2017-3-12\n\n- add getTickers, getMktCap, getIndex and getExchange to deal with stock information including market capitalization, listed location and index they belong to\n- add reference and source\n\n\n\ngfer 0.1.5\n==========\nDate: 2017-2-19\n\n- add proxy option to all functions\n- apply data table\n\n\n\n\ngfer 0.1.4\n==========\nDate: 2016-12-20\n\n- add readme file, and a little change in description\n\n\n\n\ngfer 0.1.3\n==========\nDate: 2016-12-18\n\n- add NEWS, and fix minor bugs\n\n\n\n\n",
+    "contents" : "gfer 0.1.9\n==========\nDate: 2017-10-31\n\n- added getENNames\n- bug fixed\n\n\n\ngfer 0.1.8\n==========\nDate: 2017-8-16\n\n- added getBasicData to extract NBS data, gferplot included in the package\n- works with the shiny app waternomics plot, adding circilized plot and scatter plot of waternomics\n\n\ngfer 0.1.7\n==========\nDate: 2017-7-2\n\n- add interface to national statistics, based on rstatscn. Because rstatscn doesn't have a EN version, so cannot be called directly, included in gfer, added getBasicData to extract NBS data\n\n\n\ngfer 0.1.6\n==========\nDate: 2017-3-12\n\n- add getTickers, getMktCap, getIndex and getExchange to deal with stock information including market capitalization, listed location and index they belong to\n- add reference and source\n\n\n\ngfer 0.1.5\n==========\nDate: 2017-2-19\n\n- add proxy option to all functions\n- apply data table\n\n\n\n\ngfer 0.1.4\n==========\nDate: 2016-12-20\n\n- add readme file, and a little change in description\n\n\n\n\ngfer 0.1.3\n==========\nDate: 2016-12-18\n\n- add NEWS, and fix minor bugs\n\n\n\n\n",
     "created" : 1502873335098.000,
     "dirty" : false,
     "encoding" : "UTF-8",
     "folds" : "",
-    "hash" : "481711985",
+    "hash" : "136397513",
     "id" : "4C8BBB5D",
-    "lastKnownWriteTime" : 1502873371,
-    "last_content_update" : 1502873371476,
+    "lastKnownWriteTime" : 1509441617,
+    "last_content_update" : 1509441617389,
     "path" : "~/GitHub/gfer/NEWS",
     "project_path" : "NEWS",
     "properties" : {

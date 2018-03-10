@@ -100,7 +100,7 @@ getTickers <- function(corpNames) {
       message(i)
     }
   } else {
-    break("Please input full name(s) of a company or a column of companies, must be a column, not a row")
+    stop("Please input full name(s) of a company or a column of companies, must be a column, not a row")
   }
 
   return(res)

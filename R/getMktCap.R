@@ -82,7 +82,7 @@ getHisMktCap <- function(tickers, date1, date2) {
     }
 
   } else {
-    break('Please input a column of tickers, column, not row')
+    stop('Please input a column of tickers, column, not row')
   }
   return(res)
 }

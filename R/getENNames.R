@@ -76,7 +76,7 @@ getENNames <- function(tickers) {
     }
 
   } else {
-    break('Please input a column of tickers, column, not row')
+    stop('Please input a column of tickers, column, not row')
   }
   return(res)
 }

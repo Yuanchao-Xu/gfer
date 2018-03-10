@@ -4,8 +4,8 @@ language: R
 sudo: required
 cache: packages
 before_install:
-    - sudo rm -rf /etc/apt/sources.list.d/rwky-redis.list
-    - sudo add-apt-repository ppa:chris-lea/redis-server -y
+  - sudo apt-get -qq update
+  - sudo apt-get install libxml-checker-perl libdbd-pg-perl libperl-critic-perl libdevel-cover-perl
 apt_packages:
   - libv8-dev
   - libudunits2-dev

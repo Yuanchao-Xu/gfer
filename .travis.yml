@@ -4,8 +4,8 @@ language: R
 sudo: required
 cache: packages
 before_install:
-  - sudo apt-get -qq update
-  - sudo apt-get install libxml-checker-perl libdbd-pg-perl libperl-critic-perl libdevel-cover-perl
+  - sudo rm -vf /etc/apt/sources.list.d/*riak*
+  - sudo apt-get update
 apt_packages:
   - libv8-dev
   - libudunits2-dev

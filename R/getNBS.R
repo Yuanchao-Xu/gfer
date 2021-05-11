@@ -90,7 +90,8 @@ getWaternomicsData_NBS <- function(start, end) {
   GDP <- getNBS('GDP', start, end)
   wateruse <- getNBS('water use', start, end)
   wastewater <- getNBS('wastewater', start, end)
-  closeAllConnections()
+  #closeAllConnections()
+  on.exit()
 
 
   selected <- c('Province', 'Year','Gross Regional Product', 'Value-added of the Primary Industry', 'Value-added of the Secondary Industry',
@@ -135,7 +136,8 @@ getWaternomicsData_goog <- function() {
   GDP <- gsheet2tbl('https://docs.google.com/spreadsheets/d/1hkmciju6L3DQjoziFfhDMv3wS7Gpx1rJLW-Fdcykhck/edit#gid=1261170248')
   wateruse <- gsheet2tbl('https://docs.google.com/spreadsheets/d/1hkmciju6L3DQjoziFfhDMv3wS7Gpx1rJLW-Fdcykhck/edit#gid=616646461')
   wastewater <- gsheet2tbl('https://docs.google.com/spreadsheets/d/1hkmciju6L3DQjoziFfhDMv3wS7Gpx1rJLW-Fdcykhck/edit#gid=2060805027')
-  closeAllConnections()
+  #closeAllConnections()
+  on.exit()
 
 
   selected <- c('Province', 'Year','Gross Regional Product', 'Value-added of the Primary Industry', 'Value-added of the Secondary Industry',

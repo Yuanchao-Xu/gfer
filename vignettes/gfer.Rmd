@@ -22,5 +22,5 @@ gfer is an R package, designed for green finance and environmental risk research
 
 **If you feel gfer is of a little help, please cite it as following:**
 
-Yuanchao Xu (2017). gfer: Green Finance and Environmental Risk. R package version 0.1.6.
+Yuanchao Xu (2021). gfer: Green Finance and Environmental Risk. R package version 0.1.11.
   https://CRAN.R-project.org/package=gfer

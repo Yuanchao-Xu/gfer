@@ -16,14 +16,14 @@
 #' @importFrom rvest html_table %>%
 #' @importFrom xml2 read_html
 #' @references
-#' http://datacenter.mep.gov.cn/report/getCountGraph.do?type=runQianWater
+#' http://datacenter.mee.gov.cn/report/getCountGraph.do?type=runQianWater
 #' @export
 # @examples
 # add(1, 1)
 # add(10, 1)
 getWaterQ_MEP_all_unit <- function(year, week, station1, station2, proxy = NULL) {
-  #url <- 'http://datacenter.mep.gov.cn/report/water/water.jsp?year=2016&wissue=45&x=29&y=6'
-  url <- 'http://datacenter.mep.gov.cn/report/getCountGraph.do?type=runQianWater'
+  #url <- 'http://datacenter.mee.gov.cn/report/water/water.jsp?year=2016&wissue=45&x=29&y=6'
+  url <- 'http://datacenter.mee.gov.cn/report/getCountGraph.do?type=runQianWater'
   res <- GET(url,
              query = list(year = year,
                           wissue = week), use_proxy(proxy[1, 1], proxy[1, 2]))
@@ -56,7 +56,7 @@ getWaterQ_MEP_all_unit <- function(year, week, station1, station2, proxy = NULL)
 #' you will get data of all the stations. Since the number of stations vary with time, using this function, you have
 #' to make sure that within the period you are scrapping, the number of stations keep consistant.
 #' @references
-#' http://datacenter.mep.gov.cn/report/getCountGraph.do?type=runQianWater
+#' http://datacenter.mee.gov.cn/report/getCountGraph.do?type=runQianWater
 #' @export
 #' @importFrom data.table rbindlist
 #' @examples

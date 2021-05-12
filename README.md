@@ -19,7 +19,7 @@ install.packages("devtools")
 devtools::install_github("Yuanchao-Xu/gfer")
 ```
 
-**Official Website is [http://yuanchao-xu.github.io/gfer](http://yuanchao-xu.github.io/gfer)**
+**Official Website is [https://yuanchao-xu.github.io/gfer](http://yuanchao-xu.github.io/gfer)**
 
 gfer is an R package, designed for green finance and environmental risk research. Focuses on data collecting and analyzing in green finance and environmental 
   risk research and analysis. Main function includes environmental data collecting from 

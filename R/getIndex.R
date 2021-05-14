@@ -41,7 +41,7 @@ getIndexConstnt <- function(indexPool) {
 #' have 5 digits. the '0' in the beginning cannot be left out.
 #' @param indexData the index information, before running getIndex, indexData needs to be loaded using \code{\link{getIndexData}}
 #' @details Data comes from www.finance.sina.com.cn and www.etnet.com.hk
-#' @importFrom data.table data.table :=
+#' @importFrom data.table data.table
 #' @references
 #' www.finance.sina.com.cn
 #' www.etnet.com.hk

@@ -4,10 +4,12 @@
 \name{GDPmix}
 \alias{GDPmix}
 \title{Table about GDP mix of China provinces in 2015}
-\format{A data frame with 11 rows and 7 variables:
+\format{
+A data frame with 11 rows and 7 variables:
 \describe{
   ...
-}}
+}
+}
 \usage{
 GDPmix
 }

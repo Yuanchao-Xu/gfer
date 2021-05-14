@@ -19,16 +19,16 @@ install.packages("devtools")
 devtools::install_github("Yuanchao-Xu/gfer")
 ```
 
-**Official Website is [https://yuanchao-xu.github.io/gfer](http://yuanchao-xu.github.io/gfer)**
+**Official Website is [https://yuanchao-xu.github.io/gfer](https://yuanchao-xu.github.io/gfer/)**
 
 gfer is an R package, designed for green finance and environmental risk research. Focuses on data collecting and analyzing in green finance and environmental 
   risk research and analysis. Main function includes environmental data collecting from 
-  official websites like MEP (Ministry of Environmental Protection of China, <http://www.mep.gov.cn>), water 
+  official websites like MEP (Ministry of Environmental Protection of China, <https://www.mee.gov.cn>), water 
   related projects identification and environmental data visualization.
 
 **If you feel gfer is of a little help, please cite it as following:**
 
-Yuanchao Xu (2017). gfer: Green Finance and Environmental Risk. R package version 0.1.6.
+Yuanchao Xu (2021). gfer: Green Finance and Environmental Risk. R package version 0.1.6.
   https://CRAN.R-project.org/package=gfer
 
 

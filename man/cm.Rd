@@ -4,10 +4,12 @@
 \name{cm}
 \alias{cm}
 \title{Matrix showing complicated management of China's Water Resource}
-\format{A data frame with 13 rows and 11 variables:
+\format{
+A data frame with 13 rows and 11 variables:
 \describe{
   ...
-}}
+}
+}
 \usage{
 cm
 }

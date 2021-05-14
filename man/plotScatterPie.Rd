@@ -4,8 +4,15 @@
 \alias{plotScatterPie}
 \title{plotScatterPie}
 \usage{
-plotScatterPie(data, pieRange, pieColor = NULL, xmeanLine = TRUE,
-  ymeanLine = TRUE, label_on = TRUE, output = FALSE)
+plotScatterPie(
+  data,
+  pieRange,
+  pieColor = NULL,
+  xmeanLine = TRUE,
+  ymeanLine = TRUE,
+  label_on = TRUE,
+  output = FALSE
+)
 }
 \arguments{
 \item{data}{a dataframe with colnames x, y, r, label, these four names must be in colnames.}

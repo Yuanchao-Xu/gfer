@@ -24,8 +24,8 @@ getRadius <- function(x, rmin = 1, rmax = 6) {
 #' @importFrom graphics plot abline text
 #' @importFrom ggrepel geom_label_repel
 #' @importFrom scatterpie geom_scatterpie
+#' @importFrom ggplot2 ggplot
 #' @export
-#' @import ggplot2
 #' @examples
 #'
 #'
@@ -135,7 +135,7 @@ plotScatterPie <- function(data, pieRange, pieColor = NULL, xmeanLine = TRUE, ym
 
 
 
-#' @import ggplot2
+#' @importFrom  ggplot2 theme theme_light element_blank
 ggstyle <- function() {
   a <- theme_light() +
     theme(legend.position = 'bottom',

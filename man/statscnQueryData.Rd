@@ -4,8 +4,13 @@
 \alias{statscnQueryData}
 \title{query data in the statscn db}
 \usage{
-statscnQueryData(zb = "A0201", dbcode = "hgnd", rowcode = "zb",
-  colcode = "sj", moreWd = list(name = NA, value = NA))
+statscnQueryData(
+  zb = "A0201",
+  dbcode = "hgnd",
+  rowcode = "zb",
+  colcode = "sj",
+  moreWd = list(name = NA, value = NA)
+)
 }
 \arguments{
 \item{zb}{the zb/category code to be queried}

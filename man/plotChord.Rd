@@ -4,8 +4,15 @@
 \alias{plotChord}
 \title{plotScatterPie}
 \usage{
-plotChord(data, t = FALSE, ifsep = TRUE, trans = 0.3, highlight = NULL,
-  xlim = c(-1, 1), ylim = c(-1, 1))
+plotChord(
+  data,
+  t = FALSE,
+  ifsep = TRUE,
+  trans = 0.3,
+  highlight = NULL,
+  xlim = c(-1, 1),
+  ylim = c(-1, 1)
+)
 }
 \arguments{
 \item{data}{a dataframe showing different management intersections. See the data frame in the example}

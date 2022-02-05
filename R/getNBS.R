@@ -47,7 +47,7 @@ getNBS <- function(indicator, start, end) {
 #' Once finished, there will be a google sheet called NBS_data created in your google drive as database.
 #' @param start starting year of data wanted
 #' @param end end year of data wanted, make sure your input end year exists in the NBS website
-#' @import googlesheet4
+#' @import googlesheets4
 #' @export
 updateNBS <- function(start, end) {
   message('Loading from NBS')

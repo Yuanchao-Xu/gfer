@@ -41,40 +41,40 @@ getNBS <- function(indicator, start, end) {
 }
 
 
-#' updateNBS
-#'
-#' update/create the database in your google sheet. You have to sign in mannually for your google sheet
-#' Once finished, there will be a google sheet called NBS_data created in your google drive as database.
-#' @param start starting year of data wanted
-#' @param end end year of data wanted, make sure your input end year exists in the NBS website
-#' @import googlesheets4
-#' @export
-updateNBS <- function(start, end) {
-  message('Loading from NBS')
-  GDP <- getNBS('GDP', start, end)
-  wateruse <- getNBS('water use', start, end)
-  wastewater <- getNBS('wastewater', start, end)
-
-  #check if there are existing data base in the drive
-  message('Uploading to Google Sheet. It may take minites depending on data size.')
-  if (!'NBS_data' %in% gs_ls()[['sheet_title']]) {
-    gs_new('NBS_data', ws_title = 'GDP', input = GDP, trim = TRUE, verbose = TRUE)
-
-    gs_ws_new(gs_title('NBS_data'), ws_title = 'Water_use', trim = TRUE, verbose = TRUE)
-    gs_ws_new(gs_title('NBS_data'), ws_title = 'Wastewater')
-
-  } else {
-    gs_edit_cells(gs_title('NBS_data'), ws = 'GDP', input = GDP, trim = TRUE, verbose = TRUE)
-  }
-  sheet <- gs_title('NBS_data')
-
-  message('GDP upload finished.')
-  gs_edit_cells(sheet, ws = 'Water_use', input = wateruse, trim = TRUE, verbose = TRUE)
-  message('water use upload finished.')
-  gs_edit_cells(sheet, ws = 'Wastewater', input = wastewater, trim = TRUE, verbose = TRUE)
-  message('Wastewater upload finished.')
-  message('All finished')
-}
+# updateNBS
+#
+# update/create the database in your google sheet. You have to sign in mannually for your google sheet
+# Once finished, there will be a google sheet called NBS_data created in your google drive as database.
+# @param start starting year of data wanted
+# @param end end year of data wanted, make sure your input end year exists in the NBS website
+# @import googlesheets4
+# @export
+# updateNBS <- function(start, end) {
+#   message('Loading from NBS')
+#   GDP <- getNBS('GDP', start, end)
+#   wateruse <- getNBS('water use', start, end)
+#   wastewater <- getNBS('wastewater', start, end)
+#
+#   #check if there are existing data base in the drive
+#   message('Uploading to Google Sheet. It may take minites depending on data size.')
+#   if (!'NBS_data' %in% gs_ls()[['sheet_title']]) {
+#     gs_new('NBS_data', ws_title = 'GDP', input = GDP, trim = TRUE, verbose = TRUE)
+#
+#     gs_ws_new(gs_title('NBS_data'), ws_title = 'Water_use', trim = TRUE, verbose = TRUE)
+#     gs_ws_new(gs_title('NBS_data'), ws_title = 'Wastewater')
+#
+#   } else {
+#     gs_edit_cells(gs_title('NBS_data'), ws = 'GDP', input = GDP, trim = TRUE, verbose = TRUE)
+#   }
+#   sheet <- gs_title('NBS_data')
+#
+#   message('GDP upload finished.')
+#   gs_edit_cells(sheet, ws = 'Water_use', input = wateruse, trim = TRUE, verbose = TRUE)
+#   message('water use upload finished.')
+#   gs_edit_cells(sheet, ws = 'Wastewater', input = wastewater, trim = TRUE, verbose = TRUE)
+#   message('Wastewater upload finished.')
+#   message('All finished')
+# }
 
 #' getWaternomicsData_NBS
 #'

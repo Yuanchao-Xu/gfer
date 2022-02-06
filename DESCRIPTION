@@ -28,7 +28,7 @@ Imports:
     googlesheets4,
     gsheet
 Depends: R (>= 2.10)
-RoxygenNote: 7.1.1
+RoxygenNote: 7.1.2
 URL: https://yuanchao-xu.github.io/gfer/
 BugReports: https://github.com/Yuanchao-Xu/gfer/issues
 Repository: CRAN

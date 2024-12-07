@@ -129,7 +129,7 @@ getWaternomicsData_NBS <- function(start, end) {
 #' Get NBS data from google sheet by shared link. Default link is provided by gfer, you can also create your
 #' own google sheet of GDP.
 #' NOTE: The 'link sharing on' of the sheet must be ticked in order to read
-#' @importFrom googlesheets4 gsheet2tbl
+#' @importFrom gsheet gsheet2tbl
 #' @export
 getWaternomicsData_goog <- function() {
   message('Loading from database...')

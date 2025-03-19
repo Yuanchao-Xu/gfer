@@ -1,6 +1,7 @@
 # gfer
 [![Travis-CI Build Status](https://travis-ci.org/Yuanchao-Xu/gfer.svg?branch=master)](https://travis-ci.org/Yuanchao-Xu/gfer)
 [![CRAN_Status_Badge](http://www.r-pkg.org/badges/version/gfer)](https://cran.r-project.org/package=gfer)
+[![](https://cranlogs.r-pkg.org/badges/gfer)](https://cran.r-project.org/package=gfer)
 
 
 ## Installation

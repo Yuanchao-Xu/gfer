@@ -17,7 +17,7 @@ getIndexConstnt <- function(indexPool) {
       listNum <- 1
     } else break ('Wrong url in indexPool')
 
-    data <- html_table(read_html(url), fill = TRUE)[[listNum]][, 1:2]
+    data <- html_table(read_html(url))[[listNum]][, 1:2]
     data <- data[2:nrow(data), ]
     data[,3] <- rep(indexPool[i,1], nrow(data))
     colnames(data) <- c('ticker', 'name', 'index')

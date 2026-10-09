@@ -29,7 +29,7 @@ getWaterQ_MEP_all_unit <- function(year, week, station1, station2, proxy = NULL)
                           wissue = week), use_proxy(proxy[1, 1], proxy[1, 2]))
   resC <- content(res, as = 'text', encoding = 'utf-8')%>%
     read_html()%>%
-    html_table(fill = TRUE)
+    html_table()
 
   table <- resC[[1]]
   startIndex <- which(table[,1] == station1)
